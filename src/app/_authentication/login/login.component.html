@@ -1,0 +1,90 @@
+<div class="authentication">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-4 col-sm-12">
+        <form class="card auth_form" [formGroup]="loginForm">
+          <div class="header">
+            <img class="logo" src="/assets/images/logo.svg" alt="">
+            <h5>{{ 'login.logIn' | translate }}</h5>
+          </div>
+          <div *ngIf="invalidLogin">
+            <div class="alert alert-danger">
+              {{ 'validation.invalidLogin' | translate }}
+            </div>
+          </div>
+          <div class="body">
+            <div class="mb-3">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="E-mail"
+                       formControlName="email" autocomplete="email">
+                <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="material-icons">alternate_email</i>
+                </span>
+                </div>
+              </div>
+              <!-- erros -->
+              <div class="text-danger" *ngIf="email.invalid && (email.touched || email.dirty)">
+                <span class="d-block" *ngIf="email.errors.email">
+                  {{ 'validation.emailInvalid' | translate }}
+                </span>
+                <span class="d-block" *ngIf="email.errors.required">
+                  {{ 'validation.emailRequired' | translate }}
+                </span>
+              </div> <!-- end erros -->
+            </div>
+
+            <div class="mb-3">
+              <div class="input-group">
+                <input type="password" class="form-control"
+                       formControlName="password"
+                       autocomplete="password"
+                       [placeholder]="'login.password' | translate">
+                <div class="input-group-append">
+                <span class="input-group-text">
+                    <i class="material-icons">vpn_key</i>
+                </span>
+                </div>
+              </div>
+              <!-- erros -->
+              <div class="text-danger" *ngIf="password.invalid && (password.touched || password.dirty)">
+                <span class="d-block" *ngIf="password.errors.minlength">
+                  {{ 'validation.passwordMinLength' | translate }}
+                </span>
+                <span class="d-block" *ngIf="password.errors.maxlength">
+                  {{ 'validation.passwordMaxLength' | translate }}
+                </span>
+                <span class="d-block" *ngIf="password.errors.required">
+                  {{ 'validation.passwordRequired' | translate }}
+                </span>
+              </div> <!-- end erros -->
+            </div>
+
+            <span class="d-block">
+                <button class="btn btn-block btn-deep-blue mt-3">
+                  {{ 'login.forgetPassword' | translate }}
+                </button>
+            </span>
+            <button class="btn btn-primary btn-block waves-effect waves-light"
+                    (click)="submitForm()"
+                    [disabled]="loginLoading">
+              {{ 'login.logIn' | translate }}
+            </button>
+          </div>
+        </form>
+
+        <div class="copyright text-center mt-5">
+          © 2020
+          <span>Designed by <a href="https://deepcenter.com.br/" target="_blank">DeepCenter</a></span>
+        </div>
+
+      </div>
+
+      <div class="col-lg-8 col-sm-12 d-flex justify-content-center">
+        <img src="/assets/img/login/signin.svg?1591366337" style="height: 100%;" alt="Sign In">
+      </div>
+
+    </div>
+  </div>
+</div>

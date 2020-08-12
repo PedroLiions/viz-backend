@@ -1,0 +1,92 @@
+<button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modal-client">
+  <i class="material-icons">add</i> Novo Cliente
+</button>
+
+<!-- modal -->
+<div class="modal fade" tabindex="-1" id="modal-client">
+  <!-- modal dialog -->
+  <div class="modal-dialog modal-xl">
+    <!-- modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="title">
+          Novo cliente
+        </h4>
+      </div>  <!-- modal header -->
+      <div class="modal-body">
+        <ul class="mb-3 nav nav-tabs p-0 border-bottom-0">
+          <li class="nav-item"><a data-toggle="tab" href="#general" class="active nav-link">Geral</a></li>
+          <li class="nav-item"><a data-toggle="tab" href="#companies" class="nav-link">Assessorias</a></li>
+          <li class="nav-item"><a data-toggle="tab" href="#users" class="nav-link">Usuários</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="general" role="tabpanel" class="active in tab-pane">
+            <div class="card m-b-0">
+              <div class="body">
+                <div class="row">
+                  <div class="col-sm-12"><label>Razão social</label> <input type="text" class="form-control"></div>
+                  <div class="col-sm-12"><label>Nome</label> <input type="text" class="form-control"></div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 pt-2">
+                    <div class="checkbox">
+                      <input id="company-active" type="checkbox">
+                      <label for="company-active"> Ativo</label></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="companies" role="tabpanel" class="tab-pane">
+            <div class="card m-b-0">
+              <div class="body">
+                <button type="button" class="btn btn-secondary btn-sm mb-1">
+                  <i class="material-icons">add</i> Nova assessoria
+                </button>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th>Razão social</th>
+                      <th>Nome</th>
+                      <th class="text-center" style="width: 80px;">Ativo</th>
+                      <th style="width: 100px;"></th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="users" role="tabpanel" class="tab-pane">
+            <div class="card m-b-0">
+              <div class="body">
+                <button type="button" class="btn btn-secondary btn-sm mb-1">
+                  <i class="material-icons">add</i> Novo usuário
+                </button>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>E-mail</th>
+                      <th class="text-center" style="width: 80px;">Ativo</th>
+                      <th style="width: 100px;"></th>
+                      <th style="width: 100px;"></th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  <!-- modal body -->
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-deep-gray btn-sm"> Salvar</button>
+        <button data-dismiss="modal" type="button" class="btn btn-deep-pink btn-sm"> Fechar</button>
+      </div> <!-- modal footer -->
+    </div> <!-- modal content -->
+  </div> <!-- modal dialog -->
+</div> <!-- modal -->

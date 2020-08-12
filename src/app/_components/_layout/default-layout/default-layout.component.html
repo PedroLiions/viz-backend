@@ -1,0 +1,28 @@
+<div>
+<!--  <app-index-menu></app-index-menu>-->
+  <app-default-layout-aside></app-default-layout-aside>
+  <main>
+    <section class="content">
+      <div class="body_scroll">
+        <app-right-nav></app-right-nav>
+        <div class="container-fluid">
+          <div class="block-header">
+            <div class="row">
+               <div class="col-lg-7 col-md-6 col-sm-12">
+                <app-breadcrumb></app-breadcrumb>
+              </div>
+              <div class="col-lg-5 col-md-6 col-sm-12">
+                <button type="button"
+                        (click)="toggleRightMenu()"
+                        class="btn btn-deep-deals btn-icon float-right right_icon_toggle_btn">
+                  <i class="material-icons">menu_open</i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

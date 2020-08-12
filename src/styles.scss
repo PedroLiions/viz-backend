@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+@import 'assets/css/bootstrap.min';
+@import 'assets/css/style.min.css';
+
+
+/* left aside nav */
+@media screen and (max-width: 767px) {
+  body.ls-closed {
+    .body_scroll {
+      transition: linear .2s;
+      margin-left: 50px;
+
+      .ls-toggle-btn {
+        display: none;
+      }
+    }
+  }
+}

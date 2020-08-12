@@ -1,0 +1,71 @@
+<div class="navbar-right d-none d-md-block">
+  <ul class="navbar-nav">
+    <li>
+      <a title="Search" href="#search"
+         (click)="toggleSearch()"
+         class="main_search">
+        <i class="material-icons">
+          search
+        </i>
+      </a>
+    </li> <!-- li -->
+    <li class="dropdown">
+      <a title="Change language"
+         data-toggle="dropdown"
+         href="javascript:void(0);"
+         role="button"
+         class="dropdown-toggle">
+        <i class="material-icons">
+          translate
+        </i>
+      </a>
+      <ul class="dropdown-menu slideUp2">
+        <li class="header">Language</li>
+        <li class="body">
+          <ul class="list-unstyled menu">
+            <li>
+              <a href="javascript:void(0);"
+                 (click)="changeLang('en')"
+                 rel="change-language"
+                 rel-language="en">
+                <div class="flag-icon flag-icon-us"></div>
+                <div class="menu-info"><h4>English</h4></div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);"
+                 (click)="changeLang('pt-br')"
+                 rel="change-language"
+                 rel-language="pt-br">
+                <div class="flag-icon flag-icon-br"></div>
+                <div class="menu-info"><h4>Portuguese</h4></div>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a (click)="toggleNightMode()" title="Change theme" href="javascript: void(0)" rel="change-theme-color">
+        <i class="material-icons">
+          settings_brightness
+        </i>
+      </a>
+    </li>
+    <li>
+      <a title="Change RTL" href="javascript: void(0)" rel="change-rtl"
+         (click)="toggleRtl()">
+        <i class="material-icons">
+          format_align_right
+        </i>
+      </a>
+    </li>
+    <li>
+      <a title="Logout" href="javascript: void(0)" rel="logout">
+        <i class="material-icons">
+          power_settings_new
+        </i>
+      </a>
+    </li>
+  </ul>
+</div>

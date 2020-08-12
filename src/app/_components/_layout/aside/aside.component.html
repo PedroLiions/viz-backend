@@ -1,0 +1,132 @@
+<aside id="leftsidebar" class="sidebar">
+  <div class="navbar-brand d-flex align-items-center">
+    <button type="button" class="btn-menu ls-toggle-btn" (click)="toggleAsideMenu()">
+      <i class="material-icons">
+        menu
+      </i>
+    </button>
+    <a routerLink="/home">
+      <img alt="Aero" src="/assets/img/logo.svg" width="160">
+    </a>
+  </div>
+  <div class="menu">
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: calc(100vh - 65px);">
+      <ul class="list" style="overflow: hidden; width: auto; height: calc(100vh - 65px);">
+        <li>
+          <div class="user-info">
+            <a href="/users/info" class="image waves-block waves-effect">
+              <img alt="User"
+                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAElBMVEXR0dGqqqrCwsKysrK5ubnKysqGpJ8RAAAAtUlEQVQ4y72TMQ7CMAxFTaAH+CnsKRI7QepOBvZWgvtfBaESSv1jKRKob32K/W238iOP40lKuATAC9NEvLiy6TBxoSdvwa+2WVCrER+USbMJSxNhNcLMeW3D2UwTzEkHWnXG3FsrtdVg760qdW22nXltSRSNyolmVIPyZ+XJNOo6HGEQo9xeLOP/ZDZmH9t0VmqHiZ5WkNThWKBdKBfxxa1wUP3n34GycmD6vH4m5CbEIc/OyBPDUSvwZuB80QAAAABJRU5ErkJggg==">
+            </a>
+            <div class="detail">
+              <h4>{{ user.name }}</h4>
+              <small> User </small>
+            </div>
+          </div>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/home" class="toggled waves-effect waves-block">
+            <i class="material-icons">home</i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a href="javascript:void(0);"
+             class="toggled menu-toggle waves-effect waves-block"
+             [ngClass]="{'toggled':activeMenu == 'dashboards'}"
+             (click)="openItem('dashboards')">
+            <i class="material-icons">
+              dashboard
+            </i>
+            <span>Dashboards</span>
+          </a>
+          <ul class="ml-menu" [ngClass]="{'d-block':activeMenu == 'dashboards'}">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a routerLink="/dashboards/agents" class="waves-effect waves-block">
+                <i class="material-icons">headset_mic</i>
+                Agents
+              </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a routerLink="/dashboards/best-time" class="waves-effect waves-block">
+                <i class="material-icons">access_alarm</i>
+                Best time
+              </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a routerLink="/dashboards/comparative" class="waves-effect waves-block">
+                <i class="material-icons">compare</i>
+                Comparative
+              </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a routerLink="/dashboards/daily" class="waves-effect waves-block">
+                <i class="material-icons">today</i>
+                Daily
+              </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a routerLink="/dashboards/funnel" class="waves-effect waves-block">
+                <i class="material-icons">filter_list</i>
+                Funnel
+              </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a routerLink="/dashboards/multi-channel" class="waves-effect waves-block">
+                <i class="material-icons">device_hub</i>
+                Multi Channel
+              </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a routerLink="/dashboards/portfolio" class="waves-effect waves-block">
+                <i class="material-icons">account_balance_wallet</i>
+                Portfolio
+              </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a routerLink="/dashboards/region" class="waves-effect waves-block">
+                <i class="material-icons">location_on</i>
+                Region
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/clients"
+            class="waves-effect waves-block">
+            <i class="material-icons">people</i>
+            <span>Clients</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+            <i class="material-icons">branding_watermark</i>
+            <span>Modules</span>
+          </a>
+          <ul class="ml-menu">
+            <li>
+              <a class=" waves-effect waves-block">
+                <i class="material-icons">branding_watermark</i>Modules
+              </a>
+            </li>
+            <li>
+              <a href="/modules-groups" class=" waves-effect waves-block">
+                <i class="material-icons">apps</i>
+                Modules groups </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a class="waves-effect waves-block">
+            <i class="material-icons">chat</i>
+            <span>Chats</span>
+          </a>
+        </li>
+      </ul>
+      <div class="slimScrollBar"
+           style="background: rgb(238, 238, 238); width: 1px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 3px; z-index: 99; right: 1px; height: 668px;"></div>
+      <div class="slimScrollRail"
+           style="width: 1px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+    </div>
+  </div>
+</aside>
