@@ -5,6 +5,13 @@
 @import 'assets/css/bootstrap.min';
 @import 'assets/css/style.min.css';
 
+@import "node_modules/fontawesome-4.7/scss/font-awesome";
+
+@import "assets/scss/components/card";
+@import "assets/scss/components/bootstrap-table";
+
+@import "assets/scss/_variables";
+
 
 /* left aside nav */
 @media screen and (max-width: 767px) {
@@ -19,3 +26,16 @@
     }
   }
 }
+
+//font
+h6 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+
+@import "assets/scss/components/table";
+@import "assets/scss/components/flag";
+@import "assets/scss/components/tabs";
+@import "assets/scss/components/btn";
+

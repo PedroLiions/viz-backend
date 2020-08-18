@@ -13,39 +13,90 @@ import {RegionComponent} from '../../_components/modules/dashboards/region/regio
 const routes: Routes = [
   {
     path: '',
-    component: IndexComponent
+    component: IndexComponent,
+    data: {
+      title: 'index'
+    }
   },
   {
     path: 'agents',
-    component: AgentsComponent
+    component: AgentsComponent,
+    data: {
+      title: 'Agents',
+      breadcrumb: [
+        'Dashboards', 'Agents'
+      ]
+    }
   },
   {
     path: 'best-time',
-    component: BestTimeComponent
+    component: BestTimeComponent,
+    data: {
+      title: 'Best time',
+      breadcrumb: [
+        'Dashboards', 'Agents'
+      ]
+    }
   },
   {
     path: 'comparative',
-    component: ComparativeComponent
+    component: ComparativeComponent,
+    data: {
+      title: 'Comparative',
+      breadcrumb: [
+        'Dashboards', 'Best time'
+      ]
+    }
   },
   {
     path: 'daily',
-    component: DailyComponent
+    component: DailyComponent,
+    data: {
+      title: 'Daily',
+      breadcrumb: [
+        'Dashboards', 'Daily'
+      ]
+    }
   },
   {
     path: 'funnel',
-    component: FunnelComponent
+    component: FunnelComponent,
+    data: {
+      title: 'Funnel',
+      breadcrumb: [
+        'Dashboards', 'Funnel'
+      ]
+    }
   },
   {
     path: 'multi-channel',
-    component: MultiChannelComponent
+    component: MultiChannelComponent,
+    data: {
+      title: 'Multi-channel',
+      breadcrumb: [
+        'Dashboards', 'Multi-channel'
+      ]
+    }
   },
   {
     path: 'portfolio',
-    component: PortfolioComponent
+    component: PortfolioComponent,
+    data: {
+      title: 'Portfolio',
+      breadcrumb: [
+        'Dashboards', 'Portfolio'
+      ]
+    }
   },
   {
     path: 'region',
-    component: RegionComponent
+    component: RegionComponent,
+    data: {
+      title: 'Region',
+      breadcrumb: [
+        'Dashboards', 'Region'
+      ]
+    }
   }
 ];
 

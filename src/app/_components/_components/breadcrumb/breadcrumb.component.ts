@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {ActivationStart, Router} from '@angular/router';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -7,7 +9,25 @@ import {Component} from '@angular/core';
 })
 export class BreadcrumbComponent {
 
-  constructor() {
+  public breadcrumbs: Array<string>;
+  public title: string;
+
+  constructor(
+    private router: Router
+  ) {
+    this.handleRouteData(router);
+  }
+
+  handleRouteData(router: Router): void {
+    router.events.pipe(filter(event => event instanceof ActivationStart))
+      .subscribe((event: ActivationStart) => {
+        const data = event.snapshot.data;
+
+        if (data && data.breadcrumb) {
+          this.title = data.title;
+          this.breadcrumbs = data.breadcrumb;
+        }
+      });
   }
 
   openLeftNav(): void {
@@ -18,5 +38,6 @@ export class BreadcrumbComponent {
     classes.forEach(classe => body.classList.add(classe));
     sidebar.classList.add('open');
   }
+
 
 }

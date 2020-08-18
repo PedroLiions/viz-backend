@@ -1,45 +1,29 @@
 {
-  "login": {
-    "logIn": "Log in",
-    "password": "Password",
-    "forgetPassword": "Forget password?"
-  },
-  "validation": {
-    "emailInvalid": "Invalid email",
-    "emailRequired": "E-mail is required",
-    "passwordMinLength": "Password must be at least 6 characters long",
-    "passwordMaxLength":  "Password must have maximum of 14 caracters",
-    "passwordRequired": "Password is required",
-    "invalidLogin": "Invalid username or password"
-  },
-  "layout": {
-    "aside": {
-      "dashboards": "Dashboards",
-      "agents": "Agentes",
-      "bestTime": "Best time",
-      "daily": "Daily",
-      "funnel": "Funnel",
-      "multiChannel": "Multi channel",
-      "portfolio": "Portfolio",
-      "region": "Region",
-      "clients": "Clients",
-      "chats": "Chats"
-    },
-    "search": {
-      "search": "Search",
-      "title": "Hello",
-      "bestTime": "Best time",
-      "comparative": "Comparative",
-      "daily": "Daily",
-      "region": "Region",
-      "funnel": "Funnel",
-      "portfolio": "Portfolio",
-      "agents": "Agents",
-      "multiChannel": "Multi channel",
-      "default": "default",
-      "unemployment": "unemployment",
-      "ibovespa": "ibovespa",
-      "dollar": "dollar"
-    }
-  }
+  "Fazer login": "Log in",
+  "Esqueceu a senha?": "Forget password?",
+  "Início": "Home",
+  "Senha": "Password",
+  "E-mail inválido": "Invalid email",
+  "E-mail é obrigatório": "E-mail is required",
+  "A senha deve ter no mínimo 6 caracteres": "Password must be at least 6 characters long",
+  "A senha deve ter no máximo 14 caracteres": "Password must have maximum of 14 caracters",
+  "O campo senha é obrigatório": "Password is required",
+  "Usuário ou senha incorreto": "Invalid username or password",
+  "Agentes": "Agents",
+  "Comparativo": "Comparative",
+  "Diário": "daily",
+  "Região": "Region",
+  "Funil": "Funnel",
+  "Carteira": "portfolio",
+  "Region": "region",
+  "Clients": "Clients",
+  "Procurar": "Search",
+  "Olá": "Hello",
+  "Idioma": "Language",
+  "Inglês": "English",
+  "Português": "Portuguese",
+  "Negociações": "Negotiations",
+  "Improdutivo": "Unproductive",
+  "Linha muda": "Line changes",
+  "Voz de máquina": "Machine voice"
 }

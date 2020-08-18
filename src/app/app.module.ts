@@ -4,12 +4,10 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CarouselModule} from 'ngx-owl-carousel-o';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {JwtModule} from '@auth0/angular-jwt';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 /* configs model */
-import {TranslateModuleConfig} from '@ngx-translate/core/public_api';
 import {JwtModuleOptions} from '@auth0/angular-jwt/lib/angular-jwt.module';
 
 /* components */
@@ -18,9 +16,16 @@ import {AsideComponent} from './_components/_layout/aside/aside.component';
 import {DefaultLayoutComponent} from './_components/_layout/default-layout/default-layout.component';
 import {SearchComponent} from './_components/_layout/search/search.component';
 import {RightNavComponent} from './_components/_layout/right-nav/right-nav.component';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {BreadcrumbComponent} from './_components/_components/breadcrumb/breadcrumb.component';
 import { HomeComponent } from './_components/components/home/home.component';
+
+import {AuthUnauthenticate} from './_interptor/AuthUnauthenticate';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {LoginComponent} from './_authentication/login/login.component';
+import {SharedModule} from './_modules/_shared/shared.module';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateModuleConfig} from '@ngx-translate/core/public_api';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 
 @NgModule({
@@ -32,6 +37,7 @@ import { HomeComponent } from './_components/components/home/home.component';
     RightNavComponent,
     BreadcrumbComponent,
     HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -39,14 +45,21 @@ import { HomeComponent } from './_components/components/home/home.component';
     BrowserAnimationsModule,
     CarouselModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot(translateModuleConfig()),
     JwtModule.forRoot(jwtModuleConfig())
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthUnauthenticate,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
-
 
 /*
 * Translate functions and configs
@@ -73,7 +86,7 @@ export function jwtModuleConfig(): JwtModuleOptions {
   return {
     config: {
       skipWhenExpired: true,
-      tokenGetter: () => localStorage.getItem('token'),
+      tokenGetter: () => localStorage.getItem('access_token'),
       allowedDomains: ['127.0.0.1:8000'],
       disallowedRoutes: [
         '127.0.0.1:8000/api/auth/login',

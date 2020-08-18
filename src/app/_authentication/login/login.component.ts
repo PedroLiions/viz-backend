@@ -1,15 +1,17 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {AuthenticationService} from '../../_services/authentication.service';
+import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
+  subscriptions: Array<Subscription> = [];
 
   loginForm: FormGroup;
   env = environment;
@@ -18,11 +20,12 @@ export class LoginComponent {
   * Dom State
   * */
   loginLoading: boolean;
-  invalidLogin: boolean = false;
+  invalidLogin = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {
     this.buildForm();
   }
@@ -58,15 +61,34 @@ export class LoginComponent {
 
     const formData = this.loginForm.value;
 
-    await this.authenticationService.login(formData)
+    const obs = await this.authenticationService.login(formData)
       .subscribe(
-        response => this.authenticationService.saveCredentials(response),
-          err => this.callbackErrorLogin());
+        response => this.handleSuccessfully(response),
+        err => this.handleError());
+
+    this.subscriptions.push(obs);
   }
 
-  public callbackErrorLogin(): void {
+  public handleSuccessfully(response): void {
+    localStorage.setItem('access_token', response.access_token);
+    localStorage.setItem('user', JSON.stringify(response.user));
+
+    this.router.navigateByUrl('');
+  }
+
+  public handleError(): void {
     this.loginLoading = false;
     this.invalidLogin = true;
+  }
+
+  public ngOnDestroy(): void {
+    if (!this.subscriptions.length) {
+      return;
+    }
+
+    this.subscriptions.forEach(
+      (subscription: Subscription) => subscription.unsubscribe()
+    );
   }
 
 }

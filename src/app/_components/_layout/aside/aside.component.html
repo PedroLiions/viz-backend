@@ -19,7 +19,7 @@
                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAElBMVEXR0dGqqqrCwsKysrK5ubnKysqGpJ8RAAAAtUlEQVQ4y72TMQ7CMAxFTaAH+CnsKRI7QepOBvZWgvtfBaESSv1jKRKob32K/W238iOP40lKuATAC9NEvLiy6TBxoSdvwa+2WVCrER+USbMJSxNhNcLMeW3D2UwTzEkHWnXG3FsrtdVg760qdW22nXltSRSNyolmVIPyZ+XJNOo6HGEQo9xeLOP/ZDZmH9t0VmqHiZ5WkNThWKBdKBfxxa1wUP3n34GycmD6vH4m5CbEIc/OyBPDUSvwZuB80QAAAABJRU5ErkJggg==">
             </a>
             <div class="detail">
-              <h4>{{ user.name }}</h4>
+              <h4>{{ user.name || '' }}</h4>
               <small> User </small>
             </div>
           </div>
@@ -27,7 +27,7 @@
         <li routerLinkActive="active">
           <a routerLink="/home" class="toggled waves-effect waves-block">
             <i class="material-icons">home</i>
-            <span>Home</span>
+            <span>{{'Início' | translate}}</span>
           </a>
         </li>
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -44,7 +44,7 @@
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/agents" class="waves-effect waves-block">
                 <i class="material-icons">headset_mic</i>
-                Agents
+                {{'Agentes' | translate}}
               </a>
             </li>
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -56,37 +56,37 @@
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/comparative" class="waves-effect waves-block">
                 <i class="material-icons">compare</i>
-                Comparative
+                {{'Comparativo' | translate}}
               </a>
             </li>
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/daily" class="waves-effect waves-block">
                 <i class="material-icons">today</i>
-                Daily
+                {{'Diário' | translate}}
               </a>
             </li>
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/funnel" class="waves-effect waves-block">
                 <i class="material-icons">filter_list</i>
-                Funnel
+                {{'Funil' | translate}}
               </a>
             </li>
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/multi-channel" class="waves-effect waves-block">
                 <i class="material-icons">device_hub</i>
-                Multi Channel
+                {{'Multi Channel' | translate}}
               </a>
             </li>
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/portfolio" class="waves-effect waves-block">
                 <i class="material-icons">account_balance_wallet</i>
-                Portfolio
+                {{'Carteira' | translate}}
               </a>
             </li>
             <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/region" class="waves-effect waves-block">
                 <i class="material-icons">location_on</i>
-                Region
+                {{'Região' | translate}}
               </a>
             </li>
           </ul>
@@ -95,13 +95,13 @@
           <a routerLink="/clients"
             class="waves-effect waves-block">
             <i class="material-icons">people</i>
-            <span>Clients</span>
+            <span>{{'Clients' | translate}}</span>
           </a>
         </li>
         <li>
           <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
             <i class="material-icons">branding_watermark</i>
-            <span>Modules</span>
+            <span>{{'Modules' | translate}}</span>
           </a>
           <ul class="ml-menu">
             <li>

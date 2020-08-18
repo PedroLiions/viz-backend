@@ -2,15 +2,31 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {DefaultLayoutComponent} from './_components/_layout/default-layout/default-layout.component';
 import {HomeComponent} from './_components/components/home/home.component';
+import {LoginComponent} from './_authentication/login/login.component';
+import {AuthGuard} from './_guards/auth.guard';
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  {
     path: '',
     component: DefaultLayoutComponent,
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        data: {
+          title: 'Home',
+          breadcrumb: []
+        }
       },
       {
         path: 'dashboards',
@@ -23,17 +39,6 @@ const routes: Routes = [
         loadChildren:
           () => import('./_modules/clients/clients.module')
             .then(m => m.ClientsModule)
-      }
-    ]
-  },
-  {
-    path: 'login',
-    children: [
-      {
-        path: '',
-        loadChildren:
-          () => import('./_modules/_authentication/authentication.module')
-            .then(m => m.AuthenticationModule)
       }
     ]
   }

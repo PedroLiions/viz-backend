@@ -4,33 +4,32 @@
     <div class="row">
       <div class="col-12 col-lg-6">
         <div class="big_icon card mb-2 mi-support-agent widget_2">
-          <div class="body py-3"><h6 class="fw-400 m-b-0 position-relative"> Agentes </h6> <h4
-            class="my-1 position-relative"> 336 </h4></div>
+          <div class="body py-3"><h6 class="fw-400 m-b-0 position-relative">
+            {{'Agentes' | translate}}
+          </h6>
+            <h4 class="my-1 position-relative">
+              336
+            </h4>
+          </div>
         </div>
       </div>
       <div class="col-lg-6 col-md-12">
         <div class="big_icon card mb-2 mi-thumb-down-alt widget_2">
-          <div class="body py-3"><h6 class="fw-400 m-b-0 position-relative"> Improdutivo </h6> <h4
-            class="my-1 position-relative"> 13,3 </h4></div>
+          <div class="body py-3"><h6 class="fw-400 m-b-0 position-relative">
+            {{'Improdutivo' | translate}}
+          </h6> <h4 class="my-1 position-relative"> 13,3 </h4></div>
         </div>
       </div>
       <div class="col-12">
-        <div class="card mb-2 widget_2">
-          <div class="header pt-0">
-            <button class="btn btn-sm btn-default"> CPC</button>
-            <button class="btn btn-sm btn-default"> Negociações</button>
-            <button class="btn btn-sm btn-default"> Improdutivo</button>
-            <button class="btn btn-sm btn-default"> Linha muda</button>
-            <button class="btn btn-sm btn-deep-improductive-2"> Voz de máquina</button>
-          </div>
-        </div>
+        <app-widget1></app-widget1>
       </div> <!-- col-12 -->
-
-      <div class="col-12">
-        <app-heatmap ></app-heatmap>
-      </div>
 
     </div> <!-- row -->
 
-  </div>
-</div>
+  </div> <!-- col-12 col-xl-8 -->
+
+  <div class="col-12">
+    <app-heatmap ></app-heatmap>
+  </div> <!-- col-12 -->
+
+</div> <!-- row no-glutters -->

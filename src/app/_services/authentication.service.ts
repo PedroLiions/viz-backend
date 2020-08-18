@@ -11,11 +11,9 @@ export class AuthenticationService {
 
   readonly env = environment;
   readonly API = `${environment.API}/auth`;
-  readonly redirectAfterLogin: string = '/home';
 
   constructor(
-    private http: HttpClient,
-    private router: Router
+    private http: HttpClient
   ) {
   }
 
@@ -23,10 +21,16 @@ export class AuthenticationService {
     return this.http.post(`${this.API}/login`, loginData);
   }
 
-  public saveCredentials(credentials): void {
-    localStorage.setItem('access_token', credentials.token);
-    localStorage.setItem('user', JSON.stringify(credentials.user));
-
-    this.router.navigate([this.redirectAfterLogin]);
+  public logout(): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      this.http.post(`${this.API}/logout`, {})
+        .subscribe(
+          response => {
+            ['token', 'user'].forEach(item => localStorage.removeItem(item));
+            resolve(response);
+          },
+          error => reject(error)
+        );
+    });
   }
 }

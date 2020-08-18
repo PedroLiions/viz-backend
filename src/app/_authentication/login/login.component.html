@@ -3,14 +3,14 @@
     <div class="row">
 
       <div class="col-lg-4 col-sm-12">
-        <form class="card auth_form" [formGroup]="loginForm">
+        <form class="card auth_form" [formGroup]="loginForm" (submit)="submitForm()">
           <div class="header">
             <img class="logo" src="/assets/images/logo.svg" alt="">
-            <h5>{{ 'login.logIn' | translate }}</h5>
+            <h5>{{ 'Fazer login' | translate }}</h5>
           </div>
           <div *ngIf="invalidLogin">
             <div class="alert alert-danger">
-              {{ 'validation.invalidLogin' | translate }}
+              {{ 'Usuário ou senha incorreto' | translate }}
             </div>
           </div>
           <div class="body">
@@ -27,10 +27,10 @@
               <!-- erros -->
               <div class="text-danger" *ngIf="email.invalid && (email.touched || email.dirty)">
                 <span class="d-block" *ngIf="email.errors.email">
-                  {{ 'validation.emailInvalid' | translate }}
+                  {{ 'E-mail inválido' | translate }}
                 </span>
                 <span class="d-block" *ngIf="email.errors.required">
-                  {{ 'validation.emailRequired' | translate }}
+                  {{ 'E-mail é obrigatório' | translate }}
                 </span>
               </div> <!-- end erros -->
             </div>
@@ -40,7 +40,7 @@
                 <input type="password" class="form-control"
                        formControlName="password"
                        autocomplete="password"
-                       [placeholder]="'login.password' | translate">
+                       [placeholder]="'Senha' | translate">
                 <div class="input-group-append">
                 <span class="input-group-text">
                     <i class="material-icons">vpn_key</i>
@@ -50,26 +50,32 @@
               <!-- erros -->
               <div class="text-danger" *ngIf="password.invalid && (password.touched || password.dirty)">
                 <span class="d-block" *ngIf="password.errors.minlength">
-                  {{ 'validation.passwordMinLength' | translate }}
+                  {{ 'A senha deve ter no mínimo 6 caracteres' | translate }}
                 </span>
                 <span class="d-block" *ngIf="password.errors.maxlength">
-                  {{ 'validation.passwordMaxLength' | translate }}
+                  {{ 'A senha deve ter no máximo 14 caracteres' | translate }}
                 </span>
                 <span class="d-block" *ngIf="password.errors.required">
-                  {{ 'validation.passwordRequired' | translate }}
+                  {{ 'O campo senha é obrigatório' | translate }}
                 </span>
               </div> <!-- end erros -->
             </div>
 
             <span class="d-block">
                 <button class="btn btn-block btn-deep-blue mt-3">
-                  {{ 'login.forgetPassword' | translate }}
+                  {{ 'Esqueceu a senha?' | translate }}
                 </button>
             </span>
             <button class="btn btn-primary btn-block waves-effect waves-light"
-                    (click)="submitForm()"
                     [disabled]="loginLoading">
-              {{ 'login.logIn' | translate }}
+              <span *ngIf="!loginLoading">
+                {{ 'Fazer login' | translate }}
+              </span>
+
+              <span *ngIf="loginLoading">
+                <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+              </span>
+
             </button>
           </div>
         </form>

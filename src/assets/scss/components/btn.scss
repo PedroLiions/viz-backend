@@ -1,0 +1,14 @@
+.theme-blue {
+  &.btn {
+    &.btn-sm {
+      font-size: 12px !important;
+      border-radius: 0.2875rem !important;
+      padding: 5px 12px !important;
+    }
+
+    &.btn-default {
+      background-color: #888 !important;
+      color: #fff !important;
+    }
+  }
+}

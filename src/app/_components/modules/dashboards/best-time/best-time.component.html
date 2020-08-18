@@ -1,1 +1,202 @@
-<p>best-time works!</p>
+<div class="row">
+
+  <div class="col-12">
+    <div class="card m-b-0">
+      <div class="header">
+        <h2><strong>Distribution</strong> by hour</h2>
+      </div>
+      <div class="body">
+
+        <table rel="distributionByHour"
+               class="table table-sm table-striped table-responsive"
+               *ngIf="data">
+
+          <thead>
+          <tr>
+            <th data-field="hour"
+                data-sortable="true"
+            >Hour
+            </th>
+            <th data-field="Best time"
+                data-sortable="true"
+            >Best time
+            </th>
+            <th data-field="Attempts"
+                data-sortable="true"
+            >Attempts
+            </th>
+            <th data-field="Answered"
+                data-sortable="true"
+            >Answered
+            </th>
+            <th data-field="%Hit/Rate"
+                data-sortable="true"
+            >%Hit/Rate
+            </th>
+            <th data-field="%CPC"
+                data-sortable="true"
+            >%CPC
+            </th>
+            <th data-field="%CPCA"
+                data-sortable="true"
+            >%CPCA
+            </th>
+            <th data-field="Deals"
+                data-sortable="true"
+            >Deals
+            </th>
+            <th data-field="%Deals"
+                data-sortable="true"
+            >%Deals
+            </th>
+          </tr>
+          </thead>
+
+        <tbody>
+          <tr *ngFor="let item of distribuitionByHour">
+            <td
+              rel="hour"
+              data-field="hour">
+              {{ item['hour'] }}
+            </td>
+            <td
+              rel="Best time"
+              data-field="Best time">
+              {{ item['Best time'] }}
+            </td>
+            <td data-field="Attempts">
+              {{ item['Attempts'] }}
+            </td>
+            <td data-field="Answered">
+              {{ item['Answered'] }}
+            </td>
+            <td data-field="%Hit/Rate">
+              {{ item['%Hit/Rate'] }}
+            </td>
+            <td data-fiel="%CPC">
+              {{ item['%CPC'] }}
+            </td>
+            <td class="%CPCA">
+              {{ item['%CPCA'] }}
+            </td>
+            <td class="Deals">
+              {{ item['Deals'] }}
+            </td>
+            <td class="%Deals">
+              {{ item['%Deals'] }}
+            </td>
+          </tr>
+        </tbody>
+
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <div class="card">
+      <div class="header">
+        <h2>
+          <strong>ATTEMPTS</strong> HOUR BY HOUR
+        </h2>
+      </div>
+      <div class="body">
+        <div id="attempts-by-hour" style="width: 100%; min-height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+    <div class="card">
+      <div class="header">
+        <h2>
+          <strong>RECEIVED</strong> HOUR BY HOUR
+        </h2>
+      </div>
+      <div class="body">
+        <div id="answered-by-hour" style="width: 100%; min-height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <div class="card">
+      <div class="header">
+        <h2>
+          <strong>CPC</strong> HOUR BY HOUR
+        </h2>
+      </div>
+      <div class="body">
+        <div id="cpc-by-hour" style="width: 100%; min-height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <div class="card">
+      <div class="header">
+        <h2>
+          <strong>CPCA</strong> HOUR BY HOUR
+        </h2>
+      </div>
+      <div class="body">
+        <div id="cpca-by-hour" style="width: 100%; min-height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <div class="card">
+      <div class="header">
+        <h2>
+          <strong>DEALS</strong> HOUR BY HOUR
+        </h2>
+      </div>
+      <div class="body">
+        <div id="deals-by-hour" style="width: 100%; min-height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <div class="card">
+      <div class="header">
+        <h2>
+          <strong>IMPRODUCTIVE</strong> HOUR BY HOUR
+        </h2>
+      </div>
+      <div class="body">
+        <div id="improductive-by-hour" style="width: 100%; min-height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <div class="card">
+      <div class="header">
+        <h2>
+          <strong>incorrect</strong> HOUR BY HOUR
+        </h2>
+      </div>
+      <div class="body">
+        <div id="incorrect-by-hour" style="width: 100%; min-height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+    <div class="card">
+      <div class="header">
+        <h2>
+          <strong>tma</strong> HOUR BY HOUR
+        </h2>
+      </div>
+      <div class="body">
+        <div id="tma-by-hour" style="width: 100%; min-height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

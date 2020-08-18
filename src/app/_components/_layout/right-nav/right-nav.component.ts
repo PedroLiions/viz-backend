@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {isBooleanLiteralLike} from 'codelyzer/util/utils';
 import {TranslateService} from '@ngx-translate/core';
+import {AuthenticationService} from '../../../_services/authentication.service';
+
+import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-right-nav',
@@ -9,15 +12,15 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class RightNavComponent implements OnInit {
 
-  isNightMode: boolean = true;
-  searchToggle: boolean = true;
-  rtlToggle: boolean = false;
-  languageService: TranslateService;
+  public isNightMode = true;
+  public searchToggle = true;
+  public rtlToggle = false;
 
   constructor(
-    languageService: TranslateService
+    private languageService: TranslateService,
+    private authService: AuthenticationService,
+    private router: Router
   ) {
-    this.languageService = languageService;
   }
 
   ngOnInit(): void {
@@ -55,6 +58,32 @@ export class RightNavComponent implements OnInit {
     }
 
     this.rtlToggle = !this.rtlToggle;
+  }
+
+  async logout(): Promise<any> {
+    let desmissed;
+
+    await Swal.fire({
+      title: 'Sair',
+      text: 'Tem certeza que deseja sair?',
+      confirmButtonText: 'Sim, sair',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Não, não sair'
+    })
+      .then(
+        result => desmissed = result.isDismissed
+      );
+
+    // if clicked in cancel
+    if (desmissed) {
+      return;
+    }
+
+    /* invalid token */
+    await this.authService.logout().then();
+    /* send to login screen */
+    this.router.navigate(['/login']).then();
   }
 
 }
