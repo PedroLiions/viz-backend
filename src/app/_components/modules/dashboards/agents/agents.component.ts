@@ -12,10 +12,8 @@ export class AgentsComponent {
   constructor(
     private dashboardsService: DashboardsService
   ) {
-    // dashboardsService.getAgentsDashboard()
-    //   .subscribe(response => this.data = response);
+    dashboardsService.agents()
+      .subscribe(response => this.data = response);
   }
-
-
 
 }

@@ -30,7 +30,6 @@ export class AuthUnauthenticate implements HttpInterceptor {
             return;
           }
 
-          localStorage.clear();
           this.location.replaceState('/'); // clears browser history so they can't navigate with back button
           this.router.navigate(['login']);
         })

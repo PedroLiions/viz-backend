@@ -313,7 +313,7 @@ export class BestTimeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.zone.runOutsideAngular(() => {
-      this.dashboardsService.getBestTimeDashboard().subscribe(response => {
+      this.dashboardsService.bestTime().subscribe(response => {
         this.data = response.data;
         /* create charts */
         this.dispachCharts();

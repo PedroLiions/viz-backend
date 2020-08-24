@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {SharedModule} from '../_shared/shared.module';
 
 import {AgentsComponent} from '../../_components/modules/dashboards/agents/agents.component';
 import {DashboardsRoutingModule} from './dashboards-routing.module';
@@ -12,8 +13,7 @@ import {FunnelComponent} from '../../_components/modules/dashboards/funnel/funne
 import {MultiChannelComponent} from '../../_components/modules/dashboards/multi-channel/multi-channel.component';
 import {PortfolioComponent} from '../../_components/modules/dashboards/portfolio/portfolio.component';
 import {RegionComponent} from '../../_components/modules/dashboards/region/region.component';
-import {SharedModule} from '../_shared/shared.module';
-import { Widget1Component } from '../../_components/modules/dashboards/agents/widget1/widget1.component';
+import {Widget1Component} from '../../_components/modules/dashboards/agents/widget1/widget1.component';
 
 @NgModule({
   declarations: [

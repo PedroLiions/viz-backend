@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
         items: 3
       },
       992: {
-        items: 5
+        items: 8
       },
       1200: {
         items: 8

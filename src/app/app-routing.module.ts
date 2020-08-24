@@ -4,11 +4,22 @@ import {DefaultLayoutComponent} from './_components/_layout/default-layout/defau
 import {HomeComponent} from './_components/components/home/home.component';
 import {LoginComponent} from './_authentication/login/login.component';
 import {AuthGuard} from './_guards/auth.guard';
+import {Error404Component} from './_components/errors/error404/error404.component';
 
 const routes: Routes = [
   {
+    path: '404',
+    component: Error404Component
+  },
+  {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+  },
+  {
+    path: 'auth',
+    loadChildren:
+      () => import('./_modules/_authentication/authentication.module')
+        .then(m => m.AuthenticationModule)
   },
   {
     path: '',
@@ -41,7 +52,7 @@ const routes: Routes = [
             .then(m => m.ClientsModule)
       }
     ]
-  }
+  },
 ];
 
 @NgModule({

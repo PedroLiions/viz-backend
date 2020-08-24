@@ -5,6 +5,10 @@ import {AuthenticationService} from '../../_services/authentication.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 
+import Swal from 'sweetalert2';
+
+declare var $: any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,6 +18,8 @@ export class LoginComponent implements OnDestroy {
   subscriptions: Array<Subscription> = [];
 
   loginForm: FormGroup;
+  recoveryPassForm: FormGroup;
+
   env = environment;
 
   /*
@@ -21,6 +27,8 @@ export class LoginComponent implements OnDestroy {
   * */
   loginLoading: boolean;
   invalidLogin = false;
+  recoveryPassFormLoading = false;
+  displayRecoverySuccessMessage: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,17 +50,24 @@ export class LoginComponent implements OnDestroy {
         Validators.maxLength(14)
       ]]
     });
+
+    this.recoveryPassForm = this.formBuilder.group({
+      email: [null, [
+        Validators.required,
+        Validators.email
+      ]]
+    });
   }
 
-  get email(): AbstractControl {
-    return this.loginForm.get('email');
+  getField(form, field): AbstractControl {
+    return this[form].get(field);
   }
 
   get password(): AbstractControl {
     return this.loginForm.get('password');
   }
 
-  async submitForm(): Promise<any> {
+  async submitLoginForm(): Promise<any> {
     if (this.loginForm.invalid) {
       return this.loginForm.markAllAsTouched();
     }
@@ -79,6 +94,40 @@ export class LoginComponent implements OnDestroy {
   public handleError(): void {
     this.loginLoading = false;
     this.invalidLogin = true;
+  }
+
+  public copyMail(): void {
+    /* get email from login */
+    const email = this.loginForm.get('email').value;
+    /* set email in recovery password */
+    this.recoveryPassForm.get('email').setValue(email);
+  }
+
+  sendRecoveryForm(): void {
+    this.recoveryPassFormLoading = true;
+    const email = this.recoveryPassForm.get('email').value;
+
+    const subscription = this.authenticationService.generateToken(email).subscribe(
+      response => this.handleSuccessRecovery(response),
+      error => this.handleErrorRecovery(error)
+    );
+
+    this.subscriptions.push(subscription);
+  }
+
+  async handleSuccessRecovery(response: any): Promise<any> {
+    this.recoveryPassFormLoading = false;
+
+    await Swal.fire({
+      icon: 'success',
+      text: 'Link de recuperação enviado para o e-mail'
+    });
+
+    $('#modalRecoveryPassword').modal('hide');
+  }
+
+  handleErrorRecovery(error: any): void {
+    this.recoveryPassFormLoading = false;
   }
 
   public ngOnDestroy(): void {

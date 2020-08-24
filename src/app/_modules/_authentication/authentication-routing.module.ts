@@ -1,11 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-// import {LoginComponent} from '../../_authentication/login/login.component';
+import {ChangePasswordComponent} from '../../_authentication/change-password/change-password.component';
+
 
 const routes: Routes = [
   {
-    // path: '',
-    // component: LoginComponent
+    path: 'recovery-password',
+    component: ChangePasswordComponent
   }
 ];
 

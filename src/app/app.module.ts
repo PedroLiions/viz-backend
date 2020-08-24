@@ -1,3 +1,6 @@
+/* interceptor */
+import {AuthUnauthenticate} from './_interceptor/AuthUnauthenticate';
+
 /* modules */
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -5,10 +8,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CarouselModule} from 'ngx-owl-carousel-o';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
-import {JwtModule} from '@auth0/angular-jwt';
-
-/* configs model */
-import {JwtModuleOptions} from '@auth0/angular-jwt/lib/angular-jwt.module';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateModuleConfig} from '@ngx-translate/core/public_api';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {SharedModule} from './_modules/_shared/shared.module';
 
 /* components */
 import {AppComponent} from './app.component';
@@ -17,16 +20,10 @@ import {DefaultLayoutComponent} from './_components/_layout/default-layout/defau
 import {SearchComponent} from './_components/_layout/search/search.component';
 import {RightNavComponent} from './_components/_layout/right-nav/right-nav.component';
 import {BreadcrumbComponent} from './_components/_components/breadcrumb/breadcrumb.component';
-import { HomeComponent } from './_components/components/home/home.component';
-
-import {AuthUnauthenticate} from './_interptor/AuthUnauthenticate';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HomeComponent} from './_components/components/home/home.component';
 import {LoginComponent} from './_authentication/login/login.component';
-import {SharedModule} from './_modules/_shared/shared.module';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateModuleConfig} from '@ngx-translate/core/public_api';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-
+import {Error404Component} from './_components/errors/error404/error404.component';
+import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -37,18 +34,21 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     RightNavComponent,
     BreadcrumbComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    Error404Component
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    CarouselModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
+    JwtModule.forRoot(jwtModuleConfig()),
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    SharedModule,
     TranslateModule.forRoot(translateModuleConfig()),
-    JwtModule.forRoot(jwtModuleConfig())
+    CarouselModule
+  ],
+  exports: [
+    SharedModule
   ],
   providers: [
     {
@@ -59,7 +59,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}
 
 /*
 * Translate functions and configs
@@ -85,9 +86,12 @@ export function httpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 export function jwtModuleConfig(): JwtModuleOptions {
   return {
     config: {
-      skipWhenExpired: true,
-      tokenGetter: () => localStorage.getItem('access_token'),
-      allowedDomains: ['127.0.0.1:8000'],
+      tokenGetter: () => {
+        return localStorage.getItem('access_token');
+      },
+      allowedDomains: [
+        '127.0.0.1:8000'
+      ],
       disallowedRoutes: [
         '127.0.0.1:8000/api/auth/login',
         '127.0.0.1:8000/api/auth/register',

@@ -1,16 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/scss/_variables";
+
+$btn-font-size-sm: 12px;
+$btn-border-radius: 0.2875rem;
+
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
-@import 'assets/css/bootstrap.min';
+@import 'node_modules/bootstrap/scss/bootstrap';
 @import 'assets/css/style.min.css';
 
 @import "node_modules/fontawesome-4.7/scss/font-awesome";
 
 @import "assets/scss/components/card";
 @import "assets/scss/components/bootstrap-table";
-
-@import "assets/scss/_variables";
 
 
 /* left aside nav */
@@ -38,4 +41,5 @@ h6 {
 @import "assets/scss/components/flag";
 @import "assets/scss/components/tabs";
 @import "assets/scss/components/btn";
+@import "assets/scss/components/colors";
 

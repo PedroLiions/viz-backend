@@ -21,6 +21,14 @@ export class AuthenticationService {
     return this.http.post(`${this.API}/login`, loginData);
   }
 
+  public generateToken(email: string): Observable<any> {
+    return this.http.post(`${this.API}/generate-token`, {email});
+  }
+
+  public updatePassword(data: object): Observable<any> {
+    return this.http.post(`${this.API}/update-password?`, data);
+  }
+
   public logout(): Promise<any> {
     return new Promise(async (resolve, reject) => {
       this.http.post(`${this.API}/logout`, {})

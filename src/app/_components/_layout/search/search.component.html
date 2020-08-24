@@ -1,179 +1,184 @@
 <div id="search"
-     class="open d-flex flex-column justify-content-between">
+     class="open d-flex justify-content-center">
+  <div class="container search-header h-100 d-flex flex-column justify-content-between">
 
-  <!-- close button -->
-  <button id="close"
-          (click)="closeSearch()"
-          type="button"
-          class="close btn btn-primary btn-icon btn-icon-mini btn-round">
-    x
-  </button>
 
-  <div class="d-flex flex-column  px-5">
-    <div class="w-100 clearfix hidden-md-down m-t-45 mx-auto row">
-      <div class="col-6 h1">{{ 'layout.search.title' | translate }}, Daniel!</div>
-      <div class="col-6 ml-auto text-right">
-        <div class="d-inline-block h4 m-0" style="line-height: 0.85;"><small>05 de August</small> <br> <small>Wednesday
-          /
-          2020</small></div>
-        <div class="d-inline-block h1 m-0" style="font-size: 3.2em;"> 21:37</div>
+    <!-- close button -->
+    <button id="close"
+            (click)="closeSearch()"
+            type="button"
+            class="close btn btn-primary btn-icon btn-icon-mini btn-round">
+      x
+    </button>
+
+    <div class="d-flex flex-column">
+      <div class="w-100 clearfix hidden-md-down m-t-45 mx-auto row">
+        <div class="col-6 h1">{{ 'Olá' | translate }}, Daniel!</div>
+        <div class="col-6 ml-auto text-right">
+          <div class="d-inline-block h4 m-0" style="line-height: 0.85;"><small>05 de August</small> <br> <small>Wednesday
+            /
+            2020</small></div>
+          <div class="d-inline-block h1 m-0" style="font-size: 3.2em;"> 21:37</div>
+        </div>
       </div>
+
+      <owl-carousel-o [options]="dashboardsCarousel">
+
+        <ng-template carouselSlide>
+          <div class="card search-card-dashboard">
+            <div class="body text-center">
+              <div class="col-12 icon"><i class="material-icons md-36">access_alarm</i></div>
+              <div class="col-12 content text-truncate">{{ 'Pesquisar'| translate }}...</div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card search-card-dashboard">
+            <div class="body text-center">
+              <div class="col-12 icon"><i class="material-icons md-36">compare</i></div>
+              <div class="col-12 content text-truncate"> Comparative</div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card search-card-dashboard">
+            <div class="body text-center">
+              <div class="col-12 icon"><i class="material-icons md-36">today</i></div>
+              <div class="col-12 content text-truncate"> Daily</div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card search-card-dashboard">
+            <div class="body text-center">
+              <div class="col-12 icon"><i class="material-icons md-36">location_on</i></div>
+              <div class="col-12 content text-truncate"> Region</div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card search-card-dashboard">
+            <div class="body text-center">
+              <div class="col-12 icon"><i class="material-icons md-36">filter_list</i></div>
+              <div class="col-12 content text-truncate"> Funnel</div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card search-card-dashboard">
+            <div class="body text-center">
+              <div class="col-12 icon"><i class="material-icons md-36">account_balance_wallet</i></div>
+              <div class="col-12 content text-truncate"> {{'Portfolio' | translate}}</div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card search-card-dashboard">
+            <div class="body text-center">
+              <div class="col-12 icon"><i class="material-icons md-36">headset_mic</i></div>
+              <div class="col-12 content text-truncate"> Agents</div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="card search-card-dashboard">
+            <div class="body text-center">
+              <div class="col-12 icon"><i class="material-icons md-36">device_hub</i></div>
+              <div class="col-12 content text-truncate"> Multi channel</div>
+            </div>
+          </div>
+        </ng-template>
+
+      </owl-carousel-o>
+
+      <form class="d-flex align-items-center flex-column min-h-10 mt-5">
+        <input type="search" value="" placeholder="{{ 'Pesquisar' | translate }}...">
+        <div role="group" class="btn-group display-block">
+          <button type="submit" class="btn btn-deep-cpc">{{ 'Pesquisar' | translate }}</button>
+          <button type="button" class="btn btn-deep-cpc-2 d-flex"><i class="material-icons md-18">mic</i></button>
+        </div>
+      </form>
+
     </div>
 
-    <owl-carousel-o [options]="dashboardsCarousel">
+    <div class="fixed-bottom background-dark">
 
-      <ng-template carouselSlide>
-        <div class="card search-card-dashboard">
-          <div class="body text-center">
-            <div class="col-12 icon"><i class="material-icons md-36">access_alarm</i></div>
-            <div class="col-12 content text-truncate">{{ 'layout.search.clock'| translate }}</div>
+      <div class="search-footer m-auto">
+        <owl-carousel-o [options]="footerCarousel">
+
+        <ng-template carouselSlide>
+          <div class="col-search">
+            <div class="big_icon mi-money-off card widget_2">
+              <div class="body">
+                <h6 class="fw-400">
+                  {{ 'inadimplência' | translate }}
+                </h6>
+                <h2 class="d-inline">2.88</h2> <i class="material-icons md-12 text-deep-increment">trending_down</i>
+                <small>-10.84</small>
+              </div>
+            </div>
           </div>
-        </div>
-      </ng-template>
+        </ng-template>
 
-      <ng-template carouselSlide>
-        <div class="card search-card-dashboard">
-          <div class="body text-center">
-            <div class="col-12 icon"><i class="material-icons md-36">compare</i></div>
-            <div class="col-12 content text-truncate"> Comparative</div>
+        <ng-template carouselSlide>
+          <div class="col-search">
+            <div class="big_icon mi-work-off card widget_2">
+              <div class="body">
+                <h6 class="fw-400">
+                  {{ 'desemprego' | translate }}
+                </h6>
+                <h2 class="d-inline">
+                  12,850
+                </h2>
+                <i class="material-icons md-12 text-deep-cpca">trending_up</i>
+                <small>1.1</small></div>
+            </div>
           </div>
-        </div>
-      </ng-template>
+        </ng-template>
 
-      <ng-template carouselSlide>
-        <div class="card search-card-dashboard">
-          <div class="body text-center">
-            <div class="col-12 icon"><i class="material-icons md-36">today</i></div>
-            <div class="col-12 content text-truncate"> Daily</div>
+        <ng-template carouselSlide>
+          <div class="col-search">
+            <div class="big_icon mi-timeline card widget_2">
+              <div class="body">
+                <h6 class="fw-400">
+                  ibovespa
+                </h6>
+                <h2 class="d-inline">12,850</h2> <i class="material-icons md-12 text-deep-cpca">trending_up</i>
+                <small>1.1</small>
+              </div>
+            </div>
           </div>
-        </div>
-      </ng-template>
+        </ng-template>
 
-      <ng-template carouselSlide>
-        <div class="card search-card-dashboard">
-          <div class="body text-center">
-            <div class="col-12 icon"><i class="material-icons md-36">location_on</i></div>
-            <div class="col-12 content text-truncate"> Region</div>
+        <ng-template carouselSlide>
+          <div class="col-search">
+            <div class="big_icon mi-monetization-on card widget_2">
+              <div class="body">
+                <h6 class="fw-400">
+                  {{ 'dólar' | translate }}
+                </h6>
+                <h2 class="d-inline">
+                  12,850
+                </h2>
+                <i class="material-icons md-12 text-deep-cpca">trending_up</i>
+                <small>1.1</small>
+              </div>
+            </div>
           </div>
-        </div>
-      </ng-template>
+        </ng-template>
 
-      <ng-template carouselSlide>
-        <div class="card search-card-dashboard">
-          <div class="body text-center">
-            <div class="col-12 icon"><i class="material-icons md-36">filter_list</i></div>
-            <div class="col-12 content text-truncate"> Funnel</div>
-          </div>
-        </div>
-      </ng-template>
 
-      <ng-template carouselSlide>
-        <div class="card search-card-dashboard">
-          <div class="body text-center">
-            <div class="col-12 icon"><i class="material-icons md-36">account_balance_wallet</i></div>
-            <div class="col-12 content text-truncate"> {{'Portfolio' | translate}}</div>
-          </div>
-        </div>
-      </ng-template>
-
-      <ng-template carouselSlide>
-        <div class="card search-card-dashboard">
-          <div class="body text-center">
-            <div class="col-12 icon"><i class="material-icons md-36">headset_mic</i></div>
-            <div class="col-12 content text-truncate"> Agents</div>
-          </div>
-        </div>
-      </ng-template>
-
-      <ng-template carouselSlide>
-        <div class="card search-card-dashboard">
-          <div class="body text-center">
-            <div class="col-12 icon"><i class="material-icons md-36">device_hub</i></div>
-            <div class="col-12 content text-truncate"> Multi channel</div>
-          </div>
-        </div>
-      </ng-template>
-
-    </owl-carousel-o>
-
-    <form class="d-flex align-items-center flex-column min-h-10 mt-5">
-      <input type="search" value="" placeholder="{{ 'layout.search.search' | translate }}...">
-      <div role="group" class="btn-group display-block">
-        <button type="submit" class="btn btn-deep-cpc">{{ 'layout.search.search' | translate }}</button>
-        <button type="button" class="btn btn-deep-cpc-2 d-flex"><i class="material-icons md-18">mic</i></button>
+      </owl-carousel-o>
       </div>
-    </form>
 
-  </div>
-
-  <div class="search-footer">
-
-    <owl-carousel-o [options]="footerCarousel">
-
-      <ng-template carouselSlide>
-        <div class="col-search">
-          <div class="big_icon mi-money-off card widget_2">
-            <div class="body">
-              <h6 class="fw-400">
-                {{ 'layout.search.default' | translate }}
-              </h6>
-              <h2 class="d-inline">2.88</h2> <i class="material-icons md-12 text-deep-increment">trending_down</i>
-              <small>-10.84</small>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-
-      <ng-template carouselSlide>
-        <div class="col-search">
-          <div class="big_icon mi-work-off card widget_2">
-            <div class="body">
-              <h6 class="fw-400">
-                {{ 'layout.search.unemployment' | translate }}
-              </h6>
-              <h2 class="d-inline">
-                12,850
-              </h2>
-              <i class="material-icons md-12 text-deep-cpca">trending_up</i>
-              <small>1.1</small></div>
-          </div>
-        </div>
-      </ng-template>
-
-      <ng-template carouselSlide>
-        <div class="col-search">
-          <div class="big_icon mi-timeline card widget_2">
-            <div class="body">
-              <h6 class="fw-400">
-                ibovespa
-              </h6>
-              <h2 class="d-inline">12,850</h2> <i class="material-icons md-12 text-deep-cpca">trending_up</i>
-              <small>1.1</small>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-
-      <ng-template carouselSlide>
-        <div class="col-search">
-          <div class="big_icon mi-monetization-on card widget_2">
-            <div class="body">
-              <h6 class="fw-400">
-                {{ 'layout.search.dollar' | translate }}
-              </h6>
-              <h2 class="d-inline">
-                12,850
-              </h2>
-              <i class="material-icons md-12 text-deep-cpca">trending_up</i>
-              <small>1.1</small>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-
-
-    </owl-carousel-o>
-
+    </div>
   </div>
 
 

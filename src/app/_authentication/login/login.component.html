@@ -3,7 +3,7 @@
     <div class="row">
 
       <div class="col-lg-4 col-sm-12">
-        <form class="card auth_form" [formGroup]="loginForm" (submit)="submitForm()">
+        <form class="card auth_form" [formGroup]="loginForm" (submit)="submitLoginForm()">
           <div class="header">
             <img class="logo" src="/assets/images/logo.svg" alt="">
             <h5>{{ 'Fazer login' | translate }}</h5>
@@ -25,11 +25,12 @@
                 </div>
               </div>
               <!-- erros -->
-              <div class="text-danger" *ngIf="email.invalid && (email.touched || email.dirty)">
-                <span class="d-block" *ngIf="email.errors.email">
+              <div class="text-danger"
+                   *ngIf="getField('loginForm', 'email').invalid && (getField('loginForm', 'email').touched || getField('loginForm', 'email').dirty)">
+                <span class="d-block" *ngIf="getField('loginForm', 'email').errors.email">
                   {{ 'E-mail inválido' | translate }}
                 </span>
-                <span class="d-block" *ngIf="email.errors.required">
+                <span class="d-block" *ngIf="getField('loginForm', 'email').errors.required">
                   {{ 'E-mail é obrigatório' | translate }}
                 </span>
               </div> <!-- end erros -->
@@ -48,23 +49,27 @@
                 </div>
               </div>
               <!-- erros -->
-              <div class="text-danger" *ngIf="password.invalid && (password.touched || password.dirty)">
-                <span class="d-block" *ngIf="password.errors.minlength">
+              <div
+                *ngIf="getField('loginForm', 'password').invalid && (getField('loginForm', 'password').touched || getField('loginForm', 'password').dirty)"
+                class="text-danger">
+                <span class="d-block" *ngIf="getField('loginForm', 'password').errors.minlength">
                   {{ 'A senha deve ter no mínimo 6 caracteres' | translate }}
                 </span>
-                <span class="d-block" *ngIf="password.errors.maxlength">
+                <span class="d-block" *ngIf="getField('loginForm', 'password').errors.maxlength">
                   {{ 'A senha deve ter no máximo 14 caracteres' | translate }}
                 </span>
-                <span class="d-block" *ngIf="password.errors.required">
+                <span class="d-block" *ngIf="getField('loginForm', 'password').errors.required">
                   {{ 'O campo senha é obrigatório' | translate }}
                 </span>
               </div> <!-- end erros -->
             </div>
 
             <span class="d-block">
-                <button class="btn btn-block btn-deep-blue mt-3">
+                <a class="mt-3"
+                   (click)="copyMail()"
+                   data-toggle="modal" data-target="#modalRecoveryPassword">
                   {{ 'Esqueceu a senha?' | translate }}
-                </button>
+                </a>
             </span>
             <button class="btn btn-primary btn-block waves-effect waves-light"
                     [disabled]="loginLoading">
@@ -94,3 +99,45 @@
     </div>
   </div>
 </div>
+
+<!-- modal send token -->
+<div class="modal fade" id="modalRecoveryPassword">
+  <div class="modal-dialog">
+    <form [formGroup]="recoveryPassForm" (submit)="sendRecoveryForm()"
+      class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Recuperar senha</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="r-email">E-mail</label>
+          <input formControlName="email"
+                 id="r-email" type="text" placeholder="E-mail" class="form-control">
+        </div>
+        <!-- erros -->
+        <div
+          *ngIf="getField('recoveryPassForm', 'email').invalid && (getField('recoveryPassForm', 'email').touched || getField('recoveryPassForm', 'email').dirty)"
+          class="text-danger">
+              <span class="d-block" *ngIf="getField('recoveryPassForm', 'email').errors.email">
+                {{ 'E-mail inválido' | translate }}
+              </span>
+        </div> <!-- end erros -->
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary"
+                [disabled]="recoveryPassForm.invalid || recoveryPassFormLoading">
+          <span *ngIf="!recoveryPassFormLoading">
+            {{ 'Enviar' | translate }}
+          </span>
+
+          <span *ngIf="recoveryPassFormLoading">
+            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div> <!-- modal send token -->
