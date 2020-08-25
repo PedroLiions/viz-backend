@@ -90,7 +90,7 @@ export function jwtModuleConfig(): JwtModuleOptions {
         return localStorage.getItem('access_token');
       },
       allowedDomains: [
-        '127.0.0.1:8000'
+        'localhost:8000'
       ],
       disallowedRoutes: [
         '127.0.0.1:8000/api/auth/login',
