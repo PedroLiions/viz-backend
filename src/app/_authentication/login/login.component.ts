@@ -3,7 +3,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 import {environment} from '../../../environments/environment';
 import {AuthenticationService} from '../../_services/authentication.service';
 import {Subscription} from 'rxjs';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import Swal from 'sweetalert2';
 
@@ -28,14 +28,19 @@ export class LoginComponent implements OnDestroy {
   loginLoading: boolean;
   invalidLogin = false;
   recoveryPassFormLoading = false;
-  displayRecoverySuccessMessage: boolean;
+  message: string;
+
+  /* if exist backRoute in query param, send user to this route */
+  backRoute: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     this.buildForm();
+    this.handleQueryErrors();
   }
 
   buildForm(): void {
@@ -59,12 +64,23 @@ export class LoginComponent implements OnDestroy {
     });
   }
 
-  getField(form, field): AbstractControl {
-    return this[form].get(field);
+  handleQueryErrors(): string | void {
+    this.backRoute = this.activatedRoute.snapshot.queryParamMap.get('backRoute');
+    console.log(this.backRoute);
+
+    const errorParams = this.activatedRoute.snapshot.queryParamMap.get('error');
+
+    switch (errorParams) {
+      case 'sessionExpired':
+        return this.message = 'Sessão expirada, faça login novamente';
+      default:
+        return;
+    }
+
   }
 
-  get password(): AbstractControl {
-    return this.loginForm.get('password');
+  getField(form, field): AbstractControl {
+    return this[form].get(field);
   }
 
   async submitLoginForm(): Promise<any> {
@@ -88,12 +104,12 @@ export class LoginComponent implements OnDestroy {
     localStorage.setItem('access_token', response.access_token);
     localStorage.setItem('user', JSON.stringify(response.user));
 
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl(this.backRoute || '');
   }
 
   public handleError(): void {
     this.loginLoading = false;
-    this.invalidLogin = true;
+    this.message = 'Usuário ou senha incorreto';
   }
 
   public copyMail(): void {

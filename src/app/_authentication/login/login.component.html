@@ -8,9 +8,9 @@
             <img class="logo" src="/assets/images/logo.svg" alt="">
             <h5>{{ 'Fazer login' | translate }}</h5>
           </div>
-          <div *ngIf="invalidLogin">
+          <div *ngIf="message">
             <div class="alert alert-danger">
-              {{ 'Usuário ou senha incorreto' | translate }}
+              {{ message | translate }}
             </div>
           </div>
           <div class="body">

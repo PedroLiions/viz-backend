@@ -21,7 +21,8 @@ export class AuthUnauthenticate implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
-      tap(() => {},
+      tap(() => {
+        },
         (err: any) => {
           if (
             err instanceof HttpErrorResponse
@@ -30,8 +31,19 @@ export class AuthUnauthenticate implements HttpInterceptor {
             return;
           }
 
-          this.location.replaceState('/'); // clears browser history so they can't navigate with back button
-          this.router.navigate(['login']);
+          // clears browser history so they can't navigate with back button
+          this.location.replaceState('/');
+
+          const route = this.router.url;
+
+          const extras = {
+            queryParams: {
+              error: 'sessionExpired',
+              backRoute: route
+            }
+          };
+
+          this.router.navigate(['login'], extras);
         })
     );
   }

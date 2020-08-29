@@ -8,4 +8,16 @@
     background: white;
     z-index: 1100;
   }
+
+  .btn-group {
+    .btn-secondary {
+      @extend .btn-link;
+      background: transparent;
+      border: none;
+      color: $secondary;
+      &:hover {
+        color: $secondary;
+      }
+    }
+  }
 }
