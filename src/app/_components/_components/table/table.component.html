@@ -1,0 +1,78 @@
+<div class="table-wrapper" [ngClass]="tableWrapperClasses">
+  <div class="table-tab" *ngIf="columns">
+    <div class="columns columns-right btn-group float-right">
+
+      <button (click)="fullScreen()"
+              class="btn btn-sm btn-secondary" type="button">
+        <i class="fa fa-arrows-alt"></i>
+      </button>
+
+      <button (click)="exportXlsx()"
+              class="btn btn-sm btn-secondary" type="button">
+        <i class="fa fa-file-excel-o"></i>
+        xlsx
+      </button>
+
+      <button (click)="exportJson()"
+              class="btn btn-sm btn-secondary" type="button">
+        <i class="fa fa-file-excel-o"></i>
+        json
+      </button>
+
+      <div class="dropdown">
+        <button class="dropbtn btn btn-sm btn-sm btn-secondary">
+          Dropdown
+        </button>
+        <div class="dropdown-content">
+          <a href="#">
+            <input type="checkbox" checked [id]="'markAllColumns' + name"
+                   (change)="markAllColumns()">
+            Marcar todos
+          </a>
+          <hr>
+          <a *ngFor="let column of objectKeys(columns[0]); let i = index;"
+             class="dropdown-item">
+            <input type="checkbox" checked [id]="'checkToggleColumn' + i"
+                   (change)="toggleColumnClasse(column, 'd-none')">
+            <label [for]="'checkToggleColumn' + i">{{ column }}</label>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-sm table-striped"
+           [id]="name"
+           [ngClass]="classes">
+
+      <thead *ngIf="columns">
+      <tr>
+        <th
+          *ngFor="let tHead of tHeadColumn"
+          [ngClass]="getColumnClasses(tHead)">
+          {{ tHead | translate }}
+        </th>
+
+      </tr>
+      </thead>
+
+      <tbody *ngIf="columns">
+      <tr
+        *ngFor="let column of columns; let c = index">
+
+        <td *ngFor="let td of objectValues(column); let i = index"
+            [ngClass]="getColumnClasses(objectKeys(column)[i]).join(callbackClassOfTd(td))"
+            [ngStyle]="callbackStyleTd(td)"
+            [attr.data-oddeven]="getRel(c)"
+            [attr.data-value]="td"
+        >
+          {{ td | translate }}
+        </td>
+
+      </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>

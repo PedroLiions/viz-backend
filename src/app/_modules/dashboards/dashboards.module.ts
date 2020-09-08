@@ -27,7 +27,7 @@ import {Widget1Component} from '../../_components/modules/dashboards/agents/widg
     MultiChannelComponent,
     PortfolioComponent,
     RegionComponent,
-    Widget1Component
+    Widget1Component,
   ],
   imports: [
     CommonModule,

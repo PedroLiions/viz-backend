@@ -1,0 +1,232 @@
+@import "../../../../assets/scss/variables";
+
+.table {
+  thead {
+    th {
+
+    }
+  }
+}
+
+.bg-yellow-light {
+  $yellow-light: #FFC000;
+}
+.bg-yellowDark {
+  $yellowDark: #BF9000;
+}
+
+.bg-redLight {
+  $redLight: #E61857;
+}
+.bg-redDark {
+  $redDark: #AD1241;
+}
+
+.bg-red-light-900 {
+  $red-light-900: #ad1141;
+}
+.bg-red-dark-900 {
+  $red-dark-900: #730d2c;
+}
+
+.bg-bege-light {
+  $bege-light: #bf9005;
+}
+.bg-bege-dark {
+  $bege-dark: #7e6003;
+}
+
+.bg-ocean-light {
+  $ocean-light: #1db9bf;
+}
+.bg-ocean-dark {
+  $ocean-dark: #118B8F;
+}
+
+.bg-ocean-light-900 {
+  $ocean-light-900: #118B8F;
+}
+.bg-ocean-dark-900 {
+  $ocean-dark-900: #0C5D60;
+}
+
+.bg-green-light-100 {
+  $green-light-100: #34C15C;
+}
+
+.bg-green-dark-100 {
+  $green-dark-100: #279145;
+}
+
+.bg-caramelLight {
+  $caramelLight: #B49065;
+}
+.bg-caramelDark {
+  $caramelDark: #8E6D45;
+}
+
+.bg-darkCaramelLight {
+  $darkCaramelLight: #BF9000;
+}
+.bg-darkCaramelDark {
+  $darkCaramelDark: #7F6000;
+}
+
+.bg-esmeraldLight {
+  $esmeraldLight: #118B8F;
+}
+.bg-esmeraldDark {
+  $esmeraldDark: #0C5D60;
+}
+
+.bg-caramel-light {
+  $caramel-light: #B49065;
+}
+.bg-caramel-dark {
+  $caramel-dark: #8E6D45;
+}
+
+.bg-dark-caramel-light {
+  $dark-caramel-light: #BF9000;
+}
+.bg-dark-caramel-dark {
+  $dark-caramel-dark: #7F6000;
+}
+
+.bg-esmerald-light {
+  $esmerald-light: #118B8F;
+}
+.bg-esmerald-dark {
+  $esmerald-dark: #0C5D60;
+}
+
+.bg-green-light {
+  $green-light: #279145;
+}
+.bg-green-dark {
+  $green-dark: #1A602E;
+}
+
+.bg-blue-light {
+  $blue-light: #41719C;
+}
+.bg-blue-dark {
+  $blue-dark: #315575;
+}
+
+.bg-blue-marine-light {
+  $blue-marine-light: #315575;
+}
+.bg-blue-marine-dark {
+  $blue-marine-dark: #20394E;
+}
+
+.bg-viz-dark {
+  $viz-dark: #646464;
+}
+.bg-viz-dark-light {
+  $viz-dark-light: #424242;
+}
+
+.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  z-index: 1000;
+  padding: 15px;
+}
+
+
+th.bg-viz-gray,
+td:not([data-oddeven='even']).bg-viz-gray {
+  background-color: $viz-gray-light !important;
+  color: white;
+}
+
+td:not([data-oddeven='odd']).bg-viz-gray {
+  background-color: $viz-gray !important;
+  color: white;
+}
+
+th.bg-viz-red,
+td:not([data-oddeven='even']).bg-viz-red {
+  background-color: $redLight !important;
+  color: white;
+}
+
+td:not([data-oddeven='odd']).bg-viz-red {
+  background-color: $redDark !important;
+  color: white;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  /* Links inside the dropdown */
+  a {
+    display: block;
+
+    /* Change color of dropdown links on hover */
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+
+  /* Show the dropdown menu on hover */
+  &:hover {
+    .dropdown-content {
+      display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropbtn {
+
+    }
+  }
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+
+
+
+//.bg-orange-light {
+//  $orange-light: #F5781B;
+//}
+//.bg-orange-dark {
+//  $orange-dark: #C35809;
+//}
+//
+//.bg-orange-light-900 {
+//  $orange-light-900: #C35809;
+//}
+//.bg-orange-dark-900 {
+//  $orange-dark-900: #823B06;
+//}
+//
+//.bg-brow-light {
+//  $brow-light: #726253;
+//}
+//.bg-brow-dark {
+//  $brow-dark: #66584a;
+//}
+//
+//.bg-brow-light-900 {
+//  $brow-light-900: #876d4e;
+//}
+//.bg-brow-dark-900 {
+//  $brow-dark-900: #716453;
+//}

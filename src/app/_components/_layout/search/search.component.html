@@ -13,9 +13,9 @@
 
     <div class="d-flex flex-column">
       <div class="w-100 clearfix hidden-md-down m-t-45 mx-auto row">
-        <div class="col-6 h1">{{ 'Olá' | translate }}, Daniel!</div>
+        <div class="col-6 h1">{{ 'Olá' | translate }}, {{user.name}}!</div>
         <div class="col-6 ml-auto text-right">
-          <div class="d-inline-block h4 m-0" style="line-height: 0.85;"><small>05 de August</small> <br> <small>Wednesday
+          <div class="d-inline-block h4 m-0" style="line-height: 0.85;"><small>29 de August</small> <br> <small>Wednesday
             /
             2020</small></div>
           <div class="d-inline-block h1 m-0" style="font-size: 3.2em;"> 21:37</div>
@@ -108,9 +108,9 @@
 
     </div>
 
-    <div class="fixed-bottom background-dark">
+    <div class="fixed-bottom background-dark d-flex justify-content-center" style="height: 83px">
 
-      <div class="search-footer m-auto">
+      <div class="search-footer">
         <owl-carousel-o [options]="footerCarousel">
 
         <ng-template carouselSlide>

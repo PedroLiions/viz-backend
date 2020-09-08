@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OwlOptions} from 'ngx-owl-carousel-o';
 import {TranslateService} from '@ngx-translate/core';
+import {User} from '../../../_models/User';
 
 @Component({
   selector: 'app-index-menu',
@@ -8,6 +9,8 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  user: User = JSON.parse(localStorage.getItem('user'));
+
   dashboardsCarousel: OwlOptions = {
     loop: false,
     margin: 10,

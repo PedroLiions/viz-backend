@@ -5,3 +5,512 @@
 }
 
 
+.table-colored {
+  &.table-striped {
+
+    td, th {
+      &:nth-of-type(1n+3) {
+        color: white;
+      }
+    }
+
+    thead {
+      tr, th {
+        border-right: 0;
+        border-left: 0;
+      }
+
+      tr th {
+        &:nth-of-type(2) {
+          background: $yellowLight !important
+        }
+
+        &:nth-of-type(3) {
+          background: $redLight !important
+        }
+
+        &:nth-of-type(4) {
+          background: $caramelLight !important
+        }
+
+        &:nth-of-type(5) {
+          background: $darkCaramelLight !important
+        }
+
+        &:nth-of-type(6) {
+          background: $esmeraldLight !important
+        }
+
+        &:nth-of-type(7) {
+          background: $green-light !important
+        }
+
+        &:nth-of-type(8) {
+          background: $blue-light !important
+        }
+
+        &:nth-of-type(9) {
+          background: $blue-marine-light !important
+        }
+      }
+    }
+
+    tbody {
+      /* Best time */
+      tr:nth-of-type(even) td:nth-of-type(2) {
+        background: $yellowDark;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(2) {
+        background: $yellowLight !important;
+      }
+
+      /* Attempts */
+      tr:nth-of-type(even) td:nth-of-type(3) {
+        background: $redDark;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(3) {
+        background: $redLight !important;
+      }
+
+      /* Attempts */
+      tr:nth-of-type(even) td:nth-of-type(4) {
+        background: $caramelDark;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(4) {
+        background: $caramelLight !important;
+      }
+
+      /* Hit */
+      tr:nth-of-type(even) td:nth-of-type(5) {
+        background: $darkCaramelDark;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(5) {
+        background: $darkCaramelLight !important;
+      }
+
+      /* CPC */
+      tr:nth-of-type(even) td:nth-of-type(6) {
+        background: $esmeraldDark;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(6) {
+        background: $esmeraldLight !important;
+      }
+
+      /* CPCA */
+      tr:nth-of-type(even) td:nth-of-type(7) {
+        background: $green-dark;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(7) {
+        background: $green-light !important;
+      }
+
+      /* Deals */
+      tr:nth-of-type(even) td:nth-of-type(8) {
+        background: $blue-dark;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(8) {
+        background: $blue-light !important;
+      }
+
+      /* %Deals  */
+      tr:nth-of-type(even) td:nth-of-type(9) {
+        background: $blue-marine-dark;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(9) {
+        background: $blue-marine-light !important;
+      }
+
+      td {
+        border-right: 0;
+        border-left: 0;
+
+        &:nth-of-type(1n+3) {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.table-stripped-comparative {
+  &.table-striped {
+
+    td, th {
+      &:nth-of-type(1n+2) {
+        color: white;
+      }
+    }
+
+    thead {
+      tr, th {
+        border-right: 0;
+        border-left: 0;
+      }
+
+      tr th {
+        &:nth-of-type(2) {
+          background: $viz-gray-light !important
+        }
+
+        &:nth-of-type(3) {
+          background: $viz-dark-light !important
+        }
+
+        &:nth-of-type(4) {
+          background: $redLight !important
+        }
+
+        &:nth-of-type(5) {
+          background: $red-light-900 !important
+        }
+
+        &:nth-of-type(6) {
+          background: $bege-light !important
+        }
+
+        &:nth-of-type(7) {
+          background: $caramelLight !important
+        }
+
+        &:nth-of-type(8) {
+          background: $ocean-light !important
+        }
+
+        &:nth-of-type(9), &:nth-of-type(10) {
+          background: $ocean-light-900 !important
+        }
+
+        &:nth-of-type(11) {
+          background: $green-light-100 !important
+        }
+
+        &:nth-of-type(12), &:nth-of-type(13) {
+          background: $green-light !important
+        }
+
+        &:nth-of-type(14) {
+          background: $blue-light !important
+        }
+
+        &:nth-of-type(15),
+        &:nth-of-type(16),
+        &:nth-of-type(17),
+        &:nth-of-type(18),
+        &:nth-of-type(19) {
+          background: $blue-marine-light !important
+        }
+
+        &:nth-of-type(20) {
+          background: $orange-light !important
+        }
+
+        &:nth-of-type(21),
+        &:nth-of-type(22) {
+          background: $orange-light-900 !important
+        }
+
+        /* hidden text and substr ... */
+        div {
+          @extend .text-hidden;
+        }
+      }
+    }
+
+    tbody {
+      /* Contratos */
+      tr:nth-of-type(even) td:nth-of-type(2) {
+        background: $viz-gray !important;
+        color: white !important;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(2) {
+        background: $viz-gray-light;
+        color: white !important;
+      }
+
+      /* Agents logados */
+      tr:nth-of-type(even) td:nth-of-type(3) {
+        background: $viz-dark-light !important;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(3) {
+        background: $viz-dark;
+      }
+
+      /* Tentativas */
+      tr:nth-of-type(even) td:nth-of-type(4) {
+        background: $redLight;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(4) {
+        background: $redDark !important;
+      }
+
+      /* Tent/ Agnt */
+      tr:nth-of-type(even) td:nth-of-type(5) {
+        background: $red-light-900;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(5) {
+        background: $red-dark-900 !important;
+      }
+
+      /* %Hit rate	 */
+      tr:nth-of-type(even) td:nth-of-type(6) {
+        background: $bege-light;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(6) {
+        background: $bege-dark !important;
+      }
+
+      /* Atendidas */
+      tr:nth-of-type(even) td:nth-of-type(7) {
+        background: $caramelLight;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(7) {
+        background: $caramelDark !important;
+      }
+
+      /* CPC */
+      tr:nth-of-type(even) td:nth-of-type(8) {
+        background: $ocean-light;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(8) {
+        background: $ocean-dark !important;
+      }
+
+      /* %CPC/ agents  */
+      tr:nth-of-type(even) td:nth-of-type(9), tr:nth-of-type(even) td:nth-of-type(10) {
+        background: $ocean-light-900;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(9), tr:nth-of-type(odd) td:nth-of-type(10) {
+        background: $ocean-dark-900 !important;
+      }
+
+      tr:nth-of-type(even) td:nth-of-type(11) {
+        background: $green-light-100;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(11) {
+        background: $green-dark-100 !important;
+      }
+
+      // CPCA /Agnt	- %CPCA /Agnt
+      tr:nth-of-type(even) td:nth-of-type(12),
+      tr:nth-of-type(even) td:nth-of-type(13) {
+        background: $green-light;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(12),
+      tr:nth-of-type(odd) td:nth-of-type(13) {
+        background: $green-dark !important;
+      }
+
+      // Negociações
+      tr:nth-of-type(even) td:nth-of-type(14) {
+        background: $blue-light;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(14) {
+        background: $blue-dark !important;
+      }
+
+      // Negc/ Agnt	%Negc/ Tent	%Negc/ Atend	%Negc/ CPC	%Negc
+      tr:nth-of-type(even) td:nth-of-type(15),
+      tr:nth-of-type(even) td:nth-of-type(16),
+      tr:nth-of-type(even) td:nth-of-type(17),
+      tr:nth-of-type(even) td:nth-of-type(18),
+      tr:nth-of-type(even) td:nth-of-type(19),
+      {
+        background: $blue-marine-light;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(15),
+      tr:nth-of-type(odd) td:nth-of-type(16),
+      tr:nth-of-type(odd) td:nth-of-type(17),
+      tr:nth-of-type(odd) td:nth-of-type(18),
+      tr:nth-of-type(odd) td:nth-of-type(19),
+      {
+        background: $blue-marine-dark !important;
+      }
+
+      // Improd
+      tr:nth-of-type(even) td:nth-of-type(20) {
+        background: $orange-light;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(20) {
+        background: $orange-dark !important;
+      }
+
+      // Negc/ Agnt	%Negc/ Tent	%Negc/ Atend	%Negc/ CPC	%Negc
+      tr:nth-of-type(even) td:nth-of-type(21),
+      tr:nth-of-type(even) td:nth-of-type(22) {
+        background: $orange-light-900;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(21),
+      tr:nth-of-type(odd) td:nth-of-type(22) {
+        background: $orange-dark-900 !important;
+      }
+
+      td {
+        border-right: 0;
+        border-left: 0;
+
+        &:nth-of-type(1n+2) {
+          color: white;
+        }
+      }
+
+      //  first tr>td bold
+      tr:first-of-type > td {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.table-resume-by-comparative {
+  &.table-striped {
+    td, th {
+      &:nth-of-type(1n+5) {
+        color: white;
+      }
+    }
+
+    thead, tbody {
+      tr {
+        th, td {
+          border-right: 0 !important;
+          border-left: 0 !important;
+        }
+      }
+    }
+
+    thead {
+      tr, th {
+        border-right: 0;
+        border-left: 0;
+      }
+
+      tr th {
+        &:nth-of-type(5) {
+          background: $redLight !important
+        }
+
+        &:nth-of-type(6) {
+          background: $darkCaramelLight !important
+        }
+
+        &:nth-of-type(7) {
+          background: $ocean-dark !important
+        }
+
+        &:nth-of-type(8) {
+          background: $green-light !important
+        }
+
+        &:nth-of-type(9) {
+          background: $blue-light !important
+        }
+
+        &:nth-of-type(10) {
+          background: $blue-marine-light !important
+        }
+      }
+    }
+
+    tbody {
+
+      tr:nth-of-type(even) td:nth-of-type(5) {
+        background: $redLight !important;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(5) {
+        background: $redDark !important;
+      }
+
+      tr:nth-of-type(even) td:nth-of-type(6) {
+        background: $darkCaramelLight !important;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(6) {
+        background: $darkCaramelDark !important;
+      }
+
+      tr:nth-of-type(even) td:nth-of-type(7) {
+        background: $ocean-light !important;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(7) {
+        background: $ocean-dark !important;
+      }
+
+      tr:nth-of-type(even) td:nth-of-type(8) {
+        background: $green-light !important;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(8) {
+        background: $green-dark !important;
+      }
+
+      tr:nth-of-type(even) td:nth-of-type(9) {
+        background: $blue-light !important;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(9) {
+        background: $blue-dark !important;
+      }
+
+      tr:nth-of-type(even) td:nth-of-type(10) {
+        background: $blue-marine-light !important;
+      }
+
+      tr:nth-of-type(odd) td:nth-of-type(10) {
+        background: $blue-marine-dark !important;
+      }
+
+    }
+  }
+}
+
+
+/* for all tables */
+
+.table thead tr th {
+  @extend .text-hidden;
+}
+
+.table-striped {
+  thead {
+    tr > th {
+      border-right: 0;
+      border-left: 0;
+    }
+  }
+}
+
+.table-bordered {
+  border-right: 0;
+  border-left: 0;
+}
+
+
+.table-costumized {
+  th, td {
+    text-align: right !important;
+  }
+}

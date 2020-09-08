@@ -409,15 +409,6 @@ export class BestTimeComponent implements OnInit, AfterViewInit, OnDestroy {
     $table.bootstrapTable('hideLoading');
   }
 
-  parseToArray(object: object): Array<any> {
-    console.log(Object.entries(object));
-    return Object.entries(object);
-  }
-
-  parseToLearn(object): string {
-    return JSON.stringify(object);
-  }
-
   ngOnDestroy(): void {
   }
 

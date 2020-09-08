@@ -24,6 +24,7 @@ import {HomeComponent} from './_components/components/home/home.component';
 import {LoginComponent} from './_authentication/login/login.component';
 import {Error404Component} from './_components/errors/error404/error404.component';
 import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
     SharedModule
   ],
   providers: [
+    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthUnauthenticate,
