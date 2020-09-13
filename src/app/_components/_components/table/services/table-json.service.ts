@@ -13,4 +13,24 @@ export class TableJsonService {
     fs.saveAs(blob, name);
   }
 
+  public createJSON(columns, fileName: string = 'json_file'): void {
+    this.getJsonTitleAndRows(columns).then(
+      data => this.generateJson(fileName, data)
+    );
+  }
+
+  public getJsonTitleAndRows(columns): Promise<Array<object>> {
+    return new Promise<Array<object>>((resolve, reject) => {
+      try {
+        const body = columns.map((item) => {
+          return item;
+        });
+
+        resolve(body);
+      } catch (e) {
+        reject(e);
+      }
+    });
+  }
+
 }

@@ -19,9 +19,33 @@ export class PortfolioComponent implements OnInit {
   constructor() {
 
     this.columnClasseConfig = {
-      Contatos: 'bg-viz-gray',
-      Tentativas: 'bg-viz-red',
+      'Contratos': 'bg-viz-gray',
+      'Indicador': 'text-dark',
+      // 'Agnt logados': 'bg-viz-dark',
+      'Tentativas': 'bg-viz-red',
+      'Tent/ Agnt': 'bg-viz-red-dark',
+      '%Hit rate': 'bg-caramel-dark',
+      'Atendidas': 'bg-caramel',
+      'CPC': 'bg-ocean-light',
+      'CPC/ Agnt': 'bg-esmerald-dark',
+      'CPC/ Atend': 'bg-esmerald-dark',
+      'CPCA': 'bg-green-light',
+      'CPCA /Agnt': 'bg-green-dark',
+      'CPCA /Atend': 'bg-green-dark',
+      'Negociações': 'bg-blue-light',
+      'Negoc /Agnt': 'bg-blue-marine',
+      'Negoc /Tent': 'bg-blue-marine',
+      'Negoc /Atend': 'bg-blue-marine',
+      'Negoc /CPC': 'bg-blue-marine',
+      'Negoc /CPCA': 'bg-blue-marine',
+      '%Improd': 'bg-orange',
+      '%Linha muda': 'bg-orange-dark',
+      '%Voz máquina': 'bg-orange-dark',
+      'Spin rate': 'text-dark',
+      '%Incorreto': 'text-dark',
     };
+
+
 
     this.tableClass = ['table-costumized'];
 

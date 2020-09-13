@@ -1,27 +1,33 @@
 <div class="table-wrapper" [ngClass]="tableWrapperClasses">
   <div class="table-tab" *ngIf="columns">
-    <div class="columns columns-right btn-group float-right">
+    <div class="columns columns-right float-right">
 
-      <button (click)="fullScreen()"
-              class="btn btn-sm btn-secondary" type="button">
-        <i class="fa fa-arrows-alt"></i>
-      </button>
-
-      <button (click)="exportXlsx()"
-              class="btn btn-sm btn-secondary" type="button">
-        <i class="fa fa-file-excel-o"></i>
-        xlsx
-      </button>
-
-      <button (click)="exportJson()"
-              class="btn btn-sm btn-secondary" type="button">
-        <i class="fa fa-file-excel-o"></i>
-        json
-      </button>
 
       <div class="dropdown">
-        <button class="dropbtn btn btn-sm btn-sm btn-secondary">
-          Dropdown
+        <button class="dropbtn btn btn-sm btn-link">
+          <i class="fa fa-th-list"></i>
+          <span class="caret"></span>
+        </button>
+
+        <div class="dropdown-content">
+
+          <a (click)="exportXlsx()" href="javascript:void(0)"
+             class="" type="button">
+            <i class="fa fa-file-excel-o"></i>
+            Microsoft Excel
+          </a>
+
+          <a (click)="exportJson()" href="javascript:void(0)"
+             class="" type="button">
+            <i class="fa fa-file-excel-o"></i>
+            JSON
+          </a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn btn btn-sm btn-sm btn-link">
+          <i class="fa fa-download" aria-hidden="true"></i>
         </button>
         <div class="dropdown-content">
           <a href="#">
@@ -39,10 +45,25 @@
         </div>
       </div>
 
+      <button (click)="printTable()" type="button"
+              class="btn btn-sm btn-link">
+        <i class="fa fa-print"></i>
+      </button>
+
+      <button (click)="fullScreen()"
+              class="btn btn-sm btn-link" type="button">
+        <i class="fa fa-arrows-alt"></i>
+      </button>
+
+      <button (click)="transpose()" class="btn btn-link btn-sm">
+        <i class="fa fa-retweet"></i>
+      </button>
+
+
     </div>
   </div>
   <div class="table-responsive">
-    <table class="table table-sm table-striped"
+    <table class="table table-sm table-striped rtable rtable--flip"
            [id]="name"
            [ngClass]="classes">
 
@@ -50,8 +71,15 @@
       <tr>
         <th
           *ngFor="let tHead of tHeadColumn"
-          [ngClass]="getColumnClasses(tHead)">
-          {{ tHead | translate }}
+          [ngClass]="getColumnClasses(tHead)"
+          (click)="setOrderBy(tHead)">
+          <div>
+            <div class="d-block table-caret">
+              <i *ngIf="caretInView(tHead) == 'down' || caretInView(tHead) == 'both'" class="fa fa-caret-up"></i>
+              <i *ngIf="caretInView(tHead) == 'up' || caretInView(tHead) == 'both'" class="fa fa-caret-down"></i>
+            </div>
+            <div class="d-block">{{ tHead | translate }}</div>
+          </div>
         </th>
 
       </tr>
@@ -62,7 +90,7 @@
         *ngFor="let column of columns; let c = index">
 
         <td *ngFor="let td of objectValues(column); let i = index"
-            [ngClass]="getColumnClasses(objectKeys(column)[i]).join(callbackClassOfTd(td))"
+            [ngClass]="getColumnClasses(objectKeys(column)[i]).concat(callbackClassOfTd(td))"
             [ngStyle]="callbackStyleTd(td)"
             [attr.data-oddeven]="getRel(c)"
             [attr.data-value]="td"
@@ -74,5 +102,30 @@
       </tbody>
 
     </table>
+
   </div>
+
+  <nav class="d-flex justify-content-end mt-2">
+    <ul class="pagination">
+      <li class="page-item">
+        <button class="page-link" (click)="getDataPage(this.currentPage - 1)">
+          <span>&raquo;</span>
+          <span class="sr-only">Next</span>
+        </button>
+      </li>
+      <li class="page-item"
+          [ngClass]="{active: currentPage == (i + 1)}"
+          *ngFor="let page of this.pages; let i = index;">
+        <button class="page-link" href="#" (click)="getDataPage(i+1)" type="button">
+          {{ i + 1 }}
+        </button>
+      </li>
+      <li class="page-item">
+        <button class="page-link" (click)="getDataPage(this.currentPage + 1)">
+          <span>&raquo;</span>
+          <span class="sr-only">Next</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
 </div>

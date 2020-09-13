@@ -1,9 +1,19 @@
-import {Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
+
+import {
+  HttpClient,
+  HttpParams
+} from '@angular/common/http';
+
 import {Subscription} from 'rxjs';
 
 import {TableExcelService} from './services/table-excel.service';
-import {Row} from './models/row.model';
 import {TableJsonService} from './services/table-json.service';
 
 declare var $: any;
@@ -46,6 +56,17 @@ export class TableComponent implements OnInit, OnDestroy {
   @Input() tableWrapperClasses: Array<string> = [];
 
   /*
+  * End point parameters
+  * */
+  @Input() params: object = {};
+
+  /*
+  * Paginate
+  * */
+  pages: Array<any> = new Array<any>();
+  currentPage = 1;
+
+  /*
   * for when ondestroy unsubscribe all observables
   * */
   readonly subscriptions: Array<Subscription> = [];
@@ -70,14 +91,32 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const subscription = this.http.get(this.dataUrl)
+    this.getData();
+  }
+
+  public transpose(): void {
+    this.columns = Object.keys(this.columns[0]).map(
+      c => this.columns.map(
+        r => r[c]
+      )
+    );
+  }
+
+  public getData(params: object = {}): void {
+    let httpParams = new HttpParams();
+
+    this.objectKeys(params).forEach(
+      key => httpParams = httpParams.append(key, params[key])
+    );
+
+    const subscription = this.http.get(this.dataUrl, {params: httpParams})
       .subscribe(response => this.handleInit(response));
 
     this.subscriptions.push(subscription);
   }
 
-  handleInit(response: any): void {
-    this.columns = response;
+  public handleInit(response: any): void {
+    this.columns = response.data;
 
     if (!this.name) {
       this.name = Math.random()
@@ -88,7 +127,65 @@ export class TableComponent implements OnInit, OnDestroy {
 
     this.classes.push(`table-${this.size}`);
 
-    this.createColumnControl(response);
+    this.createColumnControl(this.columns);
+
+    this.configPaginate(response);
+  }
+
+  public configPaginate(response: any): void {
+    this.pages = new Array<any>(response.last_page);
+  }
+
+  public getDataPage(page: number): void {
+    if (
+      page === 0
+      || page > this.pages.length
+    ) {
+      return;
+    }
+
+    this.params['page'] = page;
+    this.currentPage = page;
+
+    this.getData(this.params);
+  }
+
+  public setOrderBy(column: string): void {
+    let orderBy;
+
+    switch (this.tBodyColumnConfigs[column].orderBy) {
+      case 'asc':
+        orderBy = 'desc';
+        break;
+      case 'desc':
+        orderBy = '';
+        break;
+      default:
+        orderBy = 'asc';
+        break;
+    }
+
+    this.tBodyColumnConfigs[column].orderBy = orderBy;
+
+    this.params[column] = orderBy;
+
+    this.getData(this.params);
+  }
+
+  public caretInView(tHeadColumn: string): string {
+    const orderBy = this.getOrderBy(tHeadColumn);
+    switch (orderBy) {
+      case 'asc':
+        return 'up';
+      case 'desc':
+        return 'down';
+      default:
+        return 'both';
+    }
+  }
+
+  public getOrderBy(column: string): string {
+    return this.tBodyColumnConfigs[column].orderBy;
   }
 
   /*
@@ -119,10 +216,15 @@ export class TableComponent implements OnInit, OnDestroy {
 
     this.tHeadColumn.forEach(column => {
 
+      if (typeof this.tBodyColumnConfigs[column] === 'object') {
+        return;
+      }
+
       const object = {
         columnName: column,
         show: true,
-        classes: []
+        classes: [],
+        orderBy: ''
       };
 
       const classes = this.getClass(column);
@@ -132,7 +234,6 @@ export class TableComponent implements OnInit, OnDestroy {
       }
 
       this.tBodyColumnConfigs[column] = object;
-
     });
   }
 
@@ -152,30 +253,6 @@ export class TableComponent implements OnInit, OnDestroy {
   * toggle all columns, hide/show
   * */
   markAllColumns(): void {
-    console.log('this.tBodyColumnConfigs', this.tBodyColumnConfigs);
-    this.objectKeys(this.tBodyColumnConfigs).forEach((column: string) => {
-      console.log('column', column);
-      const index = this.tBodyColumnConfigs[column].classes.indexOf('d-none');
-      const classe = 'd-none';
-
-      switch (this.markAllColumnsControl) {
-
-        case 'show':
-          if (index === -1) {
-            this.tBodyColumnConfigs[column].classes.push(classe);
-          }
-
-          this.markAllColumnsControl = 'hidden';
-          break;
-        case 'hidden':
-          if (index !== -1) {
-            this.tBodyColumnConfigs[column].classes.splice(index, 1);
-          }
-
-          this.markAllColumnsControl = 'show';
-          break;
-      }
-    });
   }
 
   /*
@@ -198,104 +275,33 @@ export class TableComponent implements OnInit, OnDestroy {
     return ((index % 2 === 0) ? 'even' : 'odd');
   }
 
+  /*
+  * Export to JSON
+  * */
   public exportJson(): void {
-    this.getJsonTitleAndRows().then(
-      data => this.tableJsonService.generateJson('json', data)
-    );
-  }
-
-  public getJsonTitleAndRows(): Promise<Array<object>> {
-    return new Promise<Array<object>>((resolve, reject) => {
-      try {
-        const body = this.columns.map((item) => {
-          return item;
-        });
-
-        resolve(body);
-      } catch (e) {
-        reject(e);
-      }
-    });
+    this.tableJsonService.createJSON(this.columns);
   }
 
   /*
   * Export to XLSX
   * */
   public exportXlsx(): void {
-    this.getExcelTitlesAndRows().then((rows: Array<any>) => {
-      this.tableExcelService.generateExcel('table-exemplo', rows);
-    });
+    this.tableExcelService.createSpreadsheet(
+      this.name,
+      'Tabela de exemplo'
+    );
   }
 
   /*
-  * get table data in format of spreadsheet
+  * Open window.print API
   * */
-  public getExcelTitlesAndRows(): Promise<Array<Row>> {
-    return new Promise((resolve, reject) => {
-      $(() => {
-        try {
-          const rows = [];
-
-          const tableElement = document.querySelector(`#${this.name}`);
-          const ths = tableElement.querySelectorAll('th');
-          const trs = tableElement.querySelectorAll('tr');
-
-          const tableTitles = [];
-          ths.forEach((th) => {
-
-            const thRow = this.mountElementRow(th);
-
-            tableTitles.push(thRow); // first line is a titles
-          }); // ths
-
-          rows.push(tableTitles);
-
-          trs.forEach(tr => {
-            const tds = tr.querySelectorAll('td');
-            const row: Array<Row> = [];
-
-            tds.forEach(td => {
-
-              const tdRow = this.mountElementRow(td);
-
-              row.push(tdRow);
-
-            }); // tds
-
-            rows.push(row);
-
-          }); // trs
-
-          resolve(rows);
-        } catch (e) {
-          reject(e);
-        }
-
-      }); // end DOM initialized
-    }); // end Promise
-  }
-
-  /*
-  * Mount Row element
-  * */
-  public mountElementRow(element): Row {
-    return {
-      title: element.innerText,
-      style: {
-        backgroundColor: this.getPropertyVal(element, 'background-color'),
-        color: this.getPropertyVal(element, 'color'),
-        fontSize: this.getPropertyVal(element, 'font-size'),
-        fontFamily: this.getPropertyVal(element, 'font-family'),
-        textAlign: this.getPropertyVal(element, 'text-align')
-      }
-    } as Row;
-  }
-
-  /*
-  * Get property value of DOM element
-  * */
-  public getPropertyVal(ele, property): string {
-    return window.getComputedStyle(ele)[property];
+  public printTable(): void {
+    window.print();
+    const table = document.getElementById(this.name);
+    const newWin = window.open('');
+    newWin.document.write(table.outerHTML);
+    newWin.print();
+    newWin.close();
   }
 
   /*

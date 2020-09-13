@@ -33,14 +33,7 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-
-              "node_modules/tableexport.jquery.plugin/tableExport.js",
-              "node_modules/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js",
-              "node_modules/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js",
-
-              "node_modules/bootstrap-table/dist/bootstrap-table.min.js",
-              "node_modules/bootstrap-table/dist/extensions/export/bootstrap-table-export.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
