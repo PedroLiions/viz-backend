@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class RightNavComponent implements OnInit {
 
-  public isNightMode = true;
+  public isNightMode: any;
   public searchToggle = true;
   public rtlToggle = false;
 
@@ -24,8 +24,14 @@ export class RightNavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isNightMode = !(localStorage.getItem('isNightMode'));
+    this.isNightMode = localStorage.getItem('isNightMode');
     this.rtlToggle = !(localStorage.getItem('rtlToggle'));
+
+    if (this.isNightMode) {
+      document.querySelector('body').classList.add('theme-dark');
+    } else {
+      document.querySelector('body').classList.remove('theme-dark');
+    }
   }
 
   changeLang(lang): void {
@@ -33,7 +39,7 @@ export class RightNavComponent implements OnInit {
   }
 
   toggleNightMode(): void {
-    if (this.isNightMode) {
+    if (! this.isNightMode) {
       document.querySelector('body').classList.add('theme-dark');
       localStorage.setItem('isNightMode', 'true');
     } else {

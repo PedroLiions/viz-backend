@@ -1,4 +1,7 @@
-.no-records-found {
-  background: black !important;
-  display: none !important;
+table {
+  tr{
+    td, th {
+      color: black !important;
+    }
+  }
 }

@@ -66,7 +66,6 @@ export class LoginComponent implements OnDestroy {
 
   handleQueryErrors(): string | void {
     this.backRoute = this.activatedRoute.snapshot.queryParamMap.get('backRoute');
-    console.log(this.backRoute);
 
     const errorParams = this.activatedRoute.snapshot.queryParamMap.get('error');
 
@@ -103,6 +102,7 @@ export class LoginComponent implements OnDestroy {
   public handleSuccessfully(response): void {
     localStorage.setItem('access_token', response.access_token);
     localStorage.setItem('user', JSON.stringify(response.user));
+    localStorage.setItem('pages-and-permissions', JSON.stringify(response.pages));
 
     this.router.navigateByUrl(this.backRoute || '');
   }

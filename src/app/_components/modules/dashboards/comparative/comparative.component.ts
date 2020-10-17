@@ -1,82 +1,26 @@
-import {AfterViewInit, Component, NgZone, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DashboardsService} from '../../../../_services/http/dashboards/dashboards.service';
 import {Subscription} from 'rxjs';
 
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 
-declare var $: any;
-
 @Component({
   selector: 'app-comparative',
   templateUrl: './comparative.component.html',
   styleUrls: ['./comparative.component.scss']
 })
-export class ComparativeComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ComparativeComponent implements OnInit, OnDestroy {
 
   public data: any;
 
-  company: Array<object> = [];
   resumeByCompany: Array<object> = [];
 
   public subscriptions: Array<Subscription> = [];
 
   constructor(
-    private dashboardsService: DashboardsService,
-    private zone: NgZone
+    private dashboardsService: DashboardsService
   ) {
-
-    let index = 0;
-
-    for (const i of new Array(20)) {
-      this.company.push({
-        'Indicator': (index === 0) ? 'TOTAL' : Math.random().toString(36).substring(7),
-        'Contratos': this.randNumber(100000),
-        'Agnt logados': this.randNumber(100000),
-        'Tentativas': this.randNumber(100000),
-        'Tent/ Agnt': this.randNumber(100000),
-        '%Hit rate': this.randNumber(99, true),
-        'Atendidas': this.randNumber(100000),
-        'CPC': this.randNumber(100000),
-        'CPC/ Agnt': this.randNumber(100000),
-        '%CPC/ Atend': this.randNumber(99, true),
-        'CPCA': this.randNumber(100000),
-        'CPCA /Agnt': this.randNumber(100000),
-        '%CPCA/ Atend': this.randNumber(99, true),
-        'Negociações': this.randNumber(100000),
-        'Negc/ Agnt': this.randNumber(100000),
-        '%Negc/ Tent': this.randNumber(99, true),
-        '%Negc/ Atend': this.randNumber(99, true),
-        '%Negc/ CPC': this.randNumber(99, true),
-        '%Negc/ CPCA': this.randNumber(99, true),
-        '%Improd': this.randNumber(99, true),
-        '%Linha muda': this.randNumber(99, true),
-        '%Voz de máquina': this.randNumber(99, true),
-        'Spin rate': this.randNumber(100000),
-        '%Incorreto': this.randNumber(99, true)
-      });
-
-      index++;
-    }
-
-    for (const i of new Array(20)) {
-      const perfis = ['PF', 'PJ'];
-      const segment = ['Personal', 'Consignado'];
-      const companies = ['Flex', 'Siscom', 'Paschoalotto'];
-
-      this.resumeByCompany.push({
-        'Perfil': perfis[Math.floor(Math.random() * perfis.length)],
-        'Segmento': segment[Math.floor(Math.random() * segment.length)],
-        'Empresa': companies[Math.floor(Math.random() * companies.length)],
-        'Faixa de atraso': `${this.randNumber(99)} - ${this.randNumber(99)}`,
-        'Tentativas': this.randNumber(999999),
-        '%Hit rate': this.randNumber(99, true),
-        '%CPC': this.randNumber(99, true),
-        '%CPCA': this.randNumber(99, true),
-        'Negociações': this.randNumber(999999),
-        '%Negc': this.randNumber(99, true)
-      });
-    }
   }
 
   ngOnInit(): void {
@@ -88,18 +32,6 @@ export class ComparativeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscriptions.push(subs);
 
     this.graphEvolution();
-  }
-
-  ngAfterViewInit(): void {
-    this.zone.runOutsideAngular(() => {
-      this.dispachTable();
-    });
-  }
-
-  randNumber(decimalHome: number, percentage: boolean = null): number | string {
-    return (!percentage)
-      ? Math.floor(Math.random() * decimalHome)
-      : `${this.randNumber(decimalHome)}%`;
   }
 
   public graphEvolution(): void {
@@ -195,69 +127,6 @@ export class ComparativeComponent implements OnInit, AfterViewInit, OnDestroy {
         company: 'Zanc'
       },
     ];
-  }
-
-  public dispachTable(): void {
-    const $tables = [
-      'table-resume-by-comparative',
-      'company'
-    ];
-
-
-    $tables.forEach((table) => {
-
-      const $table = $(`[rel="${table}"]`);
-
-      const bootstrapTableConfig = {
-        exportTypesx: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
-        pagination: true,
-        showColumns: true,
-        pageList: [10, 25, 100, 200],
-        showExport: true,
-        showToggle: true,
-        sortStable: true,
-
-        showFullscreen: true,
-        showPrint: true,
-
-        dataField: 'items',
-        totalField: 'count',
-        sorting: true,
-
-        search: true,
-        dataToggle: false,
-        cache: false,
-
-        sortable: true,
-      };
-
-      $table.bootstrapTable(bootstrapTableConfig);
-      $table.bootstrapTable('hideLoading');
-
-      $table.find('th').tooltip({
-        position: {
-          my: 'center bottom-10',
-          at: 'center top',
-          show: {
-            effect: 'fadeIn',
-            duration: 450
-          },
-          hide: {
-            effect: 'fadeOut',
-            duration: 450
-          },
-          using: (position, feedback) => {
-            $(this).css(position);
-            $('<div>')
-              .addClass('arrow')
-              .addClass(feedback.vertical)
-              .addClass(feedback.horizontal)
-              .appendTo(this);
-          }
-        }
-      });
-
-    });
   }
 
   ngOnDestroy(): void {

@@ -1,3 +1,4 @@
+
 /* interceptor */
 import {AuthUnauthenticate} from './_interceptor/AuthUnauthenticate';
 
@@ -25,6 +26,7 @@ import {LoginComponent} from './_authentication/login/login.component';
 import {Error404Component} from './_components/errors/error404/error404.component';
 import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
 import {DatePipe} from '@angular/common';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -91,13 +93,8 @@ export function jwtModuleConfig(): JwtModuleOptions {
       tokenGetter: () => {
         return localStorage.getItem('access_token');
       },
-      allowedDomains: [
-        'localhost:8000'
-      ],
-      disallowedRoutes: [
-        '127.0.0.1:8000/api/auth/login',
-        '127.0.0.1:8000/api/auth/register',
-      ]
+      allowedDomains: environment.jwt.allowedDomains,
+      disallowedRoutes: environment.jwt.disallowedRoutes
     }
   };
 }

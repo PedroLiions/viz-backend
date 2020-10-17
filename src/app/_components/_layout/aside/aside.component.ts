@@ -8,10 +8,10 @@ import {User} from '../../../_models/User';
 })
 export class AsideComponent {
 
-  leftToggleMenu: boolean = true;
-  activeMenu: string = "";
+  leftToggleMenu = true;
+  activeMenu = '';
   user: User = JSON.parse(localStorage.getItem('user'));
-
+  pagesAndPermissions = JSON.parse(localStorage.getItem('pages-and-permissions'));
 
   constructor() {
   }
@@ -23,15 +23,41 @@ export class AsideComponent {
       document.querySelector('body').classList.remove('ls-toggle-menu');
     }
 
-    this.leftToggleMenu = ! this.leftToggleMenu;
+    this.leftToggleMenu = !this.leftToggleMenu;
   }
 
   openItem(item: string): void {
-    if (this.activeMenu == item) {
-      this.activeMenu = "";
+    if (this.activeMenu === item) {
+      this.activeMenu = '';
     } else {
       this.activeMenu = item;
     }
+  }
+
+  hasPermissionOfPage(route: string): boolean {
+    let hasPermission = false;
+
+    this.pagesAndPermissions.forEach(page => {
+      if (page.route === route) {
+        hasPermission = true;
+      }
+    });
+
+    return hasPermission;
+  }
+
+  existPageInModule(module): boolean {
+    let existPageInModule = false;
+
+    this.pagesAndPermissions.forEach(page => {
+      page.modules.forEach(m => {
+        if (m.name === module) {
+          existPageInModule = true;
+        }
+      });
+    });
+
+    return existPageInModule;
   }
 
 }

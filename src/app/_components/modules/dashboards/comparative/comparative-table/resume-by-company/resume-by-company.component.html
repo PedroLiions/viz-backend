@@ -1,0 +1,19 @@
+
+
+<div class="card mb-0">
+  <div class="header">
+    <h2>
+      <strong>{{ 'resumo' | translate}}</strong> {{'por empresa' | translate}}
+    </h2>
+  </div>
+  <div class="body">
+    <app-table
+      [size]="'sm'"
+      [name]="'comparativeResumeByCompany1'"
+      [columnClasseConfig]="columnClasseConfig"
+      [classes]="tableClass"
+      [dataUrl]="dataUrl">
+      >
+    </app-table>
+  </div>
+</div>

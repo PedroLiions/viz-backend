@@ -16,7 +16,7 @@ export class DashboardsService {
   }
 
   public agents(): Observable<any> {
-    return this.http.get(`${this.API}/agents`);
+    return this.http.get(`${this.API}/agents/grapichs`);
   }
 
   public bestTime(): Observable<any> {

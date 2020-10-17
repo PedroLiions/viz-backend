@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {environment} from '../../../../../../environments/environment';
 
 declare var $: any;
 
@@ -9,77 +10,40 @@ declare var $: any;
 })
 export class HeatmapComponent implements OnInit {
 
-  data: any = [];
+  env = environment;
+
+  dataUrl = `${this.env.API}/dashboards/agents`;
+
+  tableClass = [];
+
+  columnClasseConfig: object;
+
+  tdCallback: Function;
 
   constructor() {
+    this.columnClasseConfig = {};
   }
 
   ngOnInit(): void {
-    this.data = {
-      count: 6,
-      items: [
-        {
-          id: 0,
-          name: 'Item 0',
-          price: '$0'
-        },
-        {
-          id: 1,
-          name: 'Item 1',
-          price: '$1'
-        },
-        {
-          id: 2,
-          name: 'Item 2',
-          price: '$2'
-        },
-        {
-          id: 3,
-          name: 'Item 3',
-          price: '$3'
-        },
-        {
-          id: 4,
-          name: 'Item 4',
-          price: '$4'
-        },
-        {
-          id: 5,
-          name: 'Item 5',
-          price: '$5'
-        }
-      ]
-    };
+    this.tdCallback = this.callBackTd.bind(this);
+  }
 
-    const bootstrapTableConfig = {
-      exportTypesx: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
-      pagination: false,
-      showColumns: false,
-      pageList: [10, 25, 100, 200],
-      showExport: true,
-      showToggle: false,
-      sortStable: true,
+  callBackTd(valueOfColumm): Array<string> {
+    const classes: Array<string> = [];
 
-      showFullscreen: true,
-      showPrint: true,
+    if (typeof valueOfColumm === 'number') {
+      if (valueOfColumm < 150) {
+        classes.push('bg-success');
+      } else if (valueOfColumm >= 150 && valueOfColumm < 300) {
+        classes.push('bg-warning');
+      } else if (valueOfColumm >= 300) {
+        classes.push('bg-danger');
+      }
+    }
 
-      dataField: 'items',
-      totalField: 'count',
-      sorting: true,
+    classes.push('text-dark');
 
-      search: false,
-      dataToggle: false,
-      cache: false,
-      // formatNoMatches: null,
-      // data: this.data,
-
-      sortable: true,
-    };
-
-    const $table = $('#table');
-
-    $table.bootstrapTable(bootstrapTableConfig);
-    $table.bootstrapTable('hideLoading');
+    return classes;
   }
 
 }

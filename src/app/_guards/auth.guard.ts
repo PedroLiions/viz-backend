@@ -15,12 +15,16 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
+    console.log('url navegada', state.url);
     return this.handle();
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
+
+    console.log('url navegada', state.url);
+
     return this.handle();
   }
 

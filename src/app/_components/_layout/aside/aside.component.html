@@ -30,7 +30,10 @@
             <span>{{'Início' | translate}}</span>
           </a>
         </li>
-        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <li
+          *ngIf="existPageInModule('dashboards')"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
           <a href="javascript:void(0);"
              class="toggled menu-toggle waves-effect waves-block"
              [ngClass]="{'toggled':activeMenu == 'dashboards'}"
@@ -40,50 +43,76 @@
             </i>
             <span>Dashboards</span>
           </a>
-          <ul class="ml-menu" [ngClass]="{'d-block':activeMenu == 'dashboards'}">
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <ul class="ml-menu"
+              [ngClass]="{'d-block':activeMenu == 'dashboards'}">
+
+            <li
+              *ngIf="hasPermissionOfPage('dashboards/agents')"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/agents" class="waves-effect waves-block">
                 <i class="material-icons">headset_mic</i>
                 {{'Agentes' | translate}}
               </a>
             </li>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li
+              *ngIf="hasPermissionOfPage('dashboards/best-time')"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/best-time" class="waves-effect waves-block">
                 <i class="material-icons">access_alarm</i>
                 Best time
               </a>
             </li>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li
+              *ngIf="hasPermissionOfPage('dashboards/comparative')"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/comparative" class="waves-effect waves-block">
                 <i class="material-icons">compare</i>
                 {{'Comparativo' | translate}}
               </a>
             </li>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li
+              *ngIf="hasPermissionOfPage('dashboards/daily')"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/daily" class="waves-effect waves-block">
                 <i class="material-icons">today</i>
                 {{'Diário' | translate}}
               </a>
             </li>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li
+              *ngIf="hasPermissionOfPage('dashboards/funnel')"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/funnel" class="waves-effect waves-block">
                 <i class="material-icons">filter_list</i>
                 {{'Funil' | translate}}
               </a>
             </li>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li
+              *ngIf="hasPermissionOfPage('dashboards/multi-channel')"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/multi-channel" class="waves-effect waves-block">
                 <i class="material-icons">device_hub</i>
                 {{'Multi Channel' | translate}}
               </a>
             </li>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li
+              *ngIf="hasPermissionOfPage('dashboards/portfolio')"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/portfolio" class="waves-effect waves-block">
                 <i class="material-icons">account_balance_wallet</i>
                 {{'Carteira' | translate}}
               </a>
             </li>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li
+              *ngIf="hasPermissionOfPage('dashboards/region')"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">
               <a routerLink="/dashboards/region" class="waves-effect waves-block">
                 <i class="material-icons">location_on</i>
                 {{'Região' | translate}}
@@ -91,6 +120,7 @@
             </li>
           </ul>
         </li>
+
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <a routerLink="/clients"
             class="waves-effect waves-block">
@@ -98,24 +128,7 @@
             <span>{{'Clients' | translate}}</span>
           </a>
         </li>
-        <li>
-          <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
-            <i class="material-icons">branding_watermark</i>
-            <span>{{'Modules' | translate}}</span>
-          </a>
-          <ul class="ml-menu">
-            <li>
-              <a class=" waves-effect waves-block">
-                <i class="material-icons">branding_watermark</i>Modules
-              </a>
-            </li>
-            <li>
-              <a href="/modules-groups" class=" waves-effect waves-block">
-                <i class="material-icons">apps</i>
-                Modules groups </a>
-            </li>
-          </ul>
-        </li>
+
         <li routerLinkActive="active">
           <a class="waves-effect waves-block" routerLink="/chats">
             <i class="material-icons">chat</i>
@@ -124,7 +137,38 @@
             </span>
           </a>
         </li>
+
+        <li>
+          <a href="javascript:void(0);"
+             [ngClass]="{'toggled':activeMenu == 'configurations'}"
+             class="menu-toggle waves-effect waves-block"
+             (click)="openItem('configurations')">
+            <i class="material-icons">branding_watermark</i>
+            <span>{{'Configurações' | translate}}</span>
+          </a>
+          <ul class="ml-menu"
+              [ngClass]="{'d-block':activeMenu == 'configurations'}">
+
+            <li
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">
+              <a
+                routerLink="/configurations/users"
+                class="waves-effect waves-block">
+                <i class="material-icons">branding_watermark</i> Usuários
+              </a>
+            </li>
+
+<!--            <li>-->
+<!--              <a href="/modules-groups" class=" waves-effect waves-block">-->
+<!--                <i class="material-icons">apps</i>-->
+<!--                Modules groups </a>-->
+<!--            </li>-->
+          </ul>
+        </li>
+
       </ul>
+
       <div class="slimScrollBar"
            style="background: rgb(238, 238, 238); width: 1px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 3px; z-index: 99; right: 1px; height: 668px;"></div>
       <div class="slimScrollRail"

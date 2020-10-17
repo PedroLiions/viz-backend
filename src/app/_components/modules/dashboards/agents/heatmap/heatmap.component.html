@@ -1,46 +1,20 @@
 <div>
   <div class="card">
     <div class="header">
-      <h2><strong>Agents</strong> heatmap</h2>
+      <h2><strong>{{ 'Agentes' | translate }}</strong> heatmap</h2>
     </div> <!-- header -->
+
     <div class="body">
-      <div class="table-responsive">
-        <div class="bootstrap-table bootstrap4">
-          <table id="table" class="table-sm table-striped">
-
-            <thead>
-            <tr>
-              <th data-field="id"
-                  data-sortable="true"
-                  data-title="Item-ID"></th>
-              <th data-field="name"
-
-                  data-title="other title"></th>
-              <th data-field="price"
-              >Preço</th>
-            </tr>
-            </thead>
+      <app-table
+        [name]="'tabelaAgentsHeatmap'"
+        [callbackClassOfTd]="tdCallback"
+        [classes]="tableClass"
+        [columnClasseConfig]="columnClasseConfig"
+        [dataUrl]="dataUrl">
+      </app-table>
+    </div>
 
 
-            <tr *ngFor="let item of data.items">
-              <td
-                data-field="id">
-                {{item.id}}
-              </td>
-              <td
-                data-field="name">
-                {{item.name}}
-              </td>
-              <td
-                data-field="price">
-                {{item.price}}
-              </td>
-            </tr>
-
-          </table>
-        </div>
-      </div>
-    </div> <!-- body -->
   </div> <!-- card -->
 </div> <!-- div -->
 

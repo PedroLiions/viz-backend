@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-12">
+
+    <div class="card m-b-0">
+
+      <div class="header">
+        <h2><strong>{{ 'LISTA DE'| translate}}</strong> {{ 'FERIADOS' | translate }}</h2>
+      </div>
+
+      <div class="body">
+
+        <app-table
+          [dataUrl]="dataUrl"
+          [name]="'tableRState'">
+        </app-table>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

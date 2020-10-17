@@ -8,55 +8,38 @@ import {environment} from '../../../../../environments/environment';
 })
 export class PortfolioComponent implements OnInit {
 
-  public columns: Array<string>;
-  public body: Array<object>;
-  public columnClasseConfig: object;
-  public tableClass: Array<string>;
-  public dataUrl: string;
+  dataUrlFinancialPortfolio = `${environment.API}/dashboards/portfolio/resume-financial-portfolio`;
 
-  public tdCallback: Function;
+  dataUrlResumeByContracts = `${environment.API}/dashboards/portfolio/resume-by-contracts`;
 
-  constructor() {
+  callBackfinancialPortfolio: Function;
 
-    this.columnClasseConfig = {
-      'Contratos': 'bg-viz-gray',
-      'Indicador': 'text-dark',
-      // 'Agnt logados': 'bg-viz-dark',
-      'Tentativas': 'bg-viz-red',
-      'Tent/ Agnt': 'bg-viz-red-dark',
-      '%Hit rate': 'bg-caramel-dark',
-      'Atendidas': 'bg-caramel',
-      'CPC': 'bg-ocean-light',
-      'CPC/ Agnt': 'bg-esmerald-dark',
-      'CPC/ Atend': 'bg-esmerald-dark',
-      'CPCA': 'bg-green-light',
-      'CPCA /Agnt': 'bg-green-dark',
-      'CPCA /Atend': 'bg-green-dark',
-      'Negociações': 'bg-blue-light',
-      'Negoc /Agnt': 'bg-blue-marine',
-      'Negoc /Tent': 'bg-blue-marine',
-      'Negoc /Atend': 'bg-blue-marine',
-      'Negoc /CPC': 'bg-blue-marine',
-      'Negoc /CPCA': 'bg-blue-marine',
-      '%Improd': 'bg-orange',
-      '%Linha muda': 'bg-orange-dark',
-      '%Voz máquina': 'bg-orange-dark',
-      'Spin rate': 'text-dark',
-      '%Incorreto': 'text-dark',
-    };
+  CallbackResumeByContracts: Function;
 
-
-
-    this.tableClass = ['table-costumized'];
-
-    this.dataUrl = `${environment.API}/dashboards/portfolio`;
-  }
+  constructor() {}
 
   ngOnInit(): void {
-    this.tdCallback = this.callBackTd.bind(this);
+    this.callBackfinancialPortfolio = this.tdCallBackfinancialPortfolio.bind(this);
+    this.CallbackResumeByContracts = this.tdCallbackResumeByContracts.bind(this);
   }
 
-  callBackTd(valueOfColumm): Array<string> {
+  tdCallBackfinancialPortfolio(valueOfColumm: any, row, line): Array<string> {
+    if (typeof line === 'number' && line === 1) {
+      return ['font-weight-bold'];
+    }
+
+    if (valueOfColumm === 'TOTAL') {
+      return ['bg-deep-agents-2', 'text-white'];
+    }
+
+    return [''];
+  }
+
+  tdCallbackResumeByContracts(valueOfColumm: any, row, line) {
+    if (valueOfColumm === 'TOTAL') {
+      return ['bg-deep-agents-2', 'text-white'];
+    }
+
     return [''];
   }
 

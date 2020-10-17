@@ -1,0 +1,116 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="modalEditUserLabel">
+      Editar
+    </h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="user-profile" data-toggle="tab" href="#user-profile-tab" role="tab">
+          Informações
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="permissions" data-toggle="tab" href="#user-permissions-tab">
+          Permissões
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="user-profile-tab" >
+
+        <form action="" class="row mt-2" *ngIf="user">
+
+          <div class="col-12 col-xl-6">
+            <label for="">Nome</label>
+            <input type="text" class="form-control" [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}">
+
+          </div>
+
+          <div class="form-group col-12 col-xl-6">
+            <label for="">Email</label>
+            <input type="text" class="form-control" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
+          </div>
+
+          <div class="col-12 col-xl-6">
+            <label for="">Senha</label>
+            <input type="text" class="form-control">
+          </div>
+
+        </form>
+
+        <div *ngIf="! user">
+          <i>Carregando...</i>
+        </div>
+
+      </div>
+      <div class="tab-pane fade" id="user-permissions-tab">
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>
+              #
+            </th>
+            <th>
+              Página
+            </th>
+            <th>
+              Criar
+            </th>
+            <th>
+              Visualizar
+            </th>
+            <th>
+              Editar
+            </th>
+            <th>
+              Deletar
+            </th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let page of pages; let i = index">
+            <td>
+              {{ page.page_id }} <i class="fa fa-info" [title]="page.route"></i>
+            </td>
+            <td>
+              {{ page.name }}
+            </td>
+            <td>
+              <input type="checkbox" [(ngModel)]="pages[i].create">
+            </td>
+            <td>
+              <input type="checkbox" [(ngModel)]="pages[i].read">
+            </td>
+            <td>
+              <input type="checkbox" [(ngModel)]="pages[i].update">
+            </td>
+            <td>
+              <input type="checkbox" [(ngModel)]="pages[i].delete">
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+      Cancelar
+    </button>
+    <button type="button" class="btn btn-primary" (click)="updatePermissions()">
+      Salvar
+    </button>
+  </div>
+</div>

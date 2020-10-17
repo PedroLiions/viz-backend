@@ -49,3 +49,11 @@ h6 {
   overflow: hidden;
 }
 
+.text-total {
+  color: white;
+}
+.theme-dark {
+  .text-total {
+    color: white;
+  }
+}

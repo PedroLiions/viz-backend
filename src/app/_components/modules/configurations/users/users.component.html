@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-12">
+
+    <div class="card">
+      <div class="header">
+        <h2>
+          <strong>Usuários</strong>
+        </h2>
+      </div>
+
+      <div class="body">
+        <table class="table">
+
+          <thead>
+          <tr>
+            <th>
+              #ID
+            </th>
+            <th>
+              Nome
+            </th>
+            <th>
+              E-mail
+            </th>
+            <th>
+              {{ 'Opções' | translate }}
+            </th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td>
+              {{ user.id }}
+            </td>
+            <td>
+              {{ user.name }}
+            </td>
+            <td>
+              {{ user.email }}
+            </td>
+            <td>
+              <!-- Button trigger modal -->
+              <button
+                (click)="setUserInModal(i)"
+                class="btn btn-sm btn-primary"
+                data-toggle="modal"
+                data-target="#modalEditUser">
+                Editar
+              </button>
+              <button class="btn btn-sm btn-danger">
+                Excluir
+              </button>
+            </td>
+          </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalEditUser">
+  <div class="modal-dialog modal-lg" role="document">
+    <app-pages *ngIf="userIdInModal" [userLoad]="userIdInModal"></app-pages>
+  </div>
+</div>

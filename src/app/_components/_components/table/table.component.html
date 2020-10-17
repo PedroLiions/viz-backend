@@ -5,7 +5,7 @@
 
       <div class="dropdown">
         <button class="dropbtn btn btn-sm btn-link">
-          <i class="fa fa-th-list"></i>
+          <i class="fa fa-download" aria-hidden="true"></i>
           <span class="caret"></span>
         </button>
 
@@ -25,22 +25,48 @@
         </div>
       </div>
 
-      <div class="dropdown">
+      <div class="dropdown" *ngIf="tableType === 'normal'">
         <button class="dropbtn btn btn-sm btn-sm btn-link">
-          <i class="fa fa-download" aria-hidden="true"></i>
+          <i class="fa fa-th-list"></i>
         </button>
         <div class="dropdown-content">
-          <a href="#">
-            <input type="checkbox" checked [id]="'markAllColumns' + name"
-                   (change)="markAllColumns()">
+          <a href="javascript:void(0)"
+             (click)="markAllColumns()">
+            Marcar todos
+          </a>
+          <hr class="my-1">
+          <a *ngFor="let column of objectKeys(columns[0]); let i = index;"
+             class="dropdown-item">
+            <label class="d-flex align-items-center">
+              <input type="checkbox"
+                     [checked]="! existClasse(column, 'd-none')"
+                     (click)="toggleColumnClasse(column, 'd-none')">
+              <span class="ml-1">{{ column }}</span>
+            </label>
+          </a>
+        </div>
+      </div>
+
+      <div class="dropdown" *ngIf="tableType === 'transpose'">
+        <button class="dropbtn btn btn-sm btn-sm btn-link">
+          <i class="fa fa-th-list"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="javascript:void(0)"
+             (click)="markAllColumns()">
             Marcar todos
           </a>
           <hr>
-          <a *ngFor="let column of objectKeys(columns[0]); let i = index;"
+          <a *ngFor="let column of tHeadColumnTranspose; let i = index;"
              class="dropdown-item">
-            <input type="checkbox" checked [id]="'checkToggleColumn' + i"
-                   (change)="toggleColumnClasse(column, 'd-none')">
-            <label [for]="'checkToggleColumn' + i">{{ column }}</label>
+            <label>
+              <input type="checkbox"
+                     [checked]="! existClasse(column, 'd-none')"
+                     (click)="toggleColumnClasse(column, 'd-none')">
+              <span class="ml-1">
+                {{ column }}
+              </span>
+            </label>
           </a>
         </div>
       </div>
@@ -50,21 +76,23 @@
         <i class="fa fa-print"></i>
       </button>
 
+
+      <button (click)="setTranspose(null)" class="btn btn-link btn-sm">
+        <i class="fa fa-retweet"></i>
+      </button>
+
       <button (click)="fullScreen()"
               class="btn btn-sm btn-link" type="button">
         <i class="fa fa-arrows-alt"></i>
       </button>
 
-      <button (click)="transpose()" class="btn btn-link btn-sm">
-        <i class="fa fa-retweet"></i>
-      </button>
-
-
     </div>
   </div>
+
   <div class="table-responsive">
-    <table class="table table-sm table-striped rtable rtable--flip"
+    <table class="table table-sm table-striped"
            [id]="name"
+           *ngIf="tableType === 'normal'"
            [ngClass]="classes">
 
       <thead *ngIf="columns">
@@ -90,7 +118,50 @@
         *ngFor="let column of columns; let c = index">
 
         <td *ngFor="let td of objectValues(column); let i = index"
-            [ngClass]="getColumnClasses(objectKeys(column)[i]).concat(callbackClassOfTd(td))"
+            [ngClass]="getColumnClasses(objectKeys(column)[i]).concat(callbackClassOfTd(td, c, i))"
+            [ngStyle]="callbackStyleTd(td)"
+            [attr.data-oddeven]="getRel(c)"
+            [attr.data-value]="td"
+        >
+          {{ td | translate }}
+        </td>
+
+      </tr>
+      </tbody>
+
+    </table>
+
+    <table class="table table-sm table-striped table-transpose"
+           [id]="name"
+            *ngIf="tableType === 'transpose'"
+           [ngClass]="classes">
+
+      <thead *ngIf="columnsTranpose">
+      <tr>
+        <th
+          *ngFor="let tHead of tHeadColumnTranspose; let c = index"
+          [ngClass]="getRowTransposeClass(c, tHeadColumnTranspose).concat(getColumnClasses(tHead, 'transpose').concat(callbackClassOfTd(tHead, c, null)))"
+          [attr.data-oddeven]="getRel(c)"
+          (click)="setOrderBy(tHead)">
+          <div>
+            <div class="d-block table-caret">
+              <i *ngIf="caretInView(tHead) == 'down' || caretInView(tHead) == 'both'" class="fa fa-caret-up"></i>
+              <i *ngIf="caretInView(tHead) == 'up' || caretInView(tHead) == 'both'" class="fa fa-caret-down"></i>
+            </div>
+            <div class="d-block">{{ tHead | translate }}</div>
+          </div>
+        </th>
+
+      </tr>
+      </thead>
+
+      <tbody *ngIf="columns">
+      <tr
+        *ngFor="let column of columnsTranpose; let c = index"
+        [ngClass]="getRowTransposeClass(c, objectValues(column))">
+
+        <td *ngFor="let td of objectValues(column); let i = index"
+            [ngClass]="getColumnClasses(tHeadColumnTranspose[i], 'transpose').concat(callbackClassOfTd(td, c, i))"
             [ngStyle]="callbackStyleTd(td)"
             [attr.data-oddeven]="getRel(c)"
             [attr.data-value]="td"
@@ -105,27 +176,27 @@
 
   </div>
 
-  <nav class="d-flex justify-content-end mt-2">
-    <ul class="pagination">
-      <li class="page-item">
-        <button class="page-link" (click)="getDataPage(this.currentPage - 1)">
-          <span>&raquo;</span>
-          <span class="sr-only">Next</span>
-        </button>
-      </li>
-      <li class="page-item"
-          [ngClass]="{active: currentPage == (i + 1)}"
-          *ngFor="let page of this.pages; let i = index;">
-        <button class="page-link" href="#" (click)="getDataPage(i+1)" type="button">
-          {{ i + 1 }}
-        </button>
-      </li>
-      <li class="page-item">
-        <button class="page-link" (click)="getDataPage(this.currentPage + 1)">
-          <span>&raquo;</span>
-          <span class="sr-only">Next</span>
-        </button>
-      </li>
-    </ul>
-  </nav>
+<!--  <nav class="d-flex justify-content-end mt-2">-->
+<!--    <ul class="pagination">-->
+<!--      <li class="page-item">-->
+<!--        <button class="page-link" (click)="getDataPage(this.currentPage - 1)">-->
+<!--          <span>&raquo;</span>-->
+<!--          <span class="sr-only">Next</span>-->
+<!--        </button>-->
+<!--      </li>-->
+<!--      <li class="page-item"-->
+<!--          [ngClass]="{active: currentPage == (i + 1)}"-->
+<!--          *ngFor="let page of this.pages; let i = index;">-->
+<!--        <button class="page-link" href="#" (click)="getDataPage(i+1)" type="button">-->
+<!--          {{ i + 1 }}-->
+<!--        </button>-->
+<!--      </li>-->
+<!--      <li class="page-item">-->
+<!--        <button class="page-link" (click)="getDataPage(this.currentPage + 1)">-->
+<!--          <span>&raquo;</span>-->
+<!--          <span class="sr-only">Next</span>-->
+<!--        </button>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </nav>-->
 </div>

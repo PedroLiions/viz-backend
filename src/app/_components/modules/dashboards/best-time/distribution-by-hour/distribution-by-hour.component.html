@@ -1,0 +1,22 @@
+<div>
+  <div class="card">
+    <div class="header">
+      <h2><strong>DISTRIBUIÇÃO DAS OCORRÊNCIAS</strong> POR AGENTES</h2>
+    </div> <!-- header -->
+
+    <div class="body">
+      <app-table
+        [name]="'distributionByOcurrence'"
+        [classes]="tableClass"
+        [columnClasseConfig]="columnClasseConfig"
+        [callbackClassOfTd]="tdCallback"
+        [dataUrl]="dataUrl">
+      </app-table>
+    </div>
+
+
+  </div> <!-- card -->
+</div> <!-- div -->
+
+
+

@@ -1,4 +1,13 @@
 export const environment = {
   production: true,
-  API: 'http://127.0.0.1:8000/api'
+  API: 'http://vizapi.plima.me/api',
+  jwt: {
+    allowedDomains: [
+      'vizapi.plima.me'
+    ],
+    disallowedRoutes: [
+      'vizapi.plima.me/api/auth/login',
+      'vizapi.plima.me/api/auth/register',
+    ]
+  }
 };
