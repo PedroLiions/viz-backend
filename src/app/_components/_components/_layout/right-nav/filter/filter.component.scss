@@ -1,0 +1,10 @@
+.draggable {
+  touch-action: none;
+  user-select: none;
+
+  min-width: 700px;
+  max-height: 500px;
+  overflow-y: scroll;
+
+  resize: both;
+}

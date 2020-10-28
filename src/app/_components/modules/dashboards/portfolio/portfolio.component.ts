@@ -29,7 +29,7 @@ export class PortfolioComponent implements OnInit {
     }
 
     if (valueOfColumm === 'TOTAL') {
-      return ['bg-deep-agents-2', 'text-white'];
+      return ['bg-deep-agents-2', 'text-total'];
     }
 
     return [''];
@@ -37,7 +37,7 @@ export class PortfolioComponent implements OnInit {
 
   tdCallbackResumeByContracts(valueOfColumm: any, row, line) {
     if (valueOfColumm === 'TOTAL') {
-      return ['bg-deep-agents-2', 'text-white'];
+      return ['bg-deep-agents-2', 'text-total'];
     }
 
     return [''];

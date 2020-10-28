@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DashboardsService} from '../../../../../_services/http/dashboards/dashboards.service';
 
 import * as am4core from '@amcharts/amcharts4/core';
@@ -13,7 +13,7 @@ import am4geodata_brazilLow from '@amcharts/amcharts4-geodata/brazilLow';
   templateUrl: './graphics.component.html',
   styleUrls: ['./graphics.component.scss']
 })
-export class GraphicsComponent implements OnInit {
+export class GraphicsComponent implements OnInit, OnDestroy {
 
   data: any;
 
@@ -224,6 +224,26 @@ export class GraphicsComponent implements OnInit {
     for (let i = 0; i < data.length; i++) {
       const polygon = circleSeries.mapPolygons.create();
       polygon.multiPolygon = am4maps.getCircle(data[i].longitude, data[i].latitude, Math.max(0.2, Math.log(data[i].total) * Math.LN10 / 10));
+    }
+  }
+
+
+  ngOnDestroy(): void {
+    try {
+      this.totalTriggers.dispose();
+    } catch (e) {
+    }
+    try {
+      this.bestCPCFixedMobile.dispose();
+    } catch (e) {
+    }
+    try {
+      this.perfilMobileFixed.dispose();
+    } catch (e) {
+    }
+    try {
+      this.distributionByState.dispose();
+    } catch (e) {
     }
   }
 

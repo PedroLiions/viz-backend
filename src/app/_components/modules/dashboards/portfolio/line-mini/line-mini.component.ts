@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DashboardsService} from '../../../../../_services/http/dashboards/dashboards.service';
 
 import * as am4core from '@amcharts/amcharts4/core';
@@ -10,7 +10,7 @@ import am4themes_animated from '@amcharts/amcharts4/themes/animated';
   templateUrl: './line-mini.component.html',
   styleUrls: ['./line-mini.component.scss']
 })
-export class LineMiniComponent implements OnInit {
+export class LineMiniComponent implements OnInit, OnDestroy {
 
   data: any;
 
@@ -31,7 +31,7 @@ export class LineMiniComponent implements OnInit {
       this.mountLineMini('mini-mobile', 'date', 'total', 'miniMobile', '#9988FF');
       this.mountLineMini('mini-cpc', 'date', 'total', 'miniCPC', '#17BABF');
       this.mountLineMini('mini-deals', 'date', 'total', 'miniDeals', '#41719C');
-      this.mountLineMini('mini-hit-rate', 'date', 'total', 'miniHitRate','#BF9000');
+      this.mountLineMini('mini-hit-rate', 'date', 'total', 'miniHitRate', '#BF9000');
       this.mountLineMini('mini-not-found', 'date', 'total', 'miniNotFound', '#4526FE');
       this.mountLineMini('mini-improductive', 'date', 'total', 'miniImproductive', '#C35809');
       this.mountLineMini('mini-logged', 'date', 'total', 'miniLogged', '#8C8C8C');
@@ -91,7 +91,7 @@ export class LineMiniComponent implements OnInit {
     this.lineMini[objName].data = this.data.data[dataKey];
   }
 
-  mountRange (objName, category, value, dataKey) {
+  mountRange(objName, category, value, dataKey) {
     this.ranges[objName] = am4core.create(objName, am4charts.XYChart);
     this.ranges[objName].paddingRight = 0;
     this.ranges[objName].paddingLeft = 0;
@@ -129,9 +129,26 @@ export class LineMiniComponent implements OnInit {
     series.columns.template.strokeWidth = 1;
     series.columns.template.column.fill = gradient;
     series.columns.template.stroke = am4core.color('#E61857');
-    series.columns.template.tooltipText = "{valueY.value}";
+    series.columns.template.tooltipText = '{valueY.value}';
 
     this.ranges[objName].data = this.data.data[dataKey];
+  }
+
+  ngOnDestroy(): void {
+    for (const [key, value] of Object.entries(this.lineMini)) {
+      try {
+        this.lineMini[key].dispose();
+      } catch (e) {
+      }
+    }
+
+    for (const [key, value] of Object.entries(this.ranges)) {
+      try {
+        this.ranges[key].dispose();
+      } catch (e) {
+
+      }
+    }
   }
 
 

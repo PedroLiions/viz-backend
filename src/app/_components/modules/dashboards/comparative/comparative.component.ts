@@ -14,8 +14,6 @@ export class ComparativeComponent implements OnInit, OnDestroy {
 
   public data: any;
 
-  resumeByCompany: Array<object> = [];
-
   public subscriptions: Array<Subscription> = [];
 
   constructor(

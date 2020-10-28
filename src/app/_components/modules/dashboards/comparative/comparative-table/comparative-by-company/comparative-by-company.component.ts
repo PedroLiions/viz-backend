@@ -12,12 +12,16 @@ export class ComparativeByCompanyComponent implements OnInit {
 
   public tableClass: Array<string> = [];
 
+  callbackTable: Function;
+
   public dataUrl = `${environment.API}/dashboards/comparative/comparative-by-company`;
 
   constructor() {
   }
 
   ngOnInit(): void {
+
+    this.callbackTable = this.callbackTableTotal.bind(this);
 
     this.columnClasseConfig = {
       'Contratos': 'bg-viz-gray',
@@ -43,6 +47,17 @@ export class ComparativeByCompanyComponent implements OnInit {
       '%Voz de máquina': 'bg-viz-orange-900',
       'Spin rate': ''
     };
+  }
+
+  callbackTableTotal(valueOfColumm, row, line): Array<string> {
+    if (
+      typeof valueOfColumm !== 'string'
+      && valueOfColumm !== 'TOTAL'
+    ) {
+      return [];
+    }
+
+    return ['text-total'];
   }
 
 }

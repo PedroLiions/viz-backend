@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {environment} from '../../../../../../environments/environment';
+import {CallbackTrTdService} from '../../../../_components/table/services/callback-tr-td.service';
 
 @Component({
   selector: 'app-table-city-state',
@@ -13,9 +14,11 @@ export class TableCityStateComponent implements OnInit {
 
   columnClasseConfig = {};
 
-  callbackTable: Function
+  callbackTable: Function;
 
-  constructor() {
+  constructor(
+    private callbackTrTdService: CallbackTrTdService
+  ) {
   }
 
   ngOnInit(): void {
@@ -36,16 +39,7 @@ export class TableCityStateComponent implements OnInit {
   }
 
   callBackTD(valueOfColumn, row, line): Array<string> {
-    if (valueOfColumn === 'TOTAL') {
-      return ['bg-gray', 'text-white'];
-    }
-
-    if (row === 0 && line > 0) {
-      return ['font-weight-bold'];
-    }
-
-
-    return [];
+    return this.callbackTrTdService.setBoldTotalAndFirstLine(valueOfColumn, row, line);
   }
 
 }

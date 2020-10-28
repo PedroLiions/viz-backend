@@ -1,0 +1,30 @@
+/* Text */
+.text-hidden {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.text-total {
+  color: white;
+  font-weight: bold !important;
+}
+.theme-dark {
+  .text-total {
+    color: white;
+  }
+}
+
+//font
+h6 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+
+.body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h6 {
+  font-size: 12px;
+}

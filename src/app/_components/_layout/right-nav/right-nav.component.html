@@ -3,22 +3,28 @@
     <li>
       <a title="Search" href="#search"
          (click)="toggleSearch()"
-         class="main_search">
+         class="main_search a-icon">
         <i class="material-icons">
           search
         </i>
       </a>
     </li> <!-- li -->
+
+    <app-filter
+      *ngIf="enableFilter()"
+      class="dropdown d-flex justify-content-center"></app-filter>
+
     <li class="dropdown">
       <a title="Change language"
          data-toggle="dropdown"
          href="javascript:void(0);"
          role="button"
-         class="dropdown-toggle">
+         class="dropdown-toggle a-icon">
         <i class="material-icons">
           translate
         </i>
       </a>
+
       <ul class="dropdown-menu slideUp2">
         <li class="header">{{'Idioma' | translate}}</li>
         <li class="body">
@@ -45,23 +51,33 @@
         </li>
       </ul>
     </li>
+
     <li>
-      <a (click)="toggleNightMode()" title="Change theme" href="javascript: void(0)" rel="change-theme-color">
+      <a (click)="toggleNightMode()"
+         title="Change theme"
+         href="javascript: void(0)"
+         rel="change-theme-color"
+         class="a-icon">
         <i class="material-icons">
           settings_brightness
         </i>
       </a>
     </li>
     <li>
-      <a title="Change RTL" href="javascript: void(0)"
-         (click)="toggleRtl()">
+      <a title="Change RTL" h
+         ref="javascript: void(0)"
+         (click)="toggleRtl()"
+         class="a-icon">
         <i class="material-icons">
           format_align_right
         </i>
       </a>
     </li>
     <li>
-      <a title="Logout" href="javascript: void(0)" (click)="logout()">
+      <a title="Logout"
+         href="javascript: void(0)"
+         (click)="logout()"
+         class="a-icon">
         <i class="material-icons">
           power_settings_new
         </i>

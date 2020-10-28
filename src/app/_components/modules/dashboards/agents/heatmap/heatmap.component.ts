@@ -31,17 +31,20 @@ export class HeatmapComponent implements OnInit {
   callBackTd(valueOfColumm): Array<string> {
     const classes: Array<string> = [];
 
-    if (typeof valueOfColumm === 'number') {
-      if (valueOfColumm < 150) {
-        classes.push('bg-success');
-      } else if (valueOfColumm >= 150 && valueOfColumm < 300) {
-        classes.push('bg-warning');
-      } else if (valueOfColumm >= 300) {
-        classes.push('bg-danger');
-      }
+    if (typeof valueOfColumm !== 'number') {
+      return classes;
     }
 
-    classes.push('text-dark');
+    if (valueOfColumm < 150) {
+      classes.push('bg-success');
+      classes.push('text-dark');
+    } else if (valueOfColumm >= 150 && valueOfColumm < 300) {
+      classes.push('text-dark');
+      classes.push('bg-warning');
+    } else if (valueOfColumm >= 300) {
+      classes.push('text-dark');
+      classes.push('bg-danger');
+    }
 
     return classes;
   }

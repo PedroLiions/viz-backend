@@ -99,6 +99,9 @@ export class BestTimeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    for (const [key, value] of Object.entries(this.indicatorsByHour)) {
+      this.indicatorsByHour[key].dispose();
+    }
   }
 
 

@@ -1,4 +1,12 @@
-import {AfterViewInit, ChangeDetectorRef, Component, NgZone, OnInit, ViewEncapsulation} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  NgZone,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
+
 import {DashboardsService} from '../../../../../_services/http/dashboards/dashboards.service';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
@@ -13,7 +21,7 @@ am4core.useTheme(am4themes_animated);
   templateUrl: './widget1.component.html',
   styleUrls: ['./widget1.component.scss']
 })
-export class Widget1Component implements OnInit, AfterViewInit {
+export class Widget1Component implements OnInit, AfterViewInit, OnDestroy {
 
   private chart: am4charts.XYChart;
 
@@ -131,6 +139,12 @@ export class Widget1Component implements OnInit, AfterViewInit {
     this.details[objName].cursor.lineY.strokeWidth = 2;
 
     this.details[objName].data = this.data[dataKey];
+  }
+
+  ngOnDestroy(): void {
+    for (const [key, value] of Object.entries(this.details)) {
+      this.details[key].dispose();
+    }
   }
 
 }

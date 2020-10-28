@@ -24,4 +24,8 @@ export class UsersService {
   updateUser(userId: number, fields: any): Observable<any> {
     return this.http.put(`${environment.API}/users/${userId}`, fields);
   }
+
+  deleteUser(userId: number): Observable<any> {
+    return this.http.delete(`${environment.API}/users/${userId}`);
+  }
 }

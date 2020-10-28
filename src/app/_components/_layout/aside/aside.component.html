@@ -142,6 +142,7 @@
           <a href="javascript:void(0);"
              [ngClass]="{'toggled':activeMenu == 'configurations'}"
              class="menu-toggle waves-effect waves-block"
+             *ngIf="existPageInModule('configurations')"
              (click)="openItem('configurations')">
             <i class="material-icons">branding_watermark</i>
             <span>{{'Configurações' | translate}}</span>
@@ -150,6 +151,7 @@
               [ngClass]="{'d-block':activeMenu == 'configurations'}">
 
             <li
+              *ngIf="hasPermissionOfPage('configurations/users')"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{exact: true}">
               <a

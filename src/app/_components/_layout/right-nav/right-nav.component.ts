@@ -3,7 +3,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {AuthenticationService} from '../../../_services/authentication.service';
 
 import Swal from 'sweetalert2';
-import {Router} from '@angular/router';
+import {NavigationStart, Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-right-nav',
@@ -16,6 +17,10 @@ export class RightNavComponent implements OnInit {
   public searchToggle = true;
   public rtlToggle = false;
 
+  public interact: any;
+
+  public route: string;
+
   constructor(
     private languageService: TranslateService,
     private authService: AuthenticationService,
@@ -24,6 +29,8 @@ export class RightNavComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route = window.location.pathname;
+
     this.isNightMode = localStorage.getItem('isNightMode');
     this.rtlToggle = !(localStorage.getItem('rtlToggle'));
 
@@ -32,6 +39,20 @@ export class RightNavComponent implements OnInit {
     } else {
       document.querySelector('body').classList.remove('theme-dark');
     }
+
+    this.subsRoute();
+  }
+
+  enableFilter(): boolean {
+    return (this.route.indexOf('dashboards') > -1);
+  }
+
+  subsRoute(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.route = event.url;
+      }
+    });
   }
 
   changeLang(lang): void {
@@ -39,7 +60,7 @@ export class RightNavComponent implements OnInit {
   }
 
   toggleNightMode(): void {
-    if (! this.isNightMode) {
+    if (!this.isNightMode) {
       document.querySelector('body').classList.add('theme-dark');
       localStorage.setItem('isNightMode', 'true');
     } else {

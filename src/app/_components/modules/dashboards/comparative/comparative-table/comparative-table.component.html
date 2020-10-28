@@ -1,14 +1,90 @@
-<div class="card m-b-0">
-  <div class="header" style="padding-top: 12px;">
-    <button class="btn btn-sm btn-deep-deals mr-1">{{ "Empresa" | translate }}</button>
-    <button class="btn btn-sm btn-default mr-1">{{ "Hora" | translate }}</button>
-    <button class="btn btn-sm btn-default mr-1">{{ "Mês" | translate }}</button>
-    <button class="btn btn-sm btn-default mr-1">{{ "Diário" | translate }}</button>
-    <button class="btn btn-sm btn-default mr-1">{{ "Hora" | translate }} a hora</button>
-    <button class="btn btn-sm btn-default mr-1">{{ "Carteira" | translate }}</button>
-    <button class="btn btn-sm btn-default mr-1">{{ "Degrau" | translate }}</button>
+<div>
+
+  <div class="tab-btns card">
+
+    <div class="header">
+      <ul class="nav nav-pills">
+
+        <li class="nav-item">
+          <a href="#company-pill"
+             data-toggle="pill"
+             class="btn btn-sm btn-blue active">
+            {{ "Empresa" | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#hour-pill"
+             data-toggle="pill"
+             class="btn btn-sm btn-blue">
+            {{ "Hora" | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#month-pill"
+             data-toggle="pill"
+             class="btn btn-sm btn-blue">
+            {{ "Mês" | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#daily-pill"
+             data-toggle="pill"
+             class="btn btn-sm btn-blue">
+            {{ "Diário" | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#hour-by-hour-pill"
+             data-toggle="pill"
+             class="btn btn-sm btn-blue">
+            {{ "Hora" | translate }} a {{ 'hora' }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#portfolio-pill"
+             data-toggle="pill"
+             class="btn btn-sm btn-blue">
+            {{ "Carteira" | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#step-pill"
+             data-toggle="pill"
+             class="btn btn-sm btn-blue">
+            {{ "Degrau" | translate }}
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="">
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane show active" id="company-pill">
+          <app-comparative-by-company></app-comparative-by-company>
+        </div>
+        <div class="tab-pane" id="hour-pill">
+          Hora
+        </div>
+        <div class="tab-pane" id="month-pill">
+          Mês
+        </div>
+        <div class="tab-pane" id="daily-pill">
+          Diário
+        </div>
+        <div class="tab-pane" id="hour-by-hour-pill">
+          Hora a hora
+        </div>
+        <div class="tab-pane" id="portfolio-pill">
+          Carteira
+        </div>
+        <div class="tab-pane" id="step-pill">
+          Degrau
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <app-comparative-by-company></app-comparative-by-company>
 
-</div> <!-- card -->
+</div>

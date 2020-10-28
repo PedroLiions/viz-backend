@@ -1,0 +1,365 @@
+<a title="Change language"
+   data-toggle="dropdown"
+   href="javascript:void(0);"
+   role="button"
+   class="dropdown-toggle a-icon">
+  <i class="material-icons">
+    filter_alt
+  </i>
+</a>
+
+<div class="dropdown-menu draggable">
+  <li class="header d-flex justify-content-between">
+    <span>
+      {{'Filtros Ativos' | translate}}
+    </span>
+    <span>
+      <button
+        *ngIf="! enabled"
+        (click)="draggable()">
+        <fa-icon [icon]="faGripVertical"></fa-icon>
+      </button>
+
+      <button
+        *ngIf="enabled"
+        (click)="setInitialPosition()">
+        <fa-icon [icon]="faAnchor"></fa-icon>
+      </button>
+    </span>
+  </li>
+
+  <div
+    *ngIf="inRoute === '/dashboards/agents' || inRoute === '/dashboards/best-time' || inRoute === '/dashboards/comparative'"
+    class="row p-2">
+    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
+      <div>Empresa</div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> A1 </label></div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> Crc </label></div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> Paschoalotto </label></div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> System </label></div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
+      <div>Hora</div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> 8 </label></div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> 9 </label></div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> 10 </label></div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> 11 </label></div>
+    </div>
+  </div>
+
+  <div *ngIf="inRoute === '/dashboards/daily'"
+       class="row p-2">
+
+    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
+      <div>Empresa</div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> BELLINATI </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> FLEX </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> DNR </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> FATTOR </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> INTERVALOR </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> LEAL </label>
+      </div>
+    </div> <!-- col-12 col-md-6 col-xl-3 d-flex flex-column -->
+
+    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
+      <div>Tipo de atendimento</div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Humano </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Digital </label>
+      </div>
+    </div> <!-- col-12 col-md-6 col-xl-3 d-flex flex-column -->
+
+    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
+      <div>
+        Mês
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Janeiro </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Fevereiro </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Março </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Abril </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Maio </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Junho </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Julho </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Agosto </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Setembro </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Outubro </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Novembro </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> Dezembro </label>
+      </div>
+    </div> <!-- col-12 col-md-6 col-xl-3 d-flex flex-column -->
+
+
+    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
+      <div>
+        Dia
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 1 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 2 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 3 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 4 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 5 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 6 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 7 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 8 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 9 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 10 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 11 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 12 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 13 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 14 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 15 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 16 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 17 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 18 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 19 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 20 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 21 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 22 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 23 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 24 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 25 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 26 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 27 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 28 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 29 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 30 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 31 </label>
+      </div>
+    </div> <!-- col-12 col-md-6 col-xl-3 d-flex flex-column -->
+
+    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
+      <div>
+        Hora
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 7 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 8 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 9 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 10 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 11 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 12 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 13 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 14 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 15 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 16 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 17 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 18 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 19 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 20 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 21 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 22 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 23 </label>
+      </div>
+    </div> <!-- col-12 col-md-6 col-xl-3 d-flex flex-column -->
+  </div>
+
+  <div
+    *ngIf="inRoute === '/dashboards/funnel'"
+    class="row p-2">
+    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
+      <div>Empresa</div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> A1 </label></div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> Crc </label></div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> Paschoalotto </label></div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> System </label></div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
+      <div>Hora</div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 8 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 9 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 10 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 11 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 12 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 13 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 14 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 15 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 16 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 17 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 18 </label>
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="inRoute === '/dashboards/multi-channel' || inRoute === '/dashboards/portfolio'"
+    class="row p-2">
+    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
+      <div>Empresa</div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> A1 </label></div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> Crc </label></div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> Paschoalotto </label></div>
+      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> System </label></div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
+      <div>Hora</div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 8 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 9 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 10 </label>
+      </div>
+      <div>
+        <label class="cursor-pointer m-b-0"><input type="checkbox"> 11 </label>
+      </div>
+    </div>
+  </div>
+  <div
+    *ngIf="inRoute === '/dashboards/region'"
+    class="row p-2">
+
+  </div>
+
+</div>

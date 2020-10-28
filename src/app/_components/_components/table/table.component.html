@@ -1,25 +1,35 @@
 <div class="table-wrapper" [ngClass]="tableWrapperClasses">
-  <div class="table-tab" *ngIf="columns">
-    <div class="columns columns-right float-right">
+  <div class="table-tab d-flex justify-content-between align-items-center mb-2" *ngIf="columns">
 
+    <form action="">
+      <div>
+        <input class="form-control form-control-sm"
+               type="text"
+               name="search"
+               (change)="search($event)"
+               placeholder="{{ 'Procurar' | translate }}">
+      </div>
+    </form>
+
+    <div class="columns columns-right float-right">
 
       <div class="dropdown">
         <button class="dropbtn btn btn-sm btn-link">
-          <i class="fa fa-download" aria-hidden="true"></i>
-          <span class="caret"></span>
+          <fa-icon [icon]="faFileDownload"></fa-icon>
+          <app-caret></app-caret>
         </button>
 
         <div class="dropdown-content">
 
           <a (click)="exportXlsx()" href="javascript:void(0)"
              class="" type="button">
-            <i class="fa fa-file-excel-o"></i>
+            <fa-icon [icon]="faFileExcel"></fa-icon>
             Microsoft Excel
           </a>
 
           <a (click)="exportJson()" href="javascript:void(0)"
              class="" type="button">
-            <i class="fa fa-file-excel-o"></i>
+            <fa-icon [icon]="faStream"></fa-icon>
             JSON
           </a>
         </div>
@@ -27,7 +37,8 @@
 
       <div class="dropdown" *ngIf="tableType === 'normal'">
         <button class="dropbtn btn btn-sm btn-sm btn-link">
-          <i class="fa fa-th-list"></i>
+          <fa-icon [icon]="faThList"></fa-icon>
+          <app-caret></app-caret>
         </button>
         <div class="dropdown-content">
           <a href="javascript:void(0)"
@@ -49,7 +60,8 @@
 
       <div class="dropdown" *ngIf="tableType === 'transpose'">
         <button class="dropbtn btn btn-sm btn-sm btn-link">
-          <i class="fa fa-th-list"></i>
+          <fa-icon [icon]="faThList"></fa-icon>
+          <app-caret></app-caret>
         </button>
         <div class="dropdown-content">
           <a href="javascript:void(0)"
@@ -73,20 +85,21 @@
 
       <button (click)="printTable()" type="button"
               class="btn btn-sm btn-link">
-        <i class="fa fa-print"></i>
+        <fa-icon [icon]="faPrint"></fa-icon>
       </button>
 
 
       <button (click)="setTranspose(null)" class="btn btn-link btn-sm">
-        <i class="fa fa-retweet"></i>
+        <fa-icon [icon]="faRetweet"></fa-icon>
       </button>
 
       <button (click)="fullScreen()"
               class="btn btn-sm btn-link" type="button">
-        <i class="fa fa-arrows-alt"></i>
+        <fa-icon [icon]="windowIcon"></fa-icon>
       </button>
 
     </div>
+
   </div>
 
   <div class="table-responsive">
@@ -98,13 +111,13 @@
       <thead *ngIf="columns">
       <tr>
         <th
-          *ngFor="let tHead of tHeadColumn"
-          [ngClass]="getColumnClasses(tHead)"
+          *ngFor="let tHead of tHeadColumn; let i = index"
+          [ngClass]="getColumnClasses(tHead).concat(callbackClassOfTd(tHead, i, i))"
           (click)="setOrderBy(tHead)">
           <div>
             <div class="d-block table-caret">
-              <i *ngIf="caretInView(tHead) == 'down' || caretInView(tHead) == 'both'" class="fa fa-caret-up"></i>
-              <i *ngIf="caretInView(tHead) == 'up' || caretInView(tHead) == 'both'" class="fa fa-caret-down"></i>
+              <fa-icon *ngIf="caretInView(tHead) == 'down' || caretInView(tHead) == 'both'"  [icon]="faCaretUp"></fa-icon>
+              <fa-icon *ngIf="caretInView(tHead) == 'up' || caretInView(tHead) == 'both'" [icon]="faCaretDown"></fa-icon>
             </div>
             <div class="d-block">{{ tHead | translate }}</div>
           </div>
@@ -145,8 +158,8 @@
           (click)="setOrderBy(tHead)">
           <div>
             <div class="d-block table-caret">
-              <i *ngIf="caretInView(tHead) == 'down' || caretInView(tHead) == 'both'" class="fa fa-caret-up"></i>
-              <i *ngIf="caretInView(tHead) == 'up' || caretInView(tHead) == 'both'" class="fa fa-caret-down"></i>
+              <fa-icon *ngIf="caretInView(tHead) == 'down' || caretInView(tHead) == 'both'"  [icon]="faCaretUp"></fa-icon>
+              <fa-icon *ngIf="caretInView(tHead) == 'up' || caretInView(tHead) == 'both'" [icon]="faCaretDown"></fa-icon>
             </div>
             <div class="d-block">{{ tHead | translate }}</div>
           </div>
@@ -176,27 +189,27 @@
 
   </div>
 
-<!--  <nav class="d-flex justify-content-end mt-2">-->
-<!--    <ul class="pagination">-->
-<!--      <li class="page-item">-->
-<!--        <button class="page-link" (click)="getDataPage(this.currentPage - 1)">-->
-<!--          <span>&raquo;</span>-->
-<!--          <span class="sr-only">Next</span>-->
-<!--        </button>-->
-<!--      </li>-->
-<!--      <li class="page-item"-->
-<!--          [ngClass]="{active: currentPage == (i + 1)}"-->
-<!--          *ngFor="let page of this.pages; let i = index;">-->
-<!--        <button class="page-link" href="#" (click)="getDataPage(i+1)" type="button">-->
-<!--          {{ i + 1 }}-->
-<!--        </button>-->
-<!--      </li>-->
-<!--      <li class="page-item">-->
-<!--        <button class="page-link" (click)="getDataPage(this.currentPage + 1)">-->
-<!--          <span>&raquo;</span>-->
-<!--          <span class="sr-only">Next</span>-->
-<!--        </button>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--  </nav>-->
+  <nav class="d-flex justify-content-end mt-2">
+    <ul class="pagination">
+      <li class="page-item">
+        <button class="page-link" (click)="getDataPage(this.currentPage - 1)">
+          <fa-icon [icon]="faAngleDoubleLeft"></fa-icon>
+          <span class="sr-only">Next</span>
+        </button>
+      </li>
+      <li class="page-item"
+          [ngClass]="{active: currentPage == (i + 1)}"
+          *ngFor="let page of this.pages; let i = index;">
+        <button class="page-link" (click)="getDataPage(i+1)" type="button">
+          {{ i + 1 }}
+        </button>
+      </li>
+      <li class="page-item">
+        <button class="page-link" (click)="getDataPage(this.currentPage + 1)">
+          <fa-icon [icon]="faAngleDoubleRight"></fa-icon>
+          <span class="sr-only">Next</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
 </div>

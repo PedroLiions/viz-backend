@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../../../_models/User';
 import {UsersService} from '../../../../_services/http/configuration/users.service';
+import {PermissionsService} from '../../../../_services/auth/permissions.service';
 
 @Component({
   selector: 'app-users',
@@ -14,8 +15,10 @@ export class UsersComponent implements OnInit {
   userIdInModal: User;
 
   constructor(
-    private usersService: UsersService
+    private usersService: UsersService,
+    private permissionsService: PermissionsService
   ) {
+
   }
 
   ngOnInit(): void {
@@ -26,6 +29,14 @@ export class UsersComponent implements OnInit {
 
   setUserInModal(index: number): void {
     this.userIdInModal = this.users[index];
+  }
+
+  deleteUser(id, index): void {
+    this.usersService.deleteUser(id).subscribe(response => this.users.splice(index, 1));
+  }
+
+  hasPermission(permission: string): boolean {
+    return this.permissionsService.hasPermission('Usuários', permission);
   }
 
 }

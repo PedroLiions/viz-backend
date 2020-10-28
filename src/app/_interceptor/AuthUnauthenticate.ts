@@ -39,6 +39,7 @@ export class AuthUnauthenticate implements HttpInterceptor {
           const extras = {
             queryParams: {
               error: 'sessionExpired',
+              message: err.error.message,
               backRoute: route
             }
           };

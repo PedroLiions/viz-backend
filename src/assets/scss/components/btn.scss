@@ -1,3 +1,4 @@
+
 .btn-sm {
   font-size: 12px !important;
   border-radius: 0.2875rem !important;
@@ -7,4 +8,36 @@
 .btn-default {
   background-color: #888 !important;
   color: #fff !important;
+}
+
+.btn-secondary.active{
+  background-color: $blue-light !important;
+
+  &:hover {
+    background-color: $blue-dark !important;
+  }
+}
+
+.breadcrumb a {
+  color: $blue-light;
+
+  &:hover {
+    color: $blue-dark;
+  }
+}
+
+.btn {
+  line-height: 1.35em;
+  border: none !important;
+}
+
+
+
+
+
+
+
+/* depois colocar em uma página separada */
+.progress-bar-right {
+  font-size: 18px;
 }

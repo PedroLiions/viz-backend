@@ -47,12 +47,39 @@
 
   <div class="col-12 col-xl-6">
     <div class="card">
-      <div class="header">
-        <button class="btn btn-sm btn-deep-deals">Total</button>
-        <button class="btn btn-sm btn-default">%Hit Rate</button>
+      <div class="header m-b-10">
+        <ul class="tab-btns nav nav-pills">
+          <li class="nav-item">
+            <a href="#total-pill"
+               class="btn btn-sm btn-blue active"
+               data-toggle="pill">
+              Total
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="#hitrate-pill"
+              data-toggle="pill"
+              class="btn btn-sm btn-blue">
+              %Hit Rate
+            </a>
+          </li>
+
+        </ul>
       </div>
+
+
       <div class="body">
-        <div id="total-triggers" style="height: 480px;"></div>
+        <div class="tab-content">
+          <div class="tab-pane show active" id="total-pill">
+            <div id="total-triggers">
+
+            </div>
+          </div>
+          <div class="tab-pane" id="hitrate-pill">
+            Hit rate
+          </div>
+        </div>
       </div>
     </div>
   </div>

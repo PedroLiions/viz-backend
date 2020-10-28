@@ -1,59 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
-@import "assets/scss/_variables";
+@import "assets/css/reset";
 
-$btn-font-size-sm: 12px;
-$btn-border-radius: 0.2875rem;
+@import "assets/scss/_variables";
 
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 @import 'node_modules/bootstrap/scss/bootstrap';
+
 @import 'assets/css/style.min.css';
 
-@import "node_modules/fontawesome-4.7/scss/font-awesome";
-
 @import "assets/scss/components/card";
-
-
-/* left aside nav */
-@media screen and (max-width: 767px) {
-  body.ls-closed {
-    .body_scroll {
-      transition: linear .2s;
-      margin-left: 50px;
-
-      .ls-toggle-btn {
-        display: none;
-      }
-    }
-  }
-}
-
-//font
-h6 {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-}
-
-
+@import "assets/scss/components/tab";
 @import "assets/scss/components/table";
 @import "assets/scss/components/flag";
 @import "assets/scss/components/tabs";
 @import "assets/scss/components/btn";
 @import "assets/scss/components/colors";
-
-
-/* Text */
-.text-hidden {
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.text-total {
-  color: white;
-}
-.theme-dark {
-  .text-total {
-    color: white;
-  }
-}
+@import "assets/scss/components/text";
+@import "assets/scss/components/aside";

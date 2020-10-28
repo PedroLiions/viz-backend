@@ -6,6 +6,7 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 
 import Swal from 'sweetalert2';
+import {HttpErrorResponse} from '@angular/common/http';
 
 declare var $: any;
 
@@ -65,12 +66,17 @@ export class LoginComponent implements OnDestroy {
   }
 
   handleQueryErrors(): string | void {
-    this.backRoute = this.activatedRoute.snapshot.queryParamMap.get('backRoute');
-
     const errorParams = this.activatedRoute.snapshot.queryParamMap.get('error');
+
+    const message = this.activatedRoute.snapshot.queryParamMap.get('message');
+
+    if (message) {
+      return this.message = message;
+    }
 
     switch (errorParams) {
       case 'sessionExpired':
+        this.backRoute = this.activatedRoute.snapshot.queryParamMap.get('backRoute');
         return this.message = 'Sessão expirada, faça login novamente';
       default:
         return;
@@ -94,7 +100,7 @@ export class LoginComponent implements OnDestroy {
     const obs = await this.authenticationService.login(formData)
       .subscribe(
         response => this.handleSuccessfully(response),
-        err => this.handleError());
+        err => this.handleError(err));
 
     this.subscriptions.push(obs);
   }
@@ -107,9 +113,16 @@ export class LoginComponent implements OnDestroy {
     this.router.navigateByUrl(this.backRoute || '');
   }
 
-  public handleError(): void {
+  public handleError(error: HttpErrorResponse): void {
+    if (error.status === 401) {
+      this.message = 'Usuário ou senha incorreto';
+    } else if (error.status === 0) {
+      this.message = 'Problemas ao se conectar com a API, tente novamente mais tarde.';
+    } else if (error.status === 500) {
+      this.message = 'Erro interno, contate o suporte.';
+    }
+
     this.loginLoading = false;
-    this.message = 'Usuário ou senha incorreto';
   }
 
   public copyMail(): void {

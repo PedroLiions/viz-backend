@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {DefaultLayoutComponent} from './_components/_layout/default-layout/default-layout.component';
-import {HomeComponent} from './_components/components/home/home.component';
+import {HomeComponent} from './_components/_components/home/home.component';
 import {LoginComponent} from './_authentication/login/login.component';
 import {AuthGuard} from './_guards/auth.guard';
 import {Error404Component} from './_components/errors/error404/error404.component';

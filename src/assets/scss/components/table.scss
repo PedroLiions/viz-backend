@@ -1,14 +1,17 @@
 @import "src/assets/scss/variables";
 
-
-@import "../../../../node_modules/bootstrap/scss/functions";
-@import "../../../../node_modules/bootstrap/scss/variables";
-@import "../../../../node_modules/bootstrap/scss/mixins";
+//@import "../../../../node_modules/bootstrap/scss/functions";
+//@import "../../../../node_modules/bootstrap/scss/variables";
+//@import "../../../../node_modules/bootstrap/scss/mixins";
 
 table.table-transpose {
   th, tr, td {
     //color: black !important;
   }
+}
+
+.table {
+  margin-bottom: 1px !important;
 }
 
 

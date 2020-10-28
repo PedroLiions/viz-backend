@@ -21,12 +21,14 @@ import {DefaultLayoutComponent} from './_components/_layout/default-layout/defau
 import {SearchComponent} from './_components/_layout/search/search.component';
 import {RightNavComponent} from './_components/_layout/right-nav/right-nav.component';
 import {BreadcrumbComponent} from './_components/_components/breadcrumb/breadcrumb.component';
-import {HomeComponent} from './_components/components/home/home.component';
+import {HomeComponent} from './_components/_components/home/home.component';
 import {LoginComponent} from './_authentication/login/login.component';
 import {Error404Component} from './_components/errors/error404/error404.component';
 import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
 import {DatePipe} from '@angular/common';
 import {environment} from '../environments/environment';
+import {FilterComponent} from './_components/_components/_layout/right-nav/filter/filter.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import {environment} from '../environments/environment';
     SearchComponent,
     AsideComponent,
     RightNavComponent,
+    FilterComponent,
     BreadcrumbComponent,
     HomeComponent,
     LoginComponent,
@@ -48,7 +51,8 @@ import {environment} from '../environments/environment';
     BrowserAnimationsModule,
     SharedModule,
     TranslateModule.forRoot(translateModuleConfig()),
-    CarouselModule
+    CarouselModule,
+    FontAwesomeModule
   ],
   exports: [
     SharedModule

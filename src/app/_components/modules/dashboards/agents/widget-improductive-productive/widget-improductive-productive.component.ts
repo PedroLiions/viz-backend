@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 
 
 import * as am4core from '@amcharts/amcharts4/core';
@@ -15,7 +15,7 @@ am4core.useTheme(am4themes_animated);
   templateUrl: './widget-improductive-productive.component.html',
   styleUrls: ['./widget-improductive-productive.component.scss']
 })
-export class WidgetImproductiveProductiveComponent implements OnInit {
+export class WidgetImproductiveProductiveComponent implements OnInit, OnDestroy {
 
   ranking = {};
 
@@ -66,6 +66,12 @@ export class WidgetImproductiveProductiveComponent implements OnInit {
     columnSeries.columns.template.width = am4core.percent(50);
 
     this.ranking[objName].data = this.data[dataKey];
+  }
+
+  ngOnDestroy(): void {
+    for (const [key, value] of Object.entries(this.ranking)) {
+      this.ranking[key].dispose();
+    }
   }
 
 }

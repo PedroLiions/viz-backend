@@ -18,7 +18,21 @@ import {TableJsonService} from './services/table-json.service';
 
 import * as _ from 'underscore';
 
-declare var $: any;
+import {
+  faFileExcel,
+  faStream,
+  faThList,
+  faPrint,
+  faRetweet,
+  faCaretUp,
+  faCaretDown,
+  faFileDownload,
+  faWindowMaximize,
+  faWindowMinimize,
+  faAngleDoubleLeft,
+  faAngleDoubleRight
+} from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-table',
@@ -26,7 +40,6 @@ declare var $: any;
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit, OnDestroy {
-
   /*
   * data for table
   */
@@ -79,10 +92,30 @@ export class TableComponent implements OnInit, OnDestroy {
   tBodyColumnConfigs: object = {};
   tBodyColumnConfigsTranspose: object = {};
 
+  /* value of search */
+  valueSearch: string;
+
   /*
   * type of table
   * */
   tableType: 'normal' | 'transpose' = 'normal';
+
+  /* fa icons */
+  faFileExcel = faFileExcel;
+  faStream = faStream;
+  faThList = faThList;
+  faPrint = faPrint;
+  faRetweet = faRetweet;
+  faCaretUp = faCaretUp;
+  faCaretDown = faCaretDown;
+  faFileDownload = faFileDownload;
+  faWindowMaximize = faWindowMaximize;
+  faWindowMinimize = faWindowMinimize;
+
+  faAngleDoubleLeft = faAngleDoubleLeft;
+  faAngleDoubleRight = faAngleDoubleRight;
+
+  windowIcon = faWindowMaximize;
 
   /*
   * Option callback of each td
@@ -169,19 +202,11 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   public configPaginate(response: any): void {
-    this.pages = new Array<any>(response.last_page);
+    this.pages = new Array<any>(1);
   }
 
-  public getDataPage(page: number): void {
-    if (
-      page === 0
-      || page > this.pages.length
-    ) {
-      return;
-    }
-
-    this.params['page'] = page;
-    this.currentPage = page;
+  public getDataPage(search: number): void {
+    this.params['search'] = search;
 
     this.getData(this.params);
   }
@@ -302,6 +327,12 @@ export class TableComponent implements OnInit, OnDestroy {
     } catch (e) {
       return '';
     }
+  }
+
+  search(event): void {
+    this.getData({
+      search: event.currentTarget.value
+    });
   }
 
   public getRowTransposeClass(index: number, column): string | Array<string> {
@@ -427,9 +458,13 @@ export class TableComponent implements OnInit, OnDestroy {
   public fullScreen(): void {
     const index = this.tableWrapperClasses.indexOf('fullscreen');
 
-    (index === -1)
-      ? this.tableWrapperClasses.push('fullscreen')
-      : this.tableWrapperClasses.splice(index, 1);
+    if (index === -1) {
+      this.tableWrapperClasses.push('fullscreen');
+      this.windowIcon = this.faWindowMinimize;
+    } else {
+      this.windowIcon = this.faWindowMaximize;
+      this.tableWrapperClasses.splice(index, 1);
+    }
   }
 
   /*

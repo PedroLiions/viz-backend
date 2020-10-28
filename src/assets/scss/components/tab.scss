@@ -1,0 +1,62 @@
+[role="tablist"] {
+  .nav-item {
+    margin-right: 6px;
+  }
+}
+
+
+.tab-btns {
+
+  .btn-sm {
+    background: #3e3e3e;
+  }
+
+  .btn-ocean {
+    color: white;
+
+    &.active {
+      background-color: $ocean-dark;
+
+      &:hover {
+        background-color: $ocean-dark;
+      }
+    }
+  }
+
+  .btn-blue {
+    color: white;
+
+    &.active {
+      background-color: $blue-dark;
+
+      &:hover {
+        background-color: $blue-dark;
+      }
+    }
+  }
+
+  .btn-orange {
+    color: white;
+
+    &.active {
+      background-color: $orange-dark;
+
+      &:hover {
+        background-color: $orange-dark;
+      }
+    }
+  }
+
+  .btn-orange-900 {
+    color: white;
+
+    &.active {
+      background-color: $orange-dark-900;
+
+      &:hover {
+        background-color: $orange-dark-900;
+      }
+    }
+  }
+
+}

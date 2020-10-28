@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {environment} from '../../../../../../environments/environment';
+import {CallbackTrTdService} from '../../../../_components/table/services/callback-tr-td.service';
 
 @Component({
   selector: 'app-distribution-by-hour',
@@ -18,7 +19,10 @@ export class DistributionByHourComponent implements OnInit {
 
   tdCallback: Function;
 
-  constructor() { }
+  constructor(
+    private callbackTrTdService: CallbackTrTdService
+  ) {
+  }
 
   ngOnInit(): void {
     this.columnClasseConfig = {
@@ -36,15 +40,7 @@ export class DistributionByHourComponent implements OnInit {
   }
 
   callBackTd(valueOfColumm, indexOfLine, indexOfColumn): Array<string> {
-    if (valueOfColumm === 'TOTAL') {
-      return ['bg-gray', 'text-total'];
-    }
-
-    if (indexOfLine === 0 && indexOfColumn > 0) {
-      return ['font-weight-bold'];
-    }
-
-    return [''];
+    return this.callbackTrTdService.setBoldTotalAndFirstLine(valueOfColumm, indexOfLine, indexOfColumn);
   }
 
 }

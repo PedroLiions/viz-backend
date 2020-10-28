@@ -44,11 +44,11 @@
         </ul>
         <div class="chat-box">
           <div class="input-group">
-            <button class="input-group-prepend" (click)="send()">
+            <div style="cursor: pointer" class="input-group-prepend" (click)="send()">
                 <span class="input-group-text">
                     <i class="material-icons">send</i>
                 </span>
-            </button>
+            </div>
             <input type="text" class="form-control"
                    (keydown)="send($event)"
                    placeholder="Type your message here"

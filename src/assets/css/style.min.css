@@ -1410,6 +1410,9 @@ p.description {
 .separator.separator-primary {
   background-color: #41719c;
 }
+.nav-pills .nav-item {
+  margin-right: 5px;
+}
 .nav-pills .nav-item .nav-link {
   padding: 0 15.5px;
   text-align: center;
@@ -3826,7 +3829,7 @@ section.content {
   margin: 0;
   z-index: 999;
 }
-.navbar-right .navbar-nav > li > a {
+.navbar-right .navbar-nav > * .a-icon {
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   -webkit-transition: all 0.5s;
@@ -3840,22 +3843,23 @@ section.content {
   text-align: center;
   width: 50px;
 }
-.navbar-right .navbar-nav > li > a:hover {
+.navbar-right .navbar-nav > * .a-icon:hover {
   color: #fff !important;
 }
-.navbar-right .navbar-nav > li > a i {
+.navbar-right .navbar-nav > * .a-icon i {
   font-size: 20px;
   vertical-align: middle;
 }
 .navbar-right .navbar-nav .dropdown-menu {
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  /*-moz-transition: all 0.5s;*/
+  /*-o-transition: all 0.5s;*/
+  /*-webkit-transition: all 0.5s;*/
+  /*transition: all 0.5s;*/
   position: absolute;
-  right: 60px;
+  top: 0;
+  right: 50px;
   left: auto !important;
-  transform: none !important;
+  transform: none;
 }
 .navbar-right .navbar-nav .dropdown-menu:before {
   color: #fff;
@@ -3865,9 +3869,9 @@ section.content {
   height: 0;
   vertical-align: middle;
   content: "";
-  top: 15px;
+  /*top: 15px;*/
   left: auto;
-  right: -10px;
+  /*right: -10px;*/
   border-left: 0.6em solid;
   border-top: 0.6em solid transparent;
   border-bottom: 0.6em solid transparent;
@@ -5021,8 +5025,10 @@ section.content {
 .m-r-30 {
   margin-right: 30px;
 }
-.m-b-30,
 .card {
+  margin-bottom: 20px;
+},
+.m-b-30 {
   margin-bottom: 30px;
 }
 .m-l-35 {
@@ -6421,7 +6427,7 @@ section.content {
 }
 .card .header {
   color: #444;
-  padding: 20px 0 10px 0;
+  padding: 0 0 10px 0;
   position: relative;
   box-shadow: none;
 }
@@ -13204,7 +13210,6 @@ html {
 }
 .dropdown:hover > .dropdown-menu {
   display: block;
-  top: 0px;
 }
 .dropdown > .dropdown-toggle:active {
   pointer-events: none;

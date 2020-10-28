@@ -42,13 +42,16 @@
             <td>
               <!-- Button trigger modal -->
               <button
-                (click)="setUserInModal(i)"
-                class="btn btn-sm btn-primary"
-                data-toggle="modal"
-                data-target="#modalEditUser">
+                      (click)="setUserInModal(i)"
+                      class="btn btn-sm btn-primary"
+                      *ngIf="hasPermission('update')"
+                      data-toggle="modal"
+                      data-target="#modalEditUser">
                 Editar
               </button>
-              <button class="btn btn-sm btn-danger">
+              <button class="btn btn-sm btn-danger"
+                      (click)="deleteUser(user.id, i)"
+                      *ngIf="hasPermission('delete')">
                 Excluir
               </button>
             </td>
