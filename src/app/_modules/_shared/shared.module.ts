@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
-import {TabsModule} from 'ngx-bootstrap/tabs';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TableComponent } from '../../_components/_components/table/table.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
@@ -19,7 +18,6 @@ import { CaretComponent } from '../../_components/table/components/caret/caret.c
     ],
   exports: [
     TranslateModule,
-    TabsModule,
     FormsModule,
     ReactiveFormsModule,
     TableComponent
