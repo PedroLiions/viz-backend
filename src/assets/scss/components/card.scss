@@ -1,4 +1,9 @@
 .card {
   background: transparent;
   border: none;
+  margin-bottom: 20px !important;
+
+  .header h2{
+    margin-top: 10px !important;
+  }
 }

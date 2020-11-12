@@ -1,4 +1,4 @@
-@import "src/assets/scss/variables";
+@import "../variables";
 
 //@import "../../../../node_modules/bootstrap/scss/functions";
 //@import "../../../../node_modules/bootstrap/scss/variables";
@@ -8,6 +8,21 @@ table.table-transpose {
   th, tr, td {
     //color: black !important;
   }
+}
+
+.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  z-index: 1000;
+  padding: 15px;
+}
+
+.theme-dark .fullscreen {
+  background: #313131;
 }
 
 .table {

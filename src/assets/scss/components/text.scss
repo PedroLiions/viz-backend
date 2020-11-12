@@ -5,12 +5,15 @@
 }
 
 .text-total {
-  color: white;
-  font-weight: bold !important;
+  color: #313131;
 }
 .theme-dark {
-  .text-total {
+  .text-total, {
     color: white;
+  }
+
+  .text-dark {
+    color: #777 !important;
   }
 }
 
@@ -28,3 +31,4 @@ h6 {
 h6 {
   font-size: 12px;
 }
+

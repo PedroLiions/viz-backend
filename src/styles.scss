@@ -1,14 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
-@import "assets/css/reset";
-
-@import "assets/scss/_variables";
-
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
+$font-family-base: 'Open Sans';
+
+$grid-gutter-width: 8px;
+$line-height-base: 1;
 @import 'node_modules/bootstrap/scss/bootstrap';
+$grid-gutter-width: 8px;
+$line-height-base: 1;
 
 @import 'assets/css/style.min.css';
+
+@import 'src/assets/scss/variables';
 
 @import "assets/scss/components/card";
 @import "assets/scss/components/tab";

@@ -1,38 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {OwlOptions} from 'ngx-owl-carousel-o';
-import {TranslateService} from '@ngx-translate/core';
-import {User} from '../../../_models/User';
+
+import {faTimes} from '@fortawesome/free-solid-svg-icons/faTimes';
 
 @Component({
   selector: 'app-index-menu',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
-  user: User = JSON.parse(localStorage.getItem('user'));
+export class SearchComponent {
+  faTimes = faTimes;
 
-  dashboardsCarousel: OwlOptions = {
-    loop: false,
-    margin: 10,
-    dots: false,
-    responsive: {
-      0: {
-        items: 2
-      },
-      512: {
-        items: 3
-      },
-      768: {
-        items: 3
-      },
-      992: {
-        items: 8
-      },
-      1200: {
-        items: 8
-      }
-    }
-  };
+
+
   footerCarousel: OwlOptions = {
     loop: false,
     margin: 10,
@@ -50,11 +30,9 @@ export class SearchComponent implements OnInit {
     }
   };
 
-  ngOnInit(): void {
-  }
-
   closeSearch(): void {
     document.querySelector('#search').classList.remove('open');
   }
+
 
 }

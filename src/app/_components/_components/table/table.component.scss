@@ -15,7 +15,8 @@ table.table-sm {
           div {
             &:first-of-type {
               position: absolute;
-              top: 0;
+              top: -3px;
+              height: 10px;
               left: 50%;
               font-size: 12px;
               transform: translateX(-50%);
@@ -81,49 +82,56 @@ body.theme-blue {
   }
 }
 
-body.theme-dark {
-  table.table-sm {
-    tr > th, tr > td {
-      color: white;
-    }
+.dropdown-content {
+  border-radius: 0.2875rem !important;
+  padding-top: 0.2875rem !important;
+  padding-bottom: 0.2875rem !important;
+
+  hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 }
 
 
-.fullscreen {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: white;
-  z-index: 1000;
-  padding: 15px;
+.btn-caret {
+  padding-right: 20px !important;
 }
 
 
-/* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
   display: inline-block;
 
-  /* Links inside the dropdown */
-  a {
-    display: block;
-    font-size: 14px;
-    padding: 8px 18px;
-    width: 100%;
-    clear: both;
-    font-weight: 400;
-    color: #212529;
-    text-align: inherit;
-    white-space: nowrap;
-    background-color: transparent;
-    border: 0;
+  .dropdown-content {
+    max-height: 500px;
+    overflow-y: auto;
+    z-index: 10000;
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 
-    /* Change color of dropdown links on hover */
-    &:hover {
-      background-color: #ddd;
+
+    /* Links inside the dropdown */
+    a {
+      display: block;
+      font-size: 14px;
+      padding: 8px 18px;
+      width: 100%;
+      clear: both;
+      font-weight: 400;
+      color: #212529;
+      text-align: inherit;
+      white-space: nowrap;
+      background-color: transparent;
+      border: 0;
+
+      /* Change color of dropdown links on hover */
+      &:hover {
+        background-color: #ddd;
+      }
     }
   }
 
@@ -132,23 +140,38 @@ body.theme-dark {
     .dropdown-content {
       display: block;
     }
-
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropbtn {
-
-    }
   }
 }
 
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+
+body.theme-dark {
+  .dropdown {
+    .dropdown-content {
+      background-color: $viz-gray !important;
+
+      /* Links inside the dropdown */
+      a {
+        color: rgba(255, 255, 255, .8);
+        background-color: $viz-gray;
+
+        /* Change color of dropdown links on hover */
+        &:hover {
+          background-color: $viz-dark-light;
+        }
+      }
+
+      /* Show the dropdown menu on hover */
+      &:hover {
+        .dropdown-content {
+          display: block;
+        }
+      }
+    }
+  }
+
 }
+
+
 
 @keyframes loading {
   40% {

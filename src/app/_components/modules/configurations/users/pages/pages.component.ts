@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {UsersService} from '../../../../../_services/http/configuration/users.service';
-import {User} from '../../../../../_models/User';
+import {User} from '../../../../../models/User';
 
 @Component({
   selector: 'app-pages',

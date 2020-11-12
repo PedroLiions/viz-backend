@@ -29,6 +29,9 @@ import {DatePipe} from '@angular/common';
 import {environment} from '../environments/environment';
 import {FilterComponent} from './_components/_components/_layout/right-nav/filter/filter.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { ClockComponent } from './_components/_layout/search/clock/clock.component';
+import { CarouselComponent } from './_components/_layout/search/carousel/carousel.component';
+import { InputSearchComponent } from './_components/_layout/search/input-search/input-search.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     BreadcrumbComponent,
     HomeComponent,
     LoginComponent,
-    Error404Component
+    Error404Component,
+    ClockComponent,
+    CarouselComponent,
+    InputSearchComponent
   ],
   imports: [
     HttpClientModule,

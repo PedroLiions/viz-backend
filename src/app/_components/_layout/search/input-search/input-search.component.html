@@ -1,0 +1,29 @@
+<form class="d-flex align-items-center flex-column min-h-10 mt-2">
+  <label>
+    <input type="search"
+           [(ngModel)]="searchWords"
+           name="search"
+           placeholder="{{ 'Pesquisar' | translate }}..."
+           (keyup)="search()">
+  </label>
+  <div role="group" class="d-flex flex-column">
+
+    <div class="d-block">
+      <button type="submit" class="btn btn-deep-cpc d-flex justify-content-center align-items-center">
+        <span class="mr-2">{{ 'Busca por voz' | translate }}</span>
+        <i class="material-icons md-18">mic</i>
+      </button>
+    </div>
+
+    <div class="position-relative" *ngIf="listSearch">
+      <div class="result-search">
+        <ul>
+          <li *ngFor="let page of listSearch" (click)="navigate(page.route)">
+            {{ page.name | translate }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</form>

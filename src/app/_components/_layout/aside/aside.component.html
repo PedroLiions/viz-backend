@@ -24,12 +24,18 @@
             </div>
           </div>
         </li>
+
+        <app-filter
+          class="dropdown d-inline-block d-md-none"></app-filter>
+
+
         <li routerLinkActive="active">
           <a routerLink="/home" class="toggled waves-effect waves-block">
             <i class="material-icons">home</i>
             <span>{{'Início' | translate}}</span>
           </a>
         </li>
+
         <li
           *ngIf="existPageInModule('dashboards')"
           routerLinkActive="active"
@@ -129,6 +135,7 @@
           </a>
         </li>
 
+
         <li routerLinkActive="active">
           <a class="waves-effect waves-block" routerLink="/chats">
             <i class="material-icons">chat</i>
@@ -160,14 +167,58 @@
                 <i class="material-icons">branding_watermark</i> Usuários
               </a>
             </li>
-
-<!--            <li>-->
-<!--              <a href="/modules-groups" class=" waves-effect waves-block">-->
-<!--                <i class="material-icons">apps</i>-->
-<!--                Modules groups </a>-->
-<!--            </li>-->
           </ul>
         </li>
+
+        <li class="d-md-none">
+          <a
+             title="Change theme"
+             href="javascript: void(0)"
+             rel="change-theme-color"
+             class="a-icon">
+            <i class="material-icons">
+              settings_brightness
+            </i>
+          </a>
+        </li>
+
+        <li class="d-md-none">
+          <a
+             class="toggled menu-toggle waves-effect waves-block">
+            <i class="material-icons">
+              translate
+            </i>
+          </a>
+
+          <ul class="ml-menu">
+            <li>
+              <a href="#" class="waves-effect waves-block">
+                <div class="flag-icon us"></div>
+                <div class="menu-info">
+                  <h4>{{'Inglês' | translate}}</h4>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="waves-effect waves-block">
+                <div class="flag-icon pt-br"></div>
+                <div class="menu-info">
+                  <h4>{{ 'Português' | translate}}</h4>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="d-md-none">
+          <a title="Search" href="javascript:void(0)"
+
+             class="main_search a-icon">
+            <i class="material-icons">
+              search
+            </i>
+          </a>
+        </li> <!-- li -->
 
       </ul>
 

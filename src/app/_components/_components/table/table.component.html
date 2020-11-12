@@ -13,28 +13,6 @@
 
     <div class="columns columns-right float-right">
 
-      <div class="dropdown">
-        <button class="dropbtn btn btn-sm btn-link">
-          <fa-icon [icon]="faFileDownload"></fa-icon>
-          <app-caret></app-caret>
-        </button>
-
-        <div class="dropdown-content">
-
-          <a (click)="exportXlsx()" href="javascript:void(0)"
-             class="" type="button">
-            <fa-icon [icon]="faFileExcel"></fa-icon>
-            Microsoft Excel
-          </a>
-
-          <a (click)="exportJson()" href="javascript:void(0)"
-             class="" type="button">
-            <fa-icon [icon]="faStream"></fa-icon>
-            JSON
-          </a>
-        </div>
-      </div>
-
       <div class="dropdown" *ngIf="tableType === 'normal'">
         <button class="dropbtn btn btn-sm btn-sm btn-link">
           <fa-icon [icon]="faThList"></fa-icon>
@@ -50,7 +28,7 @@
              class="dropdown-item">
             <label class="d-flex align-items-center">
               <input type="checkbox"
-                     [checked]="! existClasse(column, 'd-none')"
+                     [checked]="existClasse(column, 'd-none')"
                      (click)="toggleColumnClasse(column, 'd-none')">
               <span class="ml-1">{{ column }}</span>
             </label>
@@ -59,7 +37,7 @@
       </div>
 
       <div class="dropdown" *ngIf="tableType === 'transpose'">
-        <button class="dropbtn btn btn-sm btn-sm btn-link">
+        <button class="dropbtn btn btn-sm btn-sm btn-link btn-caret">
           <fa-icon [icon]="faThList"></fa-icon>
           <app-caret></app-caret>
         </button>
@@ -73,7 +51,7 @@
              class="dropdown-item">
             <label>
               <input type="checkbox"
-                     [checked]="! existClasse(column, 'd-none')"
+                     [checked]="existClasse(column, 'd-none')"
                      (click)="toggleColumnClasse(column, 'd-none')">
               <span class="ml-1">
                 {{ column }}
@@ -83,20 +61,38 @@
         </div>
       </div>
 
-      <button (click)="printTable()" type="button"
-              class="btn btn-sm btn-link">
-        <fa-icon [icon]="faPrint"></fa-icon>
-      </button>
-
-
       <button (click)="setTranspose(null)" class="btn btn-link btn-sm">
         <fa-icon [icon]="faRetweet"></fa-icon>
       </button>
 
       <button (click)="fullScreen()"
               class="btn btn-sm btn-link" type="button">
-        <fa-icon [icon]="windowIcon"></fa-icon>
+        <fa-icon [icon]="faExpandArrowsAlt"></fa-icon>
       </button>
+
+      <div class="dropdown">
+        <button class="dropbtn btn btn-sm btn-sm btn-link">
+          <fa-icon [icon]="faEllipsisV"></fa-icon>
+        </button>
+        <div class="dropdown-content dropdown-menu-right">
+
+          <a (click)="exportXlsx()" href="javascript:void(0)">
+            <fa-icon [icon]="faFileExcel"></fa-icon>
+            Microsoft Excel
+          </a>
+
+          <a (click)="exportJson()" href="javascript:void(0)">
+            <fa-icon [icon]="faStream"></fa-icon>
+            JSON
+          </a>
+
+          <a (click)="printTable()" href="javascript:void(0)">
+            <fa-icon [icon]="faPrint"></fa-icon>
+            Imprimir
+          </a>
+
+        </div>
+      </div>
 
     </div>
 

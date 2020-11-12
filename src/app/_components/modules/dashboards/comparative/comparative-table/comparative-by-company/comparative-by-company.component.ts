@@ -25,7 +25,7 @@ export class ComparativeByCompanyComponent implements OnInit {
 
     this.columnClasseConfig = {
       'Contratos': 'bg-viz-gray',
-      'Agnt logados': 'bg-viz-dark',
+      'Agentes': 'bg-viz-dark',
       Tentativas: 'bg-viz-red',
       'Tent/ Agnt': 'bg-viz-red-900',
       '%Hit rate': 'bg-viz-caramel-dark',
@@ -44,12 +44,12 @@ export class ComparativeByCompanyComponent implements OnInit {
       '%Negc /CPCA': 'bg-viz-marine',
       '%Improd': 'bg-viz-orange',
       '%Linha muda': 'bg-viz-orange-900',
-      '%Voz de máquina': 'bg-viz-orange-900',
+      '%Voz Máq': 'bg-viz-orange-900',
       'Spin rate': ''
     };
   }
 
-  callbackTableTotal(valueOfColumm, row, line): Array<string> {
+  callbackTableTotal(valueOfColumm): Array<string> {
     if (
       typeof valueOfColumm !== 'string'
       && valueOfColumm !== 'TOTAL'

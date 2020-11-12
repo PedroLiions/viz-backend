@@ -32,7 +32,7 @@ export class WidgetImproductiveProductiveComponent implements OnInit, OnDestroy 
         this.data = response.data;
 
         this.mountRanking('summary-improductive', 'improductiveSummary', '#F5781B');
-        this.mountRanking('summary-productive', 'productiveSummary', '#41719C');
+        this.mountRanking('summary-productive', 'productiveSummary', '#17BABF');
       });
     });
   }

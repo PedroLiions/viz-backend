@@ -13,11 +13,6 @@ export class CallbackTrTdService {
       return ['bg-gray', 'text-total'];
     }
 
-    if (row === 0 && line > 0) {
-      return ['font-weight-bold'];
-    }
-
-
     return [];
   }
 

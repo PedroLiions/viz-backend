@@ -8,23 +8,47 @@
 .tab-btns {
 
   .btn-sm {
-    background: #3e3e3e;
+    background: #888;
+    color: white;
   }
 
-  .btn-ocean {
-    color: white;
+  .btn-blue {
 
     &.active {
-      background-color: $ocean-dark;
+      background-color: $blue-light;
 
       &:hover {
-        background-color: $ocean-dark;
+        background-color: $blue-dark;
       }
     }
   }
 
-  .btn-blue {
-    color: white;
+
+  .btn-ocean, .btn-cpc {
+
+    &.active {
+      background-color: $ocean-light !important;
+
+      &:hover {
+        background-color: $ocean-dark !important;
+      }
+    }
+  }
+
+  .btn-black-dark {
+
+    &.active {
+      background-color: $viz-dark;
+      color: white;
+
+      &:hover {
+        background-color: $viz-dark-light;
+      }
+    }
+  }
+
+
+  .btn-dark {
 
     &.active {
       background-color: $blue-dark;
@@ -36,10 +60,9 @@
   }
 
   .btn-orange {
-    color: white;
 
     &.active {
-      background-color: $orange-dark;
+      background-color: $orange-light;
 
       &:hover {
         background-color: $orange-dark;
@@ -48,7 +71,6 @@
   }
 
   .btn-orange-900 {
-    color: white;
 
     &.active {
       background-color: $orange-dark-900;
@@ -59,4 +81,19 @@
     }
   }
 
+}
+
+.theme-dark {
+  .tab-btns {
+
+    .btn-sm:not(.active) {
+      background: #3e3e3e;
+    }
+
+    .btn-black-dark {
+      color: #8c8c8c;
+    }
+
+
+  }
 }

@@ -34,6 +34,11 @@ export class RightNavComponent implements OnInit {
     this.isNightMode = localStorage.getItem('isNightMode');
     this.rtlToggle = !(localStorage.getItem('rtlToggle'));
 
+    /* set language saved in storage */
+    const defaultLang = localStorage.getItem('lang');
+    this.languageService.setDefaultLang(defaultLang);
+
+    /* set theme saved in local storage*/
     if (this.isNightMode) {
       document.querySelector('body').classList.add('theme-dark');
     } else {
@@ -56,6 +61,7 @@ export class RightNavComponent implements OnInit {
   }
 
   changeLang(lang): void {
+    localStorage.setItem('lang', lang);
     this.languageService.setDefaultLang(lang);
   }
 

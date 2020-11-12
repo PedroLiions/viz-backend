@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {User} from '../../../_models/User';
+import {User} from '../../../models/User';
 
 @Component({
   selector: 'app-default-layout-aside',

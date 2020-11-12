@@ -16,6 +16,8 @@ export class ComparativeComponent implements OnInit, OnDestroy {
 
   public subscriptions: Array<Subscription> = [];
 
+  private graphEvolution: any;
+
   constructor(
     private dashboardsService: DashboardsService
   ) {
@@ -29,17 +31,17 @@ export class ComparativeComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(subs);
 
-    this.graphEvolution();
+    this.mountGraphEvolution();
   }
 
-  public graphEvolution(): void {
-    const graphEvolution = am4core.create('data-evolution', am4charts.XYChart);
-    graphEvolution.paddingRight = 15;
-    graphEvolution.paddingLeft = 0;
-    graphEvolution.paddingTop = 10;
-    graphEvolution.paddingBottom = 0;
+  public mountGraphEvolution(): void {
+    this.graphEvolution = am4core.create('data-evolution', am4charts.XYChart);
+    this.graphEvolution.paddingRight = 15;
+    this.graphEvolution.paddingLeft = 0;
+    this.graphEvolution.paddingTop = 10;
+    this.graphEvolution.paddingBottom = 0;
 
-    const valueAxisX = graphEvolution.xAxes.push(new am4charts.ValueAxis());
+    const valueAxisX = this.graphEvolution.xAxes.push(new am4charts.ValueAxis());
     valueAxisX.title.text = 'CPC';
     valueAxisX.title.fill = am4core.color('#B9B9B9');
     valueAxisX.renderer.ticks.template.disabled = true;
@@ -48,7 +50,7 @@ export class ComparativeComponent implements OnInit, OnDestroy {
     valueAxisX.renderer.grid.template.strokeOpacity = 0.3;
     valueAxisX.renderer.grid.template.stroke = am4core.color('#B9B9B9');
 
-    const valueAxisY = graphEvolution.yAxes.push(new am4charts.ValueAxis());
+    const valueAxisY = this.graphEvolution.yAxes.push(new am4charts.ValueAxis());
     valueAxisY.title.text = 'Deals';
     valueAxisY.title.fill = am4core.color('#B9B9B9');
     valueAxisY.renderer.ticks.template.disabled = true;
@@ -57,7 +59,7 @@ export class ComparativeComponent implements OnInit, OnDestroy {
     valueAxisY.renderer.grid.template.strokeOpacity = 0.3;
     valueAxisY.renderer.grid.template.stroke = am4core.color('#B9B9B9');
 
-    const series = graphEvolution.series.push(new am4charts.LineSeries());
+    const series = this.graphEvolution.series.push(new am4charts.LineSeries());
     series.dataFields.valueX = 'x';
     series.dataFields.valueY = 'y';
     series.dataFields.value = 'value';
@@ -74,7 +76,7 @@ export class ComparativeComponent implements OnInit, OnDestroy {
     bullet.hiddenState.properties.opacity = 0;
     bullet.tooltipText = '[bold]{company}: {value.value}';
 
-    const outline = graphEvolution.plotContainer.createChild(am4core.Circle);
+    const outline = this.graphEvolution.plotContainer.createChild(am4core.Circle);
     outline.fillOpacity = 0;
     outline.strokeOpacity = 0.8;
     outline.stroke = am4core.color('#315575');
@@ -102,10 +104,10 @@ export class ComparativeComponent implements OnInit, OnDestroy {
 
     bullet.adapter.add('tooltipY', (tooltipY, target) => -target.radius);
 
-    graphEvolution.cursor = new am4charts.XYCursor();
-    graphEvolution.cursor.behavior = 'zoomXY';
-    graphEvolution.cursor.snapToSeries = series;
-    graphEvolution.data = [
+    this.graphEvolution.cursor = new am4charts.XYCursor();
+    this.graphEvolution.cursor.behavior = 'zoomXY';
+    this.graphEvolution.cursor.snapToSeries = series;
+    this.graphEvolution.data = [
       {
         x: 100,
         y: 100,
@@ -128,6 +130,8 @@ export class ComparativeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.graphEvolution.dispose();
+
     if (!this.subscriptions.length) {
       return;
     }

@@ -3,7 +3,7 @@ import {
   ElementRef,
   Input,
   OnDestroy,
-  OnInit
+  OnInit, ViewEncapsulation
 } from '@angular/core';
 
 import {
@@ -26,18 +26,19 @@ import {
   faRetweet,
   faCaretUp,
   faCaretDown,
-  faFileDownload,
-  faWindowMaximize,
-  faWindowMinimize,
   faAngleDoubleLeft,
-  faAngleDoubleRight
+  faAngleDoubleRight,
+  faExpandArrowsAlt,
+  faCompressArrowsAlt,
+  faEllipsisV
 } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TableComponent implements OnInit, OnDestroy {
   /*
@@ -108,14 +109,16 @@ export class TableComponent implements OnInit, OnDestroy {
   faRetweet = faRetweet;
   faCaretUp = faCaretUp;
   faCaretDown = faCaretDown;
-  faFileDownload = faFileDownload;
-  faWindowMaximize = faWindowMaximize;
-  faWindowMinimize = faWindowMinimize;
 
   faAngleDoubleLeft = faAngleDoubleLeft;
   faAngleDoubleRight = faAngleDoubleRight;
 
-  windowIcon = faWindowMaximize;
+  faExpandArrowsAlt = faExpandArrowsAlt;
+  faCompressArrowsAlt = faCompressArrowsAlt;
+
+  faEllipsisV = faEllipsisV;
+
+  windowIcon = faExpandArrowsAlt;
 
   /*
   * Option callback of each td
@@ -460,9 +463,9 @@ export class TableComponent implements OnInit, OnDestroy {
 
     if (index === -1) {
       this.tableWrapperClasses.push('fullscreen');
-      this.windowIcon = this.faWindowMinimize;
+      this.windowIcon = this.faCompressArrowsAlt;
     } else {
-      this.windowIcon = this.faWindowMaximize;
+      this.windowIcon = this.faExpandArrowsAlt;
       this.tableWrapperClasses.splice(index, 1);
     }
   }

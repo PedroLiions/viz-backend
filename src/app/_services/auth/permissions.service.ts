@@ -1,11 +1,11 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PermissionsService {
 
-  private pagesAndPermissions: any = [];
+  private readonly pagesAndPermissions: any = [];
 
   constructor() {
     this.pagesAndPermissions = JSON.parse(localStorage.getItem('pages-and-permissions'));
