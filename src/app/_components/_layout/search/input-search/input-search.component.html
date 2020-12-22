@@ -18,7 +18,7 @@
     <div class="position-relative" *ngIf="listSearch">
       <div class="result-search">
         <ul>
-          <li *ngFor="let page of listSearch" (click)="navigate(page.route)">
+          <li *ngFor="let page of listSearch" (click)="navigate(page.route)" class="cursor-pointer">
             {{ page.name | translate }}
           </li>
         </ul>

@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  API: 'http://vizapi.plima.me/api',
+  API: 'https://apiviz.deepcenter.com.br/api',
   jwt: {
     allowedDomains: [
       'vizapi.plima.me'

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {environment} from '../../../../../../../environments/environment';
+import {CallbackTrTdService} from '../../../../../_components/table/services/callback-tr-td.service';
 
 @Component({
   selector: 'app-comparative-by-company',
@@ -8,56 +9,51 @@ import {environment} from '../../../../../../../environments/environment';
 })
 export class ComparativeByCompanyComponent implements OnInit {
 
-  public columnClasseConfig: object;
+  columnClasseConfig: object = {};
 
-  public tableClass: Array<string> = [];
+  tableClass = [];
 
   callbackTable: Function;
 
-  public dataUrl = `${environment.API}/dashboards/comparative/comparative-by-company`;
+  dataUrl = `${environment.API}/dashboards/comparative/comparative-by-company`;
 
-  constructor() {
+  constructor(
+    private callbackTrTdService: CallbackTrTdService
+  ) {
   }
 
   ngOnInit(): void {
-
-    this.callbackTable = this.callbackTableTotal.bind(this);
-
     this.columnClasseConfig = {
-      'Contratos': 'bg-viz-gray',
       'Agentes': 'bg-viz-dark',
+      'Contratos': 'bg-viz-gray',
       Tentativas: 'bg-viz-red',
-      'Tent/ Agnt': 'bg-viz-red-900',
-      '%Hit rate': 'bg-viz-caramel-dark',
-      Atendidas: 'bg-viz-caramel',
+      'Spin rate': 'bg-viz-red-900',
+      'Tent /Agnt': 'bg-viz-red-900',
+      '%Incorreto': 'bg-purple',
+      Atendidas: 'bg-brow',
+      '%Hit rate': 'bg-brow-900',
       CPC: 'bg-viz-ocean',
-      'CPC/ Agnt': 'bg-viz-ocean-900',
-      '%CPC/ Atend': 'bg-viz-ocean-900',
+      'CPC /Agnt': 'bg-viz-ocean-900',
+      '%CPC /Aten': 'bg-viz-ocean-900',
       'CPCA': 'bg-viz-green-100',
       'CPCA /Agnt': 'bg-viz-green',
-      '%CPCA/ Atend': 'bg-viz-green',
+      '%CPCA /Aten': 'bg-viz-green',
       'Negociações': 'bg-viz-blue',
       'Negc /Agnt': 'bg-viz-marine',
-      '%Negc/ Tent': 'bg-viz-marine',
-      '%Negc/ Atend': 'bg-viz-marine',
+      '%Negc /Tent': 'bg-viz-marine',
+      '%Negc /Atend': 'bg-viz-marine',
       '%Negc /CPC': 'bg-viz-marine',
       '%Negc /CPCA': 'bg-viz-marine',
-      '%Improd': 'bg-viz-orange',
+      '%Improd': 'bg-viz-orange-900',
       '%Linha muda': 'bg-viz-orange-900',
-      '%Voz Máq': 'bg-viz-orange-900',
-      'Spin rate': ''
+      '%Voz Máq': 'bg-viz-orange-900'
     };
+
+    this.callbackTable = this.callbackTableTotal.bind(this);
   }
 
-  callbackTableTotal(valueOfColumm): Array<string> {
-    if (
-      typeof valueOfColumm !== 'string'
-      && valueOfColumm !== 'TOTAL'
-    ) {
-      return [];
-    }
-
-    return ['text-total'];
+  callbackTableTotal(valueOfColumm, indexOfLine, indexOfColumn, element, tableType): Array<string> {
+    return this.callbackTrTdService.setBoldTotalAndFirstLine(valueOfColumm, indexOfLine, indexOfColumn, element, tableType);
   }
 
 }

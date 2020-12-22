@@ -8,16 +8,13 @@ import {CallbackTrTdService} from '../../../../_components/table/services/callba
   styleUrls: ['./distribution-by-hour.component.scss']
 })
 export class DistributionByHourComponent implements OnInit {
-
-  env = environment;
+  columnClasseConfig: object = {};
 
   tableClass = [];
 
-  columnClasseConfig: object = {};
-
-  dataUrl = `${this.env.API}/dashboards/best-time/distribution-by-hour`;
-
   tdCallback: Function;
+
+  dataUrl = `${environment.API}/dashboards/best-time/distribution-by-hour`;
 
   constructor(
     private callbackTrTdService: CallbackTrTdService
@@ -39,8 +36,8 @@ export class DistributionByHourComponent implements OnInit {
     this.tdCallback = this.callBackTd.bind(this);
   }
 
-  callBackTd(valueOfColumm, indexOfLine, indexOfColumn): Array<string> {
-    return this.callbackTrTdService.setBoldTotalAndFirstLine(valueOfColumm, indexOfLine, indexOfColumn);
+  callBackTd(valueOfColumm, indexOfLine, indexOfColumn, element, tableType): Array<string> {
+    return this.callbackTrTdService.setBoldTotalAndFirstLine(valueOfColumm, indexOfLine, indexOfColumn, element, tableType);
   }
 
 }

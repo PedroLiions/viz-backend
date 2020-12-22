@@ -12382,7 +12382,7 @@ html {
   border-left: 10px solid rgba(0, 0, 0, 0);
 }
 .funnel-corner.funnel-corner-attempts:before {
-  top: 101px;
+  top: 110px;
   left: 15px;
   border-top: 40px solid rgba(0, 0, 0, 0);
   border-left: 40px solid rgba(255, 255, 255, 1);
@@ -12430,7 +12430,7 @@ html {
   border-left: 10px solid rgba(0, 0, 0, 0);
 }
 .funnel-corner.funnel-corner-answered:before {
-  top: 169px;
+  top: 179px;
   left: 63px;
   border-top: 40px solid rgba(0, 0, 0, 0);
   border-left: 40px solid rgba(255, 255, 255, 1);
@@ -12450,7 +12450,7 @@ html {
   border-left: 10px solid rgba(0, 0, 0, 0);
 }
 .funnel-corner.funnel-corner-cpc:before {
-  top: 238px;
+  top: 248px;
   left: 108px;
   border-top: 40px solid rgba(0, 0, 0, 0);
   border-left: 40px solid rgba(255, 255, 255, 1);
@@ -12479,7 +12479,7 @@ html {
   border-left: 10px solid rgba(0, 0, 0, 0);
 }
 .funnel-corner.funnel-corner-deals:before {
-  top: 307px;
+  top: 317px;
   left: 150px;
   border-top: 40px solid rgba(0, 0, 0, 0);
   border-left: 40px solid rgba(255, 255, 255, 1);
@@ -12508,7 +12508,7 @@ html {
   border-left: 10px solid rgba(0, 0, 0, 0);
 }
 .funnel-corner.funnel-corner-payments:before {
-  top: 376px;
+  top: 386px;
   left: 198px;
   border-top: 40px solid rgba(0, 0, 0, 0);
   border-left: 40px solid rgba(255, 255, 255, 1);
@@ -12573,7 +12573,7 @@ html {
     right: 60px;
   }
   .funnel-corner.funnel-corner-deals:before {
-    top: 307px;
+    top: 317px;
     left: 153px;
   }
   .funnel-corner.funnel-corner-number-deals:after {
@@ -12581,7 +12581,7 @@ html {
     right: 60px;
   }
   .funnel-corner.funnel-corner-payments:before {
-    top: 376px;
+    top: 386px;
     left: 198px;
   }
   .funnel-corner.funnel-corner-number-payments:before {
@@ -12606,7 +12606,7 @@ html {
     left: 104px;
   }
   .funnel-corner.funnel-corner-cpc:before {
-    top: 238px;
+    top: 248px;
     left: 108px;
   }
   .funnel-corner.funnel-corner-number-cpc:before,

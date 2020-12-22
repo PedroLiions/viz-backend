@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   // API: 'http://localhost:8000/api',
   // API: 'http://vizapi.local:8000/api',
-  // API: 'http://127.0.0.1:8000/api',
-  API: 'http://192.168.0.101:8000/api',
+  API: 'http://127.0.0.1:8000/api',
+  // API: 'http://192.168.0.101:8000/api',
   jwt: {
     allowedDomains: [
       '127.0.0.1:8000',

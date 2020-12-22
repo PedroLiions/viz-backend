@@ -71,325 +71,376 @@ body.theme-dark {
   }
 }
 
-th.bg-viz-gray,
-td:not([data-oddeven='even']).bg-viz-gray {
-  background-color: $viz-gray-light !important;
-  color: white !important;
-}
 
-td:not([data-oddeven='odd']).bg-viz-gray {
-  background-color: $viz-gray !important;
-  color: white !important;
-}
-th.bg-viz-orange,
-td:not([data-oddeven='even']).bg-viz-orange {
-  background-color: $orange-light !important;
-  color: white !important;
-}
+.table-normal {
+  th.bg-viz-gray,
+  td:not([data-oddeven='even']).bg-viz-gray {
+    background-color: $viz-gray-light !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-orange {
-  background-color: $orange-dark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-gray {
+    background-color: $viz-gray !important;
+    color: white !important;
+  }
 
-th.bg-viz-blue-100,
-td:not([data-oddeven='even']).bg-viz-blue-100 {
-  background-color: $blue-light-100 !important;
-  color: white !important;
-}
+  th.bg-viz-orange,
+  td:not([data-oddeven='even']).bg-viz-orange {
+    background-color: $orange-light !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-blue-100 {
-  background-color: $blue-dark-100 !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-orange {
+    background-color: $orange-dark !important;
+    color: white !important;
+  }
 
-th.bg-viz-orange-900,
-td:not([data-oddeven='even']).bg-viz-orange-900 {
-  background-color: $orange-light-900 !important;
-  color: white !important;
-}
+  th.bg-viz-blue-100,
+  td:not([data-oddeven='even']).bg-viz-blue-100 {
+    background-color: $blue-light-100 !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-orange-900 {
-  background-color: $orange-dark-900 !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-blue-100 {
+    background-color: $blue-dark-100 !important;
+    color: white !important;
+  }
 
-th.bg-viz-red-900,
-td:not([data-oddeven='even']).bg-viz-red-900 {
-  background-color: $red-light-900 !important;
-  color: white !important;
-}
+  th.bg-viz-orange-900,
+  td:not([data-oddeven='even']).bg-viz-orange-900 {
+    background-color: $orange-light-900 !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-red-900 {
-  background-color: $red-light-900 !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-orange-900 {
+    background-color: $orange-dark-900 !important;
+    color: white !important;
+  }
 
-th.bg-viz-dark,
-td:not([data-oddeven='even']).bg-viz-dark {
-  background-color: $viz-dark !important;
-  color: white !important;
-}
+  th.bg-viz-red-900,
+  td:not([data-oddeven='even']).bg-viz-red-900 {
+    background-color: $red-light-900 !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-dark {
-  background-color: $viz-dark-light !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-red-900 {
+    background-color: $red-dark-900 !important;
+    color: white !important;
+  }
 
-th.bg-viz-yellow,
-td:not([data-oddeven='even']).bg-viz-yellow {
-  background-color: $yellowLight !important;
-  color: white !important;
-}
+  th.bg-viz-dark,
+  td:not([data-oddeven='even']).bg-viz-dark {
+    background-color: $viz-dark !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-yellow {
-  background-color: $yellowDark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-dark {
+    background-color: $viz-dark-light !important;
+    color: white !important;
+  }
 
-th.bg-viz-blue,
-td:not([data-oddeven='even']).bg-viz-blue {
-  background-color: $blue-light !important;
-  color: white !important;
-}
+  th.bg-viz-yellow,
+  td:not([data-oddeven='even']).bg-viz-yellow {
+    background-color: $yellowLight !important;
+    color: black !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-blue {
-  background-color: $blue-dark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-yellow {
+    background-color: $yellowDark !important;
+    color: black !important;
+  }
 
-th.bg-viz-green-100,
-td:not([data-oddeven='even']).bg-viz-green-100 {
-  background-color: $green-light-100 !important;
-  color: white !important;
-}
+  th.bg-viz-blue,
+  td:not([data-oddeven='even']).bg-viz-blue {
+    background-color: $blue-light !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-green-100 {
-  background-color: $green-dark-100 !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-blue {
+    background-color: $blue-dark !important;
+    color: white !important;
+  }
 
-th.bg-viz-marine,
-td:not([data-oddeven='even']).bg-viz-marine {
-  background-color: $blue-marine-light !important;
-  color: white !important;
-}
+  th.bg-viz-green-100,
+  td:not([data-oddeven='even']).bg-viz-green-100 {
+    background-color: $green-light-100 !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-marine {
-  background-color: $blue-marine-dark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-green-100 {
+    background-color: $green-dark-100 !important;
+    color: white !important;
+  }
 
-th.bg-viz-green,
-td:not([data-oddeven='even']).bg-viz-green {
-  background-color: $green-light !important;
-  color: white !important;
-}
+  th.bg-viz-marine,
+  td:not([data-oddeven='even']).bg-viz-marine {
+    background-color: $blue-marine-light !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-green {
-  background-color: $green-dark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-marine {
+    background-color: $blue-marine-dark !important;
+    color: white !important;
+  }
 
-th.bg-viz-caramel,
-td:not([data-oddeven='even']).bg-viz-caramel {
-  background-color: $caramel-light !important;
-  color: white !important;
-}
+  th.bg-viz-green,
+  td:not([data-oddeven='even']).bg-viz-green {
+    background-color: $green-light !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-caramel {
-  background-color: $caramel-dark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-green {
+    background-color: $green-dark !important;
+    color: white !important;
+  }
 
-th.bg-viz-caramel-dark,
-td:not([data-oddeven='even']).bg-viz-caramel-dark {
-  background-color: $dark-caramel-light !important;
-  color: white !important;
-}
+  th.bg-viz-caramel,
+  td:not([data-oddeven='even']).bg-viz-caramel {
+    background-color: $caramel-light !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-caramel-dark {
-  background-color: $dark-caramel-dark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-caramel {
+    background-color: $caramel-dark !important;
+    color: white !important;
+  }
 
-th.bg-viz-ocean,
-td:not([data-oddeven='even']).bg-viz-ocean {
-  background-color: $ocean-light !important;
-  color: white !important;
-}
+  th.bg-viz-caramel-dark,
+  td:not([data-oddeven='even']).bg-viz-caramel-dark {
+    background-color: $dark-caramel-light !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-ocean {
-  background-color: $ocean-dark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-caramel-dark {
+    background-color: $dark-caramel-dark !important;
+    color: white !important;
+  }
 
-th.bg-viz-ocean-900,
-td:not([data-oddeven='even']).bg-viz-ocean-900 {
-  background-color: $ocean-light-900 !important;
-  color: white !important;
-}
+  th.bg-viz-ocean,
+  td:not([data-oddeven='even']).bg-viz-ocean {
+    background-color: $ocean-light !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-ocean-900 {
-  background-color: $ocean-dark-900 !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-ocean {
+    background-color: $ocean-dark !important;
+    color: white !important;
+  }
 
-th.bg-viz-red,
-td:not([data-oddeven='even']).bg-viz-red {
-  background-color: $redLight !important;
-  color: white !important;
-}
+  th.bg-viz-ocean-900,
+  td:not([data-oddeven='even']).bg-viz-ocean-900 {
+    background-color: $ocean-light-900 !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-red {
-  background-color: $redDark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-ocean-900 {
+    background-color: $ocean-dark-900 !important;
+    color: white !important;
+  }
 
-th.bg-viz-red-dark,
-td:not([data-oddeven='even']).bg-viz-red-dark {
-  background-color: $redDark !important;
-  color: white !important;
-}
+  th.bg-viz-red,
+  td:not([data-oddeven='even']).bg-viz-red {
+    background-color: $redLight !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-viz-red-dark {
-  background-color: $red-dark-900 !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-red {
+    background-color: $redDark !important;
+    color: white !important;
+  }
 
-th.bg-caramel,
-td:not([data-oddeven='even']).bg-caramel {
-  background-color: $caramelLight !important;
-  color: white !important;
-}
+  th.bg-viz-red-dark,
+  td:not([data-oddeven='even']).bg-viz-red-dark {
+    background-color: $redDark !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-caramel {
-  background-color: $caramelDark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-viz-red-dark {
+    background-color: $red-dark-900 !important;
+    color: white !important;
+  }
 
-th.bg-caramel-dark,
-td:not([data-oddeven='even']).bg-caramel-dark {
-  background-color: $darkCaramelLight !important;
-  color: white !important;
-}
+  th.bg-caramel,
+  td:not([data-oddeven='even']).bg-caramel {
+    background-color: $caramelLight !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-caramel-dark {
-  background-color: $darkCaramelDark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-caramel {
+    background-color: $caramelDark !important;
+    color: white !important;
+  }
 
-th.bg-ocean-light,
-td:not([data-oddeven='even']).bg-ocean-light {
-  background-color: $ocean-light !important;
-  color: white !important;
-}
+  th.bg-caramel-dark,
+  td:not([data-oddeven='even']).bg-caramel-dark {
+    background-color: $darkCaramelLight !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-ocean-light {
-  background-color: $ocean-dark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-caramel-dark {
+    background-color: $darkCaramelDark !important;
+    color: white !important;
+  }
 
-th.bg-esmerald-dark,
-td:not([data-oddeven='even']).bg-esmerald-dark {
-  background-color: $esmeraldLight !important;
-  color: white !important;
-}
+  th.bg-ocean-light,
+  td:not([data-oddeven='even']).bg-ocean-light {
+    background-color: $ocean-light !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-esmerald-dark {
-  background-color: $esmeraldDark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-ocean-light {
+    background-color: $ocean-dark !important;
+    color: white !important;
+  }
 
-th.bg-green-light,
-td:not([data-oddeven='even']).bg-green-light {
-  background-color: $green-light-100 !important;
-  color: white !important;
-}
+  th.bg-esmerald-dark,
+  td:not([data-oddeven='even']).bg-esmerald-dark {
+    background-color: $esmeraldLight !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-green-light {
-  background-color: $green-dark-100 !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-esmerald-dark {
+    background-color: $esmeraldDark !important;
+    color: white !important;
+  }
 
-th.bg-green-dark,
-td:not([data-oddeven='even']).bg-green-dark {
-  background-color: $green-light !important;
-  color: white !important;
-}
+  th.bg-green-light,
+  td:not([data-oddeven='even']).bg-green-light {
+    background-color: $green-light-100 !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-green-dark {
-  background-color: $green-dark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-green-light {
+    background-color: $green-dark-100 !important;
+    color: white !important;
+  }
 
-th.bg-blue-light,
-td:not([data-oddeven='even']).bg-blue-light {
-  background-color: $blue-light !important;
-  color: white !important;
-}
+  th.bg-green-dark,
+  td:not([data-oddeven='even']).bg-green-dark {
+    background-color: $green-light !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-blue-light {
-  background-color: $blue-dark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-green-dark {
+    background-color: $green-dark !important;
+    color: white !important;
+  }
 
-th.bg-blue-marine,
-td:not([data-oddeven='even']).bg-blue-marine {
-  background-color: $blue-marine-light !important;
-  color: white !important;
-}
+  th.bg-blue-light,
+  td:not([data-oddeven='even']).bg-blue-light {
+    background-color: $blue-light !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-blue-marine {
-  background-color: $blue-marine-dark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-blue-light {
+    background-color: $blue-dark !important;
+    color: white !important;
+  }
 
-th.bg-orange,
-td:not([data-oddeven='even']).bg-orange {
-  background-color: $orange-light !important;
-  color: white !important;
-}
+  th.bg-blue-marine,
+  td:not([data-oddeven='even']).bg-blue-marine {
+    background-color: $blue-marine-light !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-orange {
-  background-color: $orange-dark !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-blue-marine {
+    background-color: $blue-marine-dark !important;
+    color: white !important;
+  }
 
-th.bg-orange-dark,
-td:not([data-oddeven='even']).bg-orange-dark {
-  background-color: $orange-light-900 !important;
-  color: white !important;
-}
+  th.bg-orange,
+  td:not([data-oddeven='even']).bg-orange {
+    background-color: $orange-light !important;
+    color: white !important;
+  }
 
-td:not([data-oddeven='odd']).bg-orange-dark {
-  background-color: $orange-dark-900 !important;
-  color: white !important;
-}
+  td:not([data-oddeven='odd']).bg-orange {
+    background-color: $orange-dark !important;
+    color: white !important;
+  }
 
+  th.bg-orange-dark,
+  td:not([data-oddeven='even']).bg-orange-dark {
+    background-color: $orange-light-900 !important;
+    color: white !important;
+  }
+
+  td:not([data-oddeven='odd']).bg-orange-dark {
+    background-color: $orange-dark-900 !important;
+    color: white !important;
+  }
+
+  th.bg-purple,
+  td:not([data-oddeven='even']).bg-purple {
+    background-color: $purple-light !important;
+    color: white !important;
+  }
+
+  td:not([data-oddeven='odd']).bg-purple {
+    background-color: $purple-dark !important;
+    color: white !important;
+  }
+
+  th.bg-brow,
+  td:not([data-oddeven='even']).bg-brow {
+    background-color: $brow-light !important;
+    color: white !important;
+  }
+
+  td:not([data-oddeven='odd']).bg-brow {
+    background-color: $brow-dark !important;
+    color: white !important;
+  }
+
+  th.bg-brow-900,
+  td:not([data-oddeven='even']).bg-brow-900 {
+    background-color: $brow-light-900 !important;
+    color: white !important;
+  }
+
+  td:not([data-oddeven='odd']).bg-brow-900 {
+    background-color: $brow-dark-900 !important;
+    color: white !important;
+  }
+}
 
 .table-transpose {
-  tr.bg-viz-gray {
-    th:nth-of-type(odd).bg-viz-gray {
-      background-color: $viz-gray-light !important;
+  tr.bg-brow {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
+      background-color: $brow-light !important;
       color: white !important;
     }
-    th:nth-of-type(even).bg-viz-gray {
-      background-color: $viz-gray !important;
+    td:nth-of-type(even), th:nth-of-type(even) {
+      background-color: $brow-dark !important;
       color: white !important;
     }
 
-    th {
+    td {
+      color: white !important;
+    }
+  }
+
+  tr.bg-brow-900 {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
+      background-color: $brow-light-900 !important;
+      color: white !important;
+    }
+    td:nth-of-type(even), th:nth-of-type(even) {
+      background-color: $brow-dark-900 !important;
+      color: white !important;
+    }
+
+    td {
       color: white !important;
     }
   }
 
   tr.bg-viz-caramel {
-    td:nth-of-type(odd) {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $caramel-light !important;
       color: white !important;
     }
-    td:nth-of-type(even) {
+    td:nth-of-type(even), th:nth-of-type(even) {
       background-color: $caramel-dark !important;
       color: white !important;
     }
@@ -398,12 +449,28 @@ td:not([data-oddeven='odd']).bg-orange-dark {
       color: white !important;
     }
   }
+
+  tr.bg-purple {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
+      background-color: $purple-light !important;
+      color: white !important;
+    }
+    td:nth-of-type(even), th:nth-of-type(even) {
+      background-color: $purple-dark !important;
+      color: white !important;
+    }
+
+    td {
+      color: white !important;
+    }
+  }
+
   tr.bg-viz-caramel-dark {
-    td:nth-of-type(odd) {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $dark-caramel-light !important;
       color: white !important;
     }
-    td:nth-of-type(even) {
+    td:nth-of-type(even), th:nth-of-type(even) {
       background-color: $dark-caramel-dark !important;
       color: white !important;
     }
@@ -427,6 +494,22 @@ td:not([data-oddeven='odd']).bg-orange-dark {
       color: white !important;
     }
   }
+
+  tr.bg-viz-gray {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
+      background-color: $viz-gray-light !important;
+      color: white !important;
+    }
+    td:nth-of-type(even), th:nth-of-type(even) {
+      background-color: $viz-gray !important;
+      color: white !important;
+    }
+
+    td {
+      color: white !important;
+    }
+  }
+
   tr.bg-viz-yellow {
     td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $yellowLight !important;
@@ -443,11 +526,11 @@ td:not([data-oddeven='odd']).bg-orange-dark {
   }
 
   tr.bg-viz-ocean {
-    td:nth-of-type(odd) {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $ocean-light !important;
       color: white !important;
     }
-    td:nth-of-type(even) {
+    td:nth-of-type(even), th:nth-of-type(even) {
       background-color: $ocean-dark !important;
       color: white !important;
     }
@@ -458,11 +541,11 @@ td:not([data-oddeven='odd']).bg-orange-dark {
   }
 
   tr.bg-viz-ocean-900 {
-    td:nth-of-type(odd) {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $ocean-light-900 !important;
       color: white !important;
     }
-    td:nth-of-type(even) {
+    td:nth-of-type(even), th:nth-of-type(even) {
       background-color: $ocean-dark-900 !important;
       color: white !important;
     }
@@ -474,11 +557,11 @@ td:not([data-oddeven='odd']).bg-orange-dark {
 
 
   tr.bg-viz-green-100 {
-    td:nth-of-type(odd) {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $green-light-100 !important;
       color: white !important;
     }
-    td:nth-of-type(even) {
+    td:nth-of-type(even), th:nth-of-type(even) {
       background-color: $green-dark-100 !important;
       color: white !important;
     }
@@ -490,11 +573,11 @@ td:not([data-oddeven='odd']).bg-orange-dark {
 
 
   tr.bg-viz-dark {
-    td:nth-of-type(odd) {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $viz-dark !important;
       color: white !important;
     }
-    td:nth-of-type(even) {
+    td:nth-of-type(even), th:nth-of-type(even) {
       background-color: $viz-dark-light !important;
       color: white !important;
     }
@@ -505,11 +588,11 @@ td:not([data-oddeven='odd']).bg-orange-dark {
   }
 
   tr.bg-viz-red-900 {
-    td:nth-of-type(odd) {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $red-light-900 !important;
       color: white !important;
     }
-    td:nth-of-type(even) {
+    td:nth-of-type(even), th:nth-of-type(even) {
       background-color: $red-dark-900 !important;
       color: white !important;
     }
@@ -537,11 +620,11 @@ td:not([data-oddeven='odd']).bg-orange-dark {
   }
 
   tr.bg-viz-green {
-    td:nth-of-type(odd) {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $green-light !important;
       color: white !important;
     }
-    td:nth-of-type(even) {
+    td:nth-of-type(even), th:nth-of-type(even) {
       background-color: $green-dark !important;
       color: white !important;
     }
@@ -552,11 +635,11 @@ td:not([data-oddeven='odd']).bg-orange-dark {
   }
 
   tr.bg-viz-blue {
-    td:nth-of-type(odd) {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $blue-light !important;
       color: white !important;
     }
-    td:nth-of-type(even) {
+    td:nth-of-type(even), th:nth-of-type(even) {
       background-color: $blue-dark !important;
       color: white !important;
     }
@@ -567,11 +650,11 @@ td:not([data-oddeven='odd']).bg-orange-dark {
   }
 
   tr.bg-viz-marine {
-    td:nth-of-type(odd) {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $blue-marine-light !important;
       color: white !important;
     }
-    td:nth-of-type(even) {
+    td:nth-of-type(even), th:nth-of-type(even) {
       background-color: $blue-marine-dark !important;
       color: white !important;
     }
@@ -582,11 +665,11 @@ td:not([data-oddeven='odd']).bg-orange-dark {
   }
 
   tr.bg-viz-orange {
-    td:nth-of-type(odd) {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $orange-light !important;
       color: white !important;
     }
-    td:nth-of-type(even) {
+    td:nth-of-type(even), th:nth-of-type(even) {
       background-color: $orange-dark !important;
       color: white !important;
     }
@@ -597,11 +680,11 @@ td:not([data-oddeven='odd']).bg-orange-dark {
   }
 
   tr.bg-viz-orange-900 {
-    td:nth-of-type(odd) {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $orange-light-900 !important;
       color: white !important;
     }
-    td:nth-of-type(even) {
+    td:nth-of-type(even), th:nth-of-type(even) {
       background-color: $orange-dark-900 !important;
       color: white !important;
     }
@@ -612,11 +695,11 @@ td:not([data-oddeven='odd']).bg-orange-dark {
   }
 
   tr.bg-viz-blue-100 {
-    td:nth-of-type(odd) {
+    td:nth-of-type(odd), th:nth-of-type(odd) {
       background-color: $blue-light-100 !important;
       color: white !important;
     }
-    td:nth-of-type(even) {
+    td:nth-of-type(even), th:nth-of-type(even) {
       background-color: $blue-dark-100 !important;
       color: white !important;
     }

@@ -11,6 +11,7 @@ import {DashboardsService} from '../../../../../_services/http/dashboards/dashbo
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
+import {FiltersService} from '../../../../../_services/filters/filters.service';
 
 declare var $: any;
 
@@ -30,9 +31,8 @@ export class Widget1Component implements OnInit, AfterViewInit, OnDestroy {
   details = {};
 
   constructor(
-    private zone: NgZone,
     private dashboardsService: DashboardsService,
-    private cdRef: ChangeDetectorRef
+    private filters: FiltersService
   ) {
   }
 
@@ -40,13 +40,15 @@ export class Widget1Component implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.zone.runOutsideAngular(() => {
+    this.filters.event.subscribe(filters => this.createChart(filters));
+  }
+
+  createChart(filters = null): void {
+    $(() => {
       this.dashboardsService.agents().subscribe(response => {
         this.data = response.data;
         /* create charts */
         this.dispachCharts();
-        /* update view */
-        this.cdRef.detectChanges();
       });
     });
   }

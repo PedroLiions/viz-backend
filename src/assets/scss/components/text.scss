@@ -5,11 +5,15 @@
 }
 
 .text-total {
-  color: #313131;
+  font-weight: 400 !important;
+  color: white !important;
+  background: $viz-dark;
+  text-transform: uppercase;
 }
+
 .theme-dark {
   .text-total, {
-    color: white;
+    color: white !important;
   }
 
   .text-dark {

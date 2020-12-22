@@ -15,32 +15,23 @@ am4core.useTheme(am4themes_animated);
   templateUrl: './best-time.component.html',
   styleUrls: ['./best-time.component.scss']
 })
-export class BestTimeComponent implements OnInit, AfterViewInit, OnDestroy {
+export class BestTimeComponent implements OnInit, OnDestroy {
   private chart: am4charts.XYChart;
   private indicatorsByHour = {};
 
   public data: any;
 
   constructor(
-    private zone: NgZone,
-    private dashboardsService: DashboardsService,
-    private cdRef: ChangeDetectorRef
+    private dashboardsService: DashboardsService
   ) {
 
   }
 
   ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
-    this.zone.runOutsideAngular(() => {
-      this.dashboardsService.bestTime().subscribe(response => {
-        this.data = response.data;
-        /* create charts */
-        this.dispachCharts();
-        /* update view */
-        this.cdRef.detectChanges();
-      });
+    this.dashboardsService.bestTime().subscribe(response => {
+      this.data = response.data;
+      /* create charts */
+      this.dispachCharts();
     });
   }
 

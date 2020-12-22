@@ -42,7 +42,7 @@
       color: white;
 
       &:hover {
-        background-color: $viz-dark-light;
+        background-color: $viz-dark;
       }
     }
   }
@@ -92,6 +92,10 @@
 
     .btn-black-dark {
       color: #8c8c8c;
+
+      &.active {
+        color: #3e3e3e;
+      }
     }
 
 

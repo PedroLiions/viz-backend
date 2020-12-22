@@ -31,20 +31,7 @@
   <div
     *ngIf="inRoute === '/dashboards/agents' || inRoute === '/dashboards/best-time' || inRoute === '/dashboards/comparative'"
     class="row p-2">
-    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
-      <div>Empresa</div>
-      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> A1 </label></div>
-      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> Crc </label></div>
-      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> Paschoalotto </label></div>
-      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> System </label></div>
-    </div>
-    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
-      <div>Hora</div>
-      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> 8 </label></div>
-      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> 9 </label></div>
-      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> 10 </label></div>
-      <div><label class="cursor-pointer m-b-0"><input type="checkbox"> 11 </label></div>
-    </div>
+    <app-filter-agents></app-filter-agents>
   </div>
 
   <div *ngIf="inRoute === '/dashboards/daily'"
@@ -342,17 +329,19 @@
     </div>
     <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
       <div>Hora</div>
-      <div>
-        <label class="cursor-pointer m-b-0"><input type="checkbox"> 8 </label>
-      </div>
-      <div>
-        <label class="cursor-pointer m-b-0"><input type="checkbox"> 9 </label>
-      </div>
-      <div>
-        <label class="cursor-pointer m-b-0"><input type="checkbox"> 10 </label>
-      </div>
-      <div>
-        <label class="cursor-pointer m-b-0"><input type="checkbox"> 11 </label>
+      <div class="d-flex flex-row">
+        <div>
+          <label class="cursor-pointer m-b-0"><input type="checkbox"> 8 </label>
+        </div>
+        <div>
+          <label class="cursor-pointer m-b-0"><input type="checkbox"> 9 </label>
+        </div>
+        <div>
+          <label class="cursor-pointer m-b-0"><input type="checkbox"> 10 </label>
+        </div>
+        <div>
+          <label class="cursor-pointer m-b-0"><input type="checkbox"> 11 </label>
+        </div>
       </div>
     </div>
   </div>

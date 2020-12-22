@@ -41,6 +41,9 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class TableComponent implements OnInit, OnDestroy {
+
+  tries = 0;
+
   /*
   * data for table
   */
@@ -123,7 +126,7 @@ export class TableComponent implements OnInit, OnDestroy {
   /*
   * Option callback of each td
   * */
-  @Input() callbackClassOfTd: (columnValue: string, indexOfLine: number, indexOfColumn: number) => Array<string> = () => [''];
+  @Input() callbackClassOfTd: (columnValue: string, indexOfLine: number, indexOfColumn: number, element: string, tableType: string | null) => Array<string> = () => [''];
   @Input() callbackStyleTd: (columnValue: string) => object = () => new Object();
 
   constructor(
@@ -139,7 +142,7 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   public transpose(): void {
-    let columns = this.columns;
+    let columns: Array<object>;
 
     columns = Object.keys(this.columns[0]).map(
       c => this.columns.map(
@@ -228,12 +231,16 @@ export class TableComponent implements OnInit, OnDestroy {
     }
 
     switch (this[tBodyConfig][column].orderBy) {
+      case 'both':
+        orderBy = 'asc';
+        this[tableColumns] = _.sortBy(this[tableColumns], column).reverse();
+        break;
       case 'asc':
         orderBy = 'desc';
         this[tableColumns] = _.sortBy(this[tableColumns], column);
         break;
       case 'desc':
-        orderBy = 'asc';
+        orderBy = 'both';
         this[tableColumns] = _.sortBy(this[tableColumns], column).reverse();
         break;
       default:
@@ -258,7 +265,7 @@ export class TableComponent implements OnInit, OnDestroy {
     }
   }
 
-  public getOrderBy(column: string): string {
+  private getOrderBy(column: string): string {
     return (this.tableType === 'transpose')
       ? this.tBodyColumnConfigsTranspose[column].orderBy
       : this.tBodyColumnConfigs[column].orderBy;
@@ -287,7 +294,7 @@ export class TableComponent implements OnInit, OnDestroy {
   /*
   * Create object for control DOM of element
   * */
-  public createColumnControl(data): void {
+  private createColumnControl(data): void {
     this.tHeadColumn = this.objectKeys(data[0]);
     this.tHeadColumnTranspose = data.map(item => item[Object.keys(item)[0]]);
     this.tHeadColumnTranspose.unshift(this.tHeadColumn[0]);
@@ -296,7 +303,7 @@ export class TableComponent implements OnInit, OnDestroy {
     this.tHeadColumnTranspose.forEach(column => this.constructObjectOfTHead(column, 'tBodyColumnConfigsTranspose'));
   }
 
-  constructObjectOfTHead(column, bodyConfig): any {
+  private constructObjectOfTHead(column, bodyConfig): any {
     if (typeof this[bodyConfig][column] === 'object') {
       return;
     }
@@ -320,19 +327,46 @@ export class TableComponent implements OnInit, OnDestroy {
   /*
   * Get TD class
   * */
-  public getColumnClasses(column, tableType = 'normal'): Array<string> | string {
+  public getColumnClasses(column): Array<string> | string {
     try {
-      const obj = (tableType === 'normal')
-        ? 'tBodyColumnConfigs'
-        : 'tBodyColumnConfigsTranspose';
+      if (this.tableType === 'transpose') {
+        let classes = [];
 
-      return this[obj][column].classes;
+        try {
+          classes = classes.concat(this.tBodyColumnConfigs[column].classes);
+        } catch (e) {}
+
+        try {
+          classes = classes.concat(this.tBodyColumnConfigsTranspose[column].classes);
+        } catch (e) {}
+
+        return classes;
+      } else if (this.tableType === 'normal') {
+        return this.tBodyColumnConfigs[column].classes;
+      }
     } catch (e) {
-      return '';
+      return [];
     }
+
+    // const obj = 'tBodyColumnConfigs';
+    //
+    // try {
+    //   if (this.tableType === 'normal') {
+    //     return this[obj][column].classes;
+    //   } else {
+    //     // if (this.tries < 2) {
+    //     this.tries++;
+    //     // console.log("classes normais", this.tBodyColumnConfigs[column].classes, "classes tranpose", this.tBodyColumnConfigsTranspose[column].classes);
+    //     // }
+    //   }
+    //
+    //   return [];
+    // } catch (e) {
+    //   return '';
+    // }
   }
 
-  search(event): void {
+  public search(event): void {
     this.getData({
       search: event.currentTarget.value
     });
@@ -349,7 +383,7 @@ export class TableComponent implements OnInit, OnDestroy {
   /*
   * toggle all columns, hide/show
   * */
-  markAllColumns(): void {
+  public markAllColumns(): void {
     const obj = (this.tableType === 'normal')
       ? 'columns'
       : 'columnsTranpose';
@@ -468,6 +502,39 @@ export class TableComponent implements OnInit, OnDestroy {
       this.windowIcon = this.faExpandArrowsAlt;
       this.tableWrapperClasses.splice(index, 1);
     }
+  }
+
+  public getStyleOfTHead(valueOfColumn): Array<string> {
+    if (typeof valueOfColumn === 'string') {
+      if (valueOfColumn.indexOf('/') === -1) {
+        return [];
+      }
+
+      return ['break-space'];
+    }
+
+    return [];
+  }
+
+  public getNgClassOfThNormal(value, indexOfColumn): string[] {
+    const columnClasses = this.getColumnClasses(value);
+    const classesOfCallback = this.callbackClassOfTd(value, indexOfColumn, indexOfColumn, 'thead', 'normal');
+    const classOfTHead = this.getStyleOfTHead(value);
+
+    return [].concat(columnClasses, classesOfCallback, classOfTHead);
+  }
+
+  public getNgClassOfThTranspose(value, indexOfColumn, indexOfLine, element, tableType): Array<string> {
+    const callbackClasses = this.callbackClassOfTd(value, indexOfColumn, indexOfLine, 'thead', tableType);
+    const columnClasses = this.getColumnClasses(value);
+    const rowTransposeClass = this.getRowTransposeClass(indexOfColumn, this.tHeadColumnTranspose);
+    const styleOfTHead = this.getStyleOfTHead(value);
+
+    return [].concat(callbackClasses, columnClasses, rowTransposeClass, styleOfTHead);
+  }
+
+  public getClassOfTheadTranspose(): string | string[] {
+    return this.getRowTransposeClass(1, this.tHeadColumnTranspose);
   }
 
   /*

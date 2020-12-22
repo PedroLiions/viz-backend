@@ -14,7 +14,7 @@
     <div class="columns columns-right float-right">
 
       <div class="dropdown" *ngIf="tableType === 'normal'">
-        <button class="dropbtn btn btn-sm btn-sm btn-link">
+        <button class="dropbtn btn btn-sm btn-sm btn-link btn-caret">
           <fa-icon [icon]="faThList"></fa-icon>
           <app-caret></app-caret>
         </button>
@@ -48,11 +48,12 @@
           </a>
           <hr>
           <a *ngFor="let column of tHeadColumnTranspose; let i = index;"
+             (click)="toggleColumnClasse(column, 'd-none')"
+             [ngClass]="{'d-none': i === 0}"
              class="dropdown-item">
             <label>
               <input type="checkbox"
-                     [checked]="existClasse(column, 'd-none')"
-                     (click)="toggleColumnClasse(column, 'd-none')">
+                     [checked]="existClasse(column, 'd-none')">
               <span class="ml-1">
                 {{ column }}
               </span>
@@ -99,7 +100,7 @@
   </div>
 
   <div class="table-responsive">
-    <table class="table table-sm table-striped"
+    <table class="table table-sm table-striped table-normal"
            [id]="name"
            *ngIf="tableType === 'normal'"
            [ngClass]="classes">
@@ -107,8 +108,8 @@
       <thead *ngIf="columns">
       <tr>
         <th
-          *ngFor="let tHead of tHeadColumn; let i = index"
-          [ngClass]="getColumnClasses(tHead).concat(callbackClassOfTd(tHead, i, i))"
+          *ngFor="let tHead of tHeadColumn; let indexOfColumn = index"
+          [ngClass]="getNgClassOfThNormal(tHead, indexOfColumn)"
           (click)="setOrderBy(tHead)">
           <div>
             <div class="d-block table-caret">
@@ -121,13 +122,12 @@
 
       </tr>
       </thead>
-
       <tbody *ngIf="columns">
       <tr
         *ngFor="let column of columns; let c = index">
 
         <td *ngFor="let td of objectValues(column); let i = index"
-            [ngClass]="getColumnClasses(objectKeys(column)[i]).concat(callbackClassOfTd(td, c, i))"
+            [ngClass]="getColumnClasses(objectKeys(column)[i]).concat(callbackClassOfTd(td, c, i, 'tbody', 'normal'))"
             [ngStyle]="callbackStyleTd(td)"
             [attr.data-oddeven]="getRel(c)"
             [attr.data-value]="td"
@@ -146,11 +146,13 @@
            [ngClass]="classes">
 
       <thead *ngIf="columnsTranpose">
-      <tr>
+      <tr
+        [ngClass]="getClassOfTheadTranspose()">
         <th
           *ngFor="let tHead of tHeadColumnTranspose; let c = index"
-          [ngClass]="getRowTransposeClass(c, tHeadColumnTranspose).concat(getColumnClasses(tHead, 'transpose').concat(callbackClassOfTd(tHead, c, null)))"
+          [ngClass]="getNgClassOfThTranspose(tHead, c, null, 'thead', 'transpose')"
           [attr.data-oddeven]="getRel(c)"
+          [title]="tHead"
           (click)="setOrderBy(tHead)">
           <div>
             <div class="d-block table-caret">
@@ -166,13 +168,13 @@
 
       <tbody *ngIf="columns">
       <tr
-        *ngFor="let column of columnsTranpose; let c = index"
-        [ngClass]="getRowTransposeClass(c, objectValues(column))">
+        *ngFor="let column of columnsTranpose; let indexOfLine = index"
+        [ngClass]="getRowTransposeClass(indexOfLine, objectValues(column))">
 
-        <td *ngFor="let td of objectValues(column); let i = index"
-            [ngClass]="getColumnClasses(tHeadColumnTranspose[i], 'transpose').concat(callbackClassOfTd(td, c, i))"
+        <td *ngFor="let td of objectValues(column); let indexOfColumn = index"
+            [ngClass]="getColumnClasses(tHeadColumnTranspose[indexOfColumn]).concat(callbackClassOfTd(td, indexOfLine, indexOfColumn, 'tbody', 'tranpose'))"
             [ngStyle]="callbackStyleTd(td)"
-            [attr.data-oddeven]="getRel(c)"
+            [attr.data-oddeven]="getRel(indexOfLine)"
             [attr.data-value]="td"
         >
           {{ td | translate }}

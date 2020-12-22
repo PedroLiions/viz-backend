@@ -32,6 +32,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { ClockComponent } from './_components/_layout/search/clock/clock.component';
 import { CarouselComponent } from './_components/_layout/search/carousel/carousel.component';
 import { InputSearchComponent } from './_components/_layout/search/input-search/input-search.component';
+import { FilterAgentsComponent } from './_components/_layout/right-nav/filter/filter-agents/filter-agents.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { InputSearchComponent } from './_components/_layout/search/input-search/
     Error404Component,
     ClockComponent,
     CarouselComponent,
-    InputSearchComponent
+    InputSearchComponent,
+    FilterAgentsComponent
   ],
   imports: [
     HttpClientModule,

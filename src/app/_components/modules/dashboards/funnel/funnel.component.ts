@@ -1,11 +1,12 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {DashboardsService} from '../../../../_services/http/dashboards/dashboards.service';
 
 @Component({
   selector: 'app-funnel',
   templateUrl: './funnel.component.html',
-  styleUrls: ['./funnel.component.scss']
+  styleUrls: ['./funnel.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class FunnelComponent implements OnInit, OnDestroy {
 

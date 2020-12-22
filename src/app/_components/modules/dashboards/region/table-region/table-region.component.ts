@@ -38,8 +38,8 @@ export class TableRegionComponent implements OnInit {
         };
     }
 
-    callBackTD(valueOfColumn, row, line): Array<string> {
-        return this.callbackTrTdService.setBoldTotalAndFirstLine(valueOfColumn, row, line);
+    callBackTD(valueOfColumn, row, line, element, tableType): Array<string> {
+        return this.callbackTrTdService.setBoldTotalAndFirstLine(valueOfColumn, row, line, element, tableType);
     }
 
 }

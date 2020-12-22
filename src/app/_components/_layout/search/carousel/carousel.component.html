@@ -4,8 +4,8 @@
   <ng-template carouselSlide [ngIf]="hasPermission('Best time')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon"><i class="material-icons md-36">access_alarm</i></div>
-        <div class="col-12 content text-truncate">{{ 'Best time' | translate }}...</div>
+        <div class="icon"><i class="material-icons md-36">access_alarm</i></div>
+        <div class="content text-truncate">{{ 'Best time' | translate }}...</div>
       </div>
     </div>
   </ng-template>
@@ -13,8 +13,8 @@
   <ng-template carouselSlide [ngIf]="hasPermission('Comparative')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon"><i class="material-icons md-36">compare</i></div>
-        <div class="col-12 content text-truncate"> {{ 'Comparativo' | translate}}</div>
+        <div class="icon"><i class="material-icons md-36">compare</i></div>
+        <div class="content text-truncate"> {{ 'Comparativo' | translate}}</div>
       </div>
     </div>
   </ng-template>
@@ -22,8 +22,8 @@
   <ng-template carouselSlide [ngIf]="hasPermission('Diário')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon"><i class="material-icons md-36">today</i></div>
-        <div class="col-12 content text-truncate"> {{ 'Diário' | translate }}</div>
+        <div class="icon"><i class="material-icons md-36">today</i></div>
+        <div class="content text-truncate"> {{ 'Diário' | translate }}</div>
       </div>
     </div>
   </ng-template>
@@ -31,8 +31,8 @@
   <ng-template carouselSlide [ngIf]="hasPermission('Região')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="scol-12 icon"><i class="material-icons md-36">location_on</i></div>
-        <div class="col-12 content text-truncate"> {{ 'Região' | translate }}</div>
+        <div class="icon"><i class="material-icons md-36">location_on</i></div>
+        <div class="content text-truncate"> {{ 'Região' | translate }}</div>
       </div>
     </div>
   </ng-template>
@@ -40,8 +40,8 @@
   <ng-template carouselSlide [ngIf]="hasPermission('Funil')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon"><i class="material-icons md-36">filter_list</i></div>
-        <div class="col-12 content text-truncate"> {{ 'Funil' | translate }}</div>
+        <div class="icon"><i class="material-icons md-36">filter_list</i></div>
+        <div class="content text-truncate"> {{ 'Funil' | translate }}</div>
       </div>
     </div>
   </ng-template>
@@ -49,8 +49,8 @@
   <ng-template carouselSlide [ngIf]="hasPermission('Carteira')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon"><i class="material-icons md-36">account_balance_wallet</i></div>
-        <div class="col-12 content text-truncate"> {{'Portfolio' | translate}}</div>
+        <div class="icon"><i class="material-icons md-36">account_balance_wallet</i></div>
+        <div class="content text-truncate"> {{'Portfolio' | translate}}</div>
       </div>
     </div>
   </ng-template>
@@ -58,8 +58,8 @@
   <ng-template carouselSlide [ngIf]="hasPermission('Agents')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon"><i class="material-icons md-36">headset_mic</i></div>
-        <div class="col-12 content text-truncate"> {{ 'Agentes' | translate }}</div>
+        <div class="icon"><i class="material-icons md-36">headset_mic</i></div>
+        <div class="content text-truncate"> {{ 'Agentes' | translate }}</div>
       </div>
     </div>
   </ng-template>
@@ -67,18 +67,17 @@
   <ng-template carouselSlide [ngIf]="hasPermission('Multi channel')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon"><i class="material-icons md-36">device_hub</i></div>
-        <div class="col-12 content text-truncate"> {{ 'Multi canais'| translate }}</div>
+        <div class="icon"><i class="material-icons md-36">device_hub</i></div>
+        <div class="content text-truncate"> {{ 'Multi canais'| translate }}</div>
       </div>
     </div>
   </ng-template>
   <ng-template carouselSlide [ngIf]="! hasPermission('Best time')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon">
+        <div class="icon">
           <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
         </div>
-        <div class="card-skeleton"></div>
       </div>
     </div>
   </ng-template>
@@ -86,10 +85,10 @@
   <ng-template carouselSlide [ngIf]="! hasPermission('Comparative')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon">
+        <div class="icon">
           <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
+
         </div>
-        <div class="card-skeleton"></div>
       </div>
     </div>
   </ng-template>
@@ -97,10 +96,9 @@
   <ng-template carouselSlide [ngIf]="! hasPermission('Diário')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon">
+        <div class="icon">
           <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
         </div>
-        <div class="card-skeleton"></div>
       </div>
     </div>
   </ng-template>
@@ -108,10 +106,9 @@
   <ng-template carouselSlide [ngIf]="! hasPermission('Região')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="scol-12 icon">
+        <div class="icon">
           <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
         </div>
-        <div class="card-skeleton"></div>
       </div>
     </div>
   </ng-template>
@@ -119,10 +116,9 @@
   <ng-template carouselSlide [ngIf]="! hasPermission('Funil')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon">
+        <div class="icon">
           <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
         </div>
-        <div class="card-skeleton"></div>
       </div>
     </div>
   </ng-template>
@@ -130,10 +126,10 @@
   <ng-template carouselSlide [ngIf]="! hasPermission('Carteira')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon">
+        <div class="icon">
           <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
+
         </div>
-        <div class="card-skeleton"></div>
       </div>
     </div>
   </ng-template>
@@ -141,10 +137,10 @@
   <ng-template carouselSlide [ngIf]="! hasPermission('Agents')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon">
+        <div class="icon">
           <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
+
         </div>
-        <div class="card-skeleton"></div>
       </div>
     </div>
   </ng-template>
@@ -152,15 +148,13 @@
   <ng-template carouselSlide [ngIf]="! hasPermission('Multi channel')">
     <div class="card search-card-dashboard">
       <div class="body text-center">
-        <div class="col-12 icon">
+        <div class="icon">
           <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
+
         </div>
-        <div class="card-skeleton"></div>
       </div>
     </div>
   </ng-template>
-
-
 
 
 </owl-carousel-o>
@@ -171,29 +165,29 @@
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Funil')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">filter_list</i></div>
-      <div class="col-12 content text-truncate"> {{ 'Funil' | translate }}</div>
+      <div class="icon"><i class="material-icons md-36">filter_list</i></div>
+      <div class="content text-truncate"> {{ 'Funil' | translate }}</div>
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Carteira')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">account_balance_wallet</i></div>
-      <div class="col-12 content text-truncate"> {{'Carteira' | translate}}</div>
+      <div class="icon"><i class="material-icons md-36">account_balance_wallet</i></div>
+      <div class="content text-truncate"> {{'Carteira' | translate}}</div>
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Agents')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">headset_mic</i></div>
-      <div class="col-12 content text-truncate"> {{ 'Agentes' | translate }}</div>
+      <div class="icon"><i class="material-icons md-36">headset_mic</i></div>
+      <div class="content text-truncate"> {{ 'Agentes' | translate }}</div>
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Multi channel')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">device_hub</i></div>
-      <div class="col-12 content text-truncate"> {{ 'Multi canais'| translate }}</div>
+      <div class="icon"><i class="material-icons md-36">device_hub</i></div>
+      <div class="content text-truncate"> {{ 'Multi canais'| translate }}</div>
     </div>
   </div>
 
@@ -203,28 +197,28 @@
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Best time')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">access_alarm</i></div>
-      <div class="col-12 content text-truncate">{{ 'Best time' | translate }}...</div>
+      <div class="icon"><i class="material-icons md-36">access_alarm</i></div>
+      <div class="content text-truncate">{{ 'Best time' | translate }}...</div>
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Comparative')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">compare</i></div>
-      <div class="col-12 content text-truncate"> {{ 'Comparativo' | translate}}</div>
+      <div class="icon"><i class="material-icons md-36">compare</i></div>
+      <div class="content text-truncate"> {{ 'Comparativo' | translate}}</div>
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Diário')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">today</i></div>
-      <div class="col-12 content text-truncate"> {{ 'Diário' | translate }}</div>
+      <div class="icon"><i class="material-icons md-36">today</i></div>
+      <div class="content text-truncate"> {{ 'Diário' | translate }}</div>
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="! hasPermission('Região')">
     <div class="body text-center">
-      <div class="col-12 icon">
+      <div class="icon">
         <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
       </div>
       <div class="col-12 content text-truncate"> {{ 'Região' | translate }}</div>
@@ -232,42 +226,34 @@
   </div>
   <div class="card search-card-dashboard" *ngIf="! hasPermission('Best time')">
     <div class="body text-center">
-      <div class="col-12 icon">
+      <div class="icon">
         <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
       </div>
-      <div class="col-12 content text-truncate">
-        <div class="card-skeleton"></div>
-      </div>
+
     </div>
   </div>
   <div class="card search-card-dashboard" *ngIf="! hasPermission('Comparative')">
     <div class="body text-center">
-      <div class="col-12 icon">
+      <div class="icon">
         <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
       </div>
-      <div class="col-12 content text-truncate">
-        <div class="card-skeleton"></div>
-      </div>
+
     </div>
   </div>
   <div class="card search-card-dashboard" *ngIf="! hasPermission('Diário')">
     <div class="body text-center">
-      <div class="col-12 icon">
+      <div class="icon">
         <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
       </div>
-      <div class="col-12 content text-truncate">
-        <div class="card-skeleton"></div>
-      </div>
+
     </div>
   </div>
   <div class="card search-card-dashboard" *ngIf="! hasPermission('Região')">
     <div class="body text-center">
-      <div class="col-12 icon">
+      <div class="icon">
         <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
       </div>
-      <div class="col-12 content text-truncate">
-        <div class="card-skeleton"></div>
-      </div>
+
     </div>
   </div>
 
@@ -278,150 +264,134 @@
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Funil')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">filter_list</i></div>
-      <div class="col-12 content text-truncate"> {{ 'Funil' | translate }}</div>
+      <div class="icon"><i class="material-icons md-36">filter_list</i></div>
+      <div class="content text-truncate"> {{ 'Funil' | translate }}</div>
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Carteira')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">account_balance_wallet</i></div>
-      <div class="col-12 content text-truncate"> {{'Carteira' | translate}}</div>
+      <div class="icon"><i class="material-icons md-36">account_balance_wallet</i></div>
+      <div class="content text-truncate"> {{'Carteira' | translate}}</div>
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Agents')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">headset_mic</i></div>
-      <div class="col-12 content text-truncate"> {{ 'Agentes' | translate }}</div>
+      <div class="icon"><i class="material-icons md-36">headset_mic</i></div>
+      <div class="content text-truncate"> {{ 'Agentes' | translate }}</div>
     </div>
   </div>
 
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Multi channel')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">device_hub</i></div>
-      <div class="col-12 content text-truncate"> {{ 'Multi canais'| translate }}</div>
+      <div class="icon"><i class="material-icons md-36">device_hub</i></div>
+      <div class="content text-truncate"> {{ 'Multi canais'| translate }}</div>
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Best time')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">access_alarm</i></div>
-      <div class="col-12 content text-truncate">{{ 'Best time' | translate }}...</div>
+      <div class="icon"><i class="material-icons md-36">access_alarm</i></div>
+      <div class="content text-truncate">{{ 'Best time' | translate }}...</div>
     </div>
   </div>
 
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Comparative')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">compare</i></div>
-      <div class="col-12 content text-truncate"> {{ 'Comparativo' | translate}}</div>
+      <div class="icon"><i class="material-icons md-36">compare</i></div>
+      <div class="content text-truncate"> {{ 'Comparativo' | translate}}</div>
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="hasPermission('Diário')">
     <div class="body text-center">
-      <div class="col-12 icon"><i class="material-icons md-36">today</i></div>
-      <div class="col-12 content text-truncate"> {{ 'Diário' | translate }}</div>
+      <div class="icon"><i class="material-icons md-36">today</i></div>
+      <div class="content text-truncate"> {{ 'Diário' | translate }}</div>
     </div>
   </div>
 
-<!--  <div class="card search-card-dashboard" *ngIf="hasPermission('Região')">-->
-<!--    <div class="body text-center">-->
-<!--      <div class="col-12 icon">-->
-<!--        <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>-->
-<!--      </div>-->
-<!--      <div class="col-12 content text-truncate"> {{ 'Região' | translate }}</div>-->
-<!--    </div>-->
-<!--  </div>-->
+  <!--  <div class="card search-card-dashboard" *ngIf="hasPermission('Região')">-->
+  <!--    <div class="body text-center">-->
+  <!--      <div class="icon">-->
+  <!--        <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>-->
+  <!--      </div>-->
+  <!--      <div class="col-12 content text-truncate"> {{ 'Região' | translate }}</div>-->
+  <!--    </div>-->
+  <!--  </div>-->
 
 
   <div class="card search-card-dashboard" *ngIf="! hasPermission('Carteira')">
     <div class="body text-center">
-      <div class="col-12 icon">
+      <div class="icon">
         <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
       </div>
-      <div class="col-12 content text-truncate">
-        <div class="card-skeleton"></div>
-      </div>
+
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="! hasPermission('Diário')">
     <div class="body text-center">
-      <div class="col-12 icon">
+      <div class="icon">
         <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
       </div>
-      <div class="col-12 content text-truncate">
-        <div class="card-skeleton"></div>
-      </div>
+
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="! hasPermission('Comparative')">
     <div class="body text-center">
-      <div class="col-12 icon">
+      <div class="icon">
         <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
       </div>
-      <div class="col-12 content text-truncate">
-        <div class="card-skeleton"></div>
-      </div>
+
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="! hasPermission('Best time')">
     <div class="body text-center">
-      <div class="col-12 icon">
+      <div class="icon">
         <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
       </div>
-      <div class="col-12 content text-truncate">
-        <div class="card-skeleton"></div>
-      </div>
+
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="! hasPermission('Região')">
     <div class="body text-center">
-      <div class="col-12 icon">
+      <div class="icon">
         <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
       </div>
-      <div class="col-12 content text-truncate">
-        <div class="card-skeleton"></div>
-      </div>
+
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="! hasPermission('Multi Channel')">
     <div class="body text-center">
-      <div class="col-12 icon">
+      <div class="icon">
         <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
       </div>
-      <div class="col-12 content text-truncate">
-        <div class="card-skeleton"></div>
-      </div>
+
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="! hasPermission('Funil')">
     <div class="body text-center">
-      <div class="col-12 icon">
+      <div class="icon">
         <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
       </div>
-      <div class="col-12 content text-truncate">
-        <div class="card-skeleton"></div>
-      </div>
+
     </div>
   </div>
 
   <div class="card search-card-dashboard" *ngIf="! hasPermission('Agents')">
     <div class="body text-center">
-      <div class="col-12 icon">
+      <div class="icon">
         <fa-icon [icon]="faUserLock" class="icon-fa"></fa-icon>
       </div>
-      <div class="col-12 content text-truncate">
-        <div class="card-skeleton"></div>
-      </div>
+
     </div>
   </div>
 </div>

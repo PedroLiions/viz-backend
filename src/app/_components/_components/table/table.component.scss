@@ -51,9 +51,15 @@ table.table-sm {
     text-align: right !important;
 
     div:last-of-type {
-      white-space: break-spaces;
       text-overflow: ellipsis;
       overflow: hidden;
+    }
+
+
+    &.break-space {
+      div:last-of-type {
+        white-space: break-spaces;
+      }
     }
   }
 }
@@ -75,6 +81,13 @@ table.table-sm {
 }
 
 body.theme-blue {
+  table.table-sm {
+    th, td {
+      color: black;
+    }
+  }
+}
+body.theme-dark {
   table.table-sm {
     th, td {
       color: white;

@@ -1,5 +1,11 @@
 .search-card-dashboard {
   min-width: 137px !important;
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .carousel-md {
@@ -20,5 +26,6 @@
   font-size: 36px;
   color: rgba(255,255,255,.1)
 }
+
 
 

@@ -35,7 +35,7 @@ export class RightNavComponent implements OnInit {
     this.rtlToggle = !(localStorage.getItem('rtlToggle'));
 
     /* set language saved in storage */
-    const defaultLang = localStorage.getItem('lang');
+    const defaultLang = localStorage.getItem('lang') || 'pt-br';
     this.languageService.setDefaultLang(defaultLang);
 
     /* set theme saved in local storage*/

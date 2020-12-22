@@ -21,7 +21,7 @@ export class DistributionByOcurrenceComponent implements OnInit {
 
   ngOnInit(): void {
     this.columnClasseConfig = {
-      Agente: 'bg-viz-gray',
+      Agentes: 'bg-viz-gray',
       Tentativas: 'bg-viz-red',
       Atendidas: 'bg-viz-caramel',
       CPC: 'bg-viz-ocean',

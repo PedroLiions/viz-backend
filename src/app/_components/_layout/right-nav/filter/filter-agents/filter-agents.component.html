@@ -1,0 +1,52 @@
+<form [formGroup]="form">
+  <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
+    <div>Empresa</div>
+    <div>
+      <label class="cursor-pointer m-b-0">
+        <input (change)="sendForm()" formControlName="A1" type="checkbox"> A1
+      </label>
+    </div>
+    <div>
+      <label class="cursor-pointer m-b-0">
+        <input (change)="sendForm()" formControlName="Crc" type="checkbox"> Crc
+      </label>
+    </div>
+    <div>
+      <label class="cursor-pointer m-b-0">
+        <input (change)="sendForm()" formControlName="Paschoalotto" type="checkbox"> Paschoalotto
+      </label>
+    </div>
+    <div>
+      <label class="cursor-pointer m-b-0">
+        <input (change)="sendForm()" formControlName="System" type="checkbox"> System
+      </label>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 col-xl-3 d-flex flex-column">
+    <div>
+      Hora
+    </div>
+    <div class="d-flex flex-row">
+      <div>
+        <label class="cursor-pointer mb-3 mr-3">
+          <input (change)="sendForm()" formControlName="8" type="checkbox"> 8h
+        </label>
+      </div>
+      <div>
+        <label class="cursor-pointer mb-3 mr-3">
+          <input (change)="sendForm()" formControlName="9" type="checkbox"> 9h
+        </label>
+      </div>
+      <div>
+        <label class="cursor-pointer mb-3 mr-3">
+          <input (change)="sendForm()" formControlName="10" type="checkbox"> 10h
+        </label>
+      </div>
+      <div>
+        <label class="cursor-pointer mb-3 mr-3">
+          <input (change)="sendForm()" formControlName="11" type="checkbox"> 11h
+        </label>
+      </div>
+    </div>
+  </div>
+</form>
