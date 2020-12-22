@@ -3,11 +3,11 @@ export const environment = {
   API: 'https://apiviz.deepcenter.com.br/api',
   jwt: {
     allowedDomains: [
-      'vizapi.plima.me'
+      'apiviz.deepcenter.com.br'
     ],
     disallowedRoutes: [
-      'vizapi.plima.me/api/auth/login',
-      'vizapi.plima.me/api/auth/register',
+      'apiviz.deepcenter.com.br/api/auth/login',
+      'apiviz.deepcenter.com.br/api/auth/register',
     ]
   }
 };
